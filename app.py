@@ -20,6 +20,7 @@ from smovie.auth_db import AuthDb
 from smovie.catalog_store import CatalogStore
 from smovie.payload import PayloadService
 from smovie.routes import register_routes
+from smovie.structured_log import catalog_log, structured
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -47,6 +48,30 @@ def _env_bool(name: str, default: bool) -> bool:
     if raw is None:
         return default
     return raw.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _smovie_is_production() -> bool:
+    return os.getenv("SMOVIE_ENV", "").strip().lower() in {"production", "prod"}
+
+
+def _session_cookie_secure_default() -> bool:
+    if (os.getenv("SMOVIE_COOKIE_SECURE") or "").strip() != "":
+        return _env_bool("SMOVIE_COOKIE_SECURE", False)
+    return _smovie_is_production()
+
+
+def _library_cache_max_age_seconds() -> int:
+    raw = (os.getenv("SMOVIE_LIBRARY_CACHE_MAX_AGE") or "").strip()
+    if raw.isdigit():
+        return max(0, min(int(raw), 31_536_000))
+    return 604_800 if _smovie_is_production() else 86_400
+
+
+def _preferred_url_scheme() -> str:
+    raw = (os.getenv("SMOVIE_PREFERRED_URL_SCHEME") or "").strip().lower()
+    if raw in {"http", "https"}:
+        return raw
+    return "https" if _smovie_is_production() else "http"
 
 
 def _resolve_smovie_secret_key() -> str:
@@ -304,6 +329,79 @@ def _pick_best_visual(item: dict[str, Any], keys: list[str]) -> str:
     return ""
 
 
+def _item_uses_tv_fanart_visuals(item: dict[str, Any], kind: str) -> bool:
+    """Séries / documentaires avec saisons : mêmes familles d'assets Fanart que les shows TV."""
+    k = _clean_kind(kind, "movie")
+    if k == "series":
+        return True
+    if k == "documentary":
+        seasons = item.get("seasons")
+        return isinstance(seasons, list) and len(seasons) > 0
+    return False
+
+
+def _fanart_logo_keys_for_item(item: dict[str, Any], kind: str) -> list[str]:
+    """Ordre aligné sur scripts/clients/fanart.ts (films vs séries). `logo` = fichier local importé."""
+    if _item_uses_tv_fanart_visuals(item, kind):
+        return [
+            "logo",
+            "hdtvlogo",
+            "hdclearlogo",
+            "tvlogo",
+            "clearlogo",
+            "hdmovielogo",
+            "movielogo",
+        ]
+    return [
+        "logo",
+        "hdmovielogo",
+        "movielogo",
+        "hdclearlogo",
+        "clearlogo",
+        "hdtvlogo",
+        "tvlogo",
+    ]
+
+
+def _fanart_clearart_keys_for_item(item: dict[str, Any], kind: str) -> list[str]:
+    if _item_uses_tv_fanart_visuals(item, kind):
+        return [
+            "clearart",
+            "tvhdclearart",
+            "hdtvclearart",
+            "hdclearart",
+            "tvclearart",
+            "hdmovieclearart",
+            "moviehdclearart",
+            "movieclearart",
+        ]
+    return [
+        "clearart",
+        "hdmovieclearart",
+        "moviehdclearart",
+        "movieclearart",
+        "hdclearart",
+        "tvhdclearart",
+        "hdtvclearart",
+        "tvclearart",
+    ]
+
+
+def _pick_best_logo_for_item(item: dict[str, Any]) -> str:
+    kind = _clean_kind(item.get("kind") or item.get("type"), "movie")
+    return _pick_best_visual(item, _fanart_logo_keys_for_item(item, kind))
+
+
+def _pick_best_clearart_for_item(item: dict[str, Any]) -> str:
+    kind = _clean_kind(item.get("kind") or item.get("type"), "movie")
+    return _pick_best_visual(item, _fanart_clearart_keys_for_item(item, kind))
+
+
+def _item_display_title(item: dict[str, Any], fallback: str = "Sans titre", max_len: int = 120) -> str:
+    raw = item.get("title") or item.get("name") or item.get("originalTitle") or item.get("original_name")
+    return _clean_text(raw, fallback, max_len)
+
+
 def _clean_timeline_entries(value: Any) -> list[dict[str, Any]]:
     if not isinstance(value, list):
         return []
@@ -423,7 +521,7 @@ def _guess_season_poster_path(slug: str, kind: str, category: str, season_number
 
 
 def _clean_episode(item_raw: dict[str, Any], fallback_image: str) -> dict[str, Any]:
-    title = _clean_text(item_raw.get("title"), "Episode", 120)
+    title = _item_display_title(item_raw, "Episode", 120)
     duration = _clean_text(item_raw.get("duration"), "", 24) or _clean_text(item_raw.get("runtime"), "45min", 24)
     trailer = _clean_video(item_raw.get("trailer"), "")
     trailer_hls = _clean_video(item_raw.get("trailer_hls"), "")
@@ -465,11 +563,7 @@ def _clean_seasons(
                 number_int = int(number)
             except (TypeError, ValueError):
                 number_int = season_index + 1
-            season_title = _clean_text(
-                season_raw.get("title"),
-                _clean_text(season_raw.get("name"), f"Saison {number_int}", 120),
-                120,
-            )
+            season_title = _item_display_title(season_raw, f"Saison {number_int}", 120)
             season_poster = _clean_image(
                 season_raw.get("poster"),
                 _clean_image(season_raw.get("seasonPoster"), fallback_image),
@@ -627,7 +721,7 @@ def _item_search_blob(row_title: str, item: dict[str, Any]) -> str:
         tags = []
     parts = [
         row_title,
-        _clean_text(item.get("title"), "", 120),
+        _item_display_title(item, "", 120),
         _clean_text(item.get("genre"), "", 44),
         _clean_text(item.get("rating"), "", 12),
         _clean_text(item.get("duration"), "", 20),
@@ -779,7 +873,7 @@ def _find_item_by_title(rows: list[dict[str, Any]], title: str) -> Optional[dict
     if not wanted:
         return None
     for item in _flatten_items(rows):
-        current = _normalize_search_text(item.get("title"))
+        current = _normalize_search_text(_item_display_title(item, "", 120))
         if current and current == wanted:
             return item
     return None
@@ -1104,7 +1198,7 @@ def build_top_movie_hero(
     for item in candidates:
         if not isinstance(item, dict):
             continue
-        title = _clean_text(item.get("title"), "", 120)
+        title = _item_display_title(item, "", 120)
         if not title:
             continue
         item_key = _build_item_key(item)
@@ -1174,7 +1268,7 @@ def build_top_movie_hero(
         score_label = _clean_text(best_item.get("match"), _clean_text(base.get("match"), "", 24), 24)
     return {
         **base,
-        "title": _clean_text(best_item.get("title"), _clean_text(base.get("title"), "SMovie", 110), 110),
+        "title": _item_display_title(best_item, _clean_text(base.get("title"), "SMovie", 110), 110),
         "subtitle": subtitle,
         "rating": _clean_text(best_item.get("rating"), _clean_text(base.get("rating"), "13+", 10), 10),
         "duration": featured_duration or _clean_text(base.get("duration"), "2h", 20),
@@ -1196,7 +1290,7 @@ def build_top_movie_hero(
         "cta_secondary": "Retirer de ma liste" if best_item_key in favorites else "Ajouter à ma liste",
         # Do not inherit base hero logo across medias: wrong logo bleed causes
         # flicker/swap and visual mismatch. Keep only current media logo.
-        "logo": _clean_image(best_item.get("logo"), ""),
+        "logo": _pick_best_logo_for_item(best_item),
         "item_key": best_item_key,
         "item_kind": _clean_kind(best_item.get("kind"), "movie"),
         "slug": _clean_text(best_item.get("slug"), "", 160) or _build_item_slug(best_item),
@@ -1231,10 +1325,10 @@ def _mock_media_item_to_catalog_item(
     default_match: str = "97% Match",
     collection_items: Optional[list[dict[str, Any]]] = None,
 ) -> dict[str, Any]:
-    title = _clean_text(item.get("title"), "Sans titre", 120)
+    kind = _clean_kind(item.get("type"), "movie")
+    title = _item_display_title(item, "Sans titre", 120)
     year = _clean_year(item.get("year"), 2025)
     slug = _clean_text(item.get("slug"), "", 160) or _build_item_slug({"title": title, "year": year, "image": item.get("backdrop")})
-    kind = _clean_kind(item.get("type"), "movie")
     if kind not in {"movie", "series", "documentary"}:
         kind = "movie"
     category = _clean_category(item.get("category"), "documentary" if kind == "documentary" else ("series" if kind == "series" else "film"))
@@ -1252,14 +1346,9 @@ def _mock_media_item_to_catalog_item(
         item.get("cardImageType"),
         "poster" if card_image == poster and poster else ("backdrop" if card_image == backdrop and backdrop else "fallback"),
     )
-    logo = _pick_best_visual(
-        item,
-        ["logo", "hdmovielogo", "movielogo", "hdtvlogo", "clearlogo"],
-    )
-    clearart = _pick_best_visual(
-        item,
-        ["clearart", "hdclearart", "moviehdclearart", "hdmovieclearart", "tvhdclearart", "tvclearart"],
-    )
+    _vis_item = {**item, "kind": kind}
+    logo = _pick_best_logo_for_item(_vis_item)
+    clearart = _pick_best_clearart_for_item(_vis_item)
     rating_score = _clean_float(item.get("ratingScore"), fallback=0.0, min_value=0.0, max_value=10.0)
     rating_count = _clean_int(item.get("ratingCount"), fallback=0, min_value=0, max_value=1_000_000_000)
     score_label = _format_score_label(rating_score, "")
@@ -1277,7 +1366,7 @@ def _mock_media_item_to_catalog_item(
     if collection_items:
         ordered = sorted(
             [ci for ci in collection_items if isinstance(ci, dict)],
-            key=lambda ci: (_clean_year(ci.get("year"), 9999), _clean_text(ci.get("title"), "", 120)),
+            key=lambda ci: (_clean_year(ci.get("year"), 9999), _item_display_title(ci, "", 120)),
         )
         for idx, candidate in enumerate(ordered, start=1):
             if _clean_text(candidate.get("id"), "", 120) == _clean_text(item.get("id"), "", 120):
@@ -1296,11 +1385,7 @@ def _mock_media_item_to_catalog_item(
                 1,
                 999,
             )
-            season_title = _clean_text(
-                season_raw.get("name"),
-                _clean_text(season_raw.get("title"), f"Saison {season_number}", 120),
-                120,
-            )
+            season_title = _item_display_title(season_raw, f"Saison {season_number}", 120)
             season_poster_candidate = (
                 _clean_image(season_raw.get("poster"), "")
                 or _clean_image(season_raw.get("seasonPoster"), "")
@@ -1317,7 +1402,7 @@ def _mock_media_item_to_catalog_item(
                     episode_number = _clean_int(episode_raw.get("episodeNumber"), episode_idx + 1, 1, 999)
                     episodes_payload.append(
                         {
-                            "title": _clean_text(episode_raw.get("title"), f"Episode {episode_number}", 120),
+                            "title": _item_display_title(episode_raw, f"Episode {episode_number}", 120),
                             "description": _clean_text(episode_raw.get("overview"), "", 480),
                             "duration": _minutes_to_duration_text(episode_raw.get("duration"), "45min"),
                             "rating": "13+",
@@ -1350,12 +1435,12 @@ def _mock_media_item_to_catalog_item(
     if collection_items and len(collection_items) >= 2:
         ordered = sorted(
             [ci for ci in collection_items if isinstance(ci, dict)],
-            key=lambda ci: (_clean_year(ci.get("year"), 9999), _clean_text(ci.get("title"), "", 120)),
+            key=lambda ci: (_clean_year(ci.get("year"), 9999), _item_display_title(ci, "", 120)),
         )
         for candidate in ordered:
             timeline.append(
                 {
-                    "title": _clean_text(candidate.get("title"), "Volet", 120),
+                    "title": _item_display_title(candidate, "Volet", 120),
                     "year": _clean_year(candidate.get("year"), 0),
                     "description": _clean_text(candidate.get("shortDescription"), "", 220),
                 }
@@ -1560,11 +1645,11 @@ def _build_catalog_from_mock_media(raw: Any) -> dict[str, Any]:
     hero_score_label = _format_score_label(hero_rating_score, "")
     hero_aux = _build_hero_aux_fields(hero_source)
     hero = {
-        "title": _clean_text(hero_source.get("title"), "SMovie", 110),
+        "title": _item_display_title(hero_source, "SMovie", 110),
         "subtitle": _clean_text(hero_source.get("description"), "Bibliotheque locale SMovie.", 420),
         "cta_primary": "Regarder",
         "cta_secondary": "Ajouter à ma liste",
-        "logo": _clean_image(hero_source.get("logo"), ""),
+        "logo": _pick_best_logo_for_item(hero_source),
         "rating": _clean_text(hero_source.get("rating"), "13+", 10),
         "genre": _clean_text(hero_source.get("genre"), "Catalogue", 70),
         "duration": _clean_text(hero_source.get("duration"), "2h", 20),
@@ -1610,7 +1695,15 @@ def _sync_catalog_from_mock_media(catalog_path: Path, mock_media_path: Path) -> 
     try:
         raw = json.loads(mock_media_path.read_text(encoding="utf-8-sig"))
     except Exception as exc:  # noqa: BLE001
-        logging.exception("mockMedia.json invalide: %s", exc)
+        structured(
+            catalog_log(),
+            logging.ERROR,
+            component="catalog",
+            event="mock_media_json_invalid",
+            path=str(mock_media_path),
+            error_type=type(exc).__name__,
+            exc_info=True,
+        )
         return
 
     converted = _build_catalog_from_mock_media(raw)
@@ -1627,9 +1720,23 @@ def _sync_catalog_from_mock_media(catalog_path: Path, mock_media_path: Path) -> 
     try:
         catalog_path.parent.mkdir(parents=True, exist_ok=True)
         catalog_path.write_text(serialized, encoding="utf-8")
-        logging.info("catalog.json synchronise depuis mockMedia.json")
+        structured(
+            catalog_log(),
+            logging.INFO,
+            component="catalog",
+            event="synced_from_mock",
+            path=str(catalog_path),
+        )
     except Exception as exc:  # noqa: BLE001
-        logging.exception("Impossible de synchroniser catalog.json: %s", exc)
+        structured(
+            catalog_log(),
+            logging.ERROR,
+            component="catalog",
+            event="catalog_write_failed",
+            path=str(catalog_path),
+            error_type=type(exc).__name__,
+            exc_info=True,
+        )
 
 
 def sanitize_catalog(raw: Any) -> dict[str, Any]:
@@ -1691,11 +1798,11 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
     )
 
     hero = {
-        "title": _clean_text(hero_raw.get("title"), "SMovie", 110),
+        "title": _item_display_title(hero_raw, "SMovie", 110),
         "subtitle": _clean_text(hero_raw.get("subtitle"), "Bibliotheque locale SMovie.", 420),
         "cta_primary": _clean_text(hero_raw.get("cta_primary"), "Regarder", 26),
         "cta_secondary": _clean_text(hero_raw.get("cta_secondary"), "Ajouter à ma liste", 34),
-        "logo": _clean_image(hero_raw.get("logo"), ""),
+        "logo": _pick_best_logo_for_item(hero_raw),
         "rating": _clean_text(hero_raw.get("rating"), "13+", 10),
         "genre": _clean_text(hero_raw.get("genre"), "Catalogue", 70),
         "duration": _clean_text(hero_raw.get("duration"), "2h", 20),
@@ -1753,7 +1860,7 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
                             else ("series" if item_kind == "series" else "film")
                         ),
                     )
-                    item_title = _clean_text(item_raw.get("title"), "Sans titre", 120)
+                    item_title = _item_display_title(item_raw, "Sans titre", 120)
                     item_year = _clean_year(item_raw.get("year"), 2025)
                     item_rating = _clean_text(item_raw.get("rating"), "13+", 12)
                     item_genre = _clean_text(item_raw.get("genre"), "Catalogue", 44)
@@ -1780,7 +1887,9 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
                     )
                     item_image = item_card_image
                     item_poster = _clean_image(item_raw.get("poster"), item_card_image)
-                    item_logo = _clean_image(item_raw.get("logo"), "")
+                    _vis_item_raw = {**item_raw, "kind": item_kind}
+                    item_logo = _pick_best_logo_for_item(_vis_item_raw)
+                    item_clearart = _pick_best_clearart_for_item(_vis_item_raw)
                     default_item_trailer = DEFAULT_EPISODE_TRAILER_MP4 if item_kind in {"movie", "documentary"} else ""
                     default_item_trailer_hls = DEFAULT_EPISODE_TRAILER_HLS if item_kind in {"movie", "documentary"} else ""
                     item_trailer = _clean_video(item_raw.get("trailer"), default_item_trailer)
@@ -1852,6 +1961,7 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
                         "hero_background": item_hero_background,
                         "poster": item_poster,
                         "logo": item_logo,
+                        "clearart": item_clearart,
                         "trailer": item_trailer,
                         "trailer_hls": item_trailer_hls,
                         "kind": item_kind,
@@ -1935,6 +2045,7 @@ class SlidingWindowRateLimiter:
 def create_app() -> Flask:
     app = Flask(__name__)
     app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
+    _lib_cache = _library_cache_max_age_seconds()
     app.config.update(
         SECRET_KEY=_resolve_smovie_secret_key(),
         SESSION_COOKIE_NAME=os.getenv("SMOVIE_SESSION_COOKIE_NAME", "smovie_session"),
@@ -1942,16 +2053,21 @@ def create_app() -> Flask:
         JSON_SORT_KEYS=False,
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE="Lax",
-        SESSION_COOKIE_SECURE=_env_bool("SMOVIE_COOKIE_SECURE", False),
+        SESSION_COOKIE_SECURE=_session_cookie_secure_default(),
         PERMANENT_SESSION_LIFETIME=timedelta(days=int(os.getenv("SMOVIE_SESSION_DAYS", "14"))),
         SESSION_REFRESH_EACH_REQUEST=True,
         TEMPLATES_AUTO_RELOAD=_env_bool("SMOVIE_TEMPLATE_RELOAD", False),
+        PREFERRED_URL_SCHEME=_preferred_url_scheme(),
+        LIBRARY_CACHE_MAX_AGE=_lib_cache,
     )
 
+    _log_level = getattr(logging, (os.getenv("SMOVIE_LOG_LEVEL") or "INFO").strip().upper(), logging.INFO)
     logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s %(levelname)s %(message)s",
+        level=_log_level,
+        format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
     )
+    for _lg_name in ("smovie", "smovie.catalog", "smovie.auth"):
+        logging.getLogger(_lg_name).setLevel(_log_level)
 
     catalog_store = CatalogStore(
         catalog_path=CATALOG_PATH,
@@ -2010,7 +2126,9 @@ def create_app() -> Flask:
         clean_bg_position=_clean_bg_position,
         clean_bg_fit=_clean_bg_fit,
         clean_card_image_type=_clean_card_image_type,
-        pick_best_visual=_pick_best_visual,
+        pick_logo_for_item=_pick_best_logo_for_item,
+        pick_clearart_for_item=_pick_best_clearart_for_item,
+        item_display_title=_item_display_title,
         build_item_key=_build_item_key,
         build_item_slug=_build_item_slug,
         normalize_key=_normalize_key,
@@ -2067,7 +2185,10 @@ def create_app() -> Flask:
         response.headers.setdefault("Cross-Origin-Resource-Policy", "same-origin")
 
         if request.is_secure:
-            response.headers.setdefault("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
+            response.headers.setdefault(
+                "Strict-Transport-Security",
+                os.getenv("SMOVIE_HSTS", "max-age=31536000; includeSubDomains"),
+            )
 
         if request.path.startswith("/api/"):
             response.headers.setdefault("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
@@ -2076,7 +2197,8 @@ def create_app() -> Flask:
         elif request.path.startswith("/media/"):
             response.headers.setdefault("Cache-Control", "public, max-age=86400")
         elif request.path.startswith("/library/"):
-            response.headers.setdefault("Cache-Control", "public, max-age=86400")
+            _max_age = int(app.config.get("LIBRARY_CACHE_MAX_AGE") or 86400)
+            response.headers.setdefault("Cache-Control", f"public, max-age={_max_age}")
         elif request.path.startswith("/static/"):
             response.headers.setdefault("Cache-Control", "public, max-age=604800, immutable")
         else:

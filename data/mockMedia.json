@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-22T22:06:57.661Z",
+  "generatedAt": "2026-03-25T13:38:37.099Z",
   "source": "tmdb",
   "items": [
     {
@@ -21,11 +21,11 @@
       "heroBackground": "/library/movies/matrix/hero-background.jpg",
       "cardImage": "/library/movies/matrix/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/matrix/logo.png",
       "clearart": "/library/movies/matrix/clearart.png",
       "ratingScore": 8.2,
-      "ratingCount": 27536,
+      "ratingCount": 27552,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -80,7 +80,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/matrix/matrix.mkv",
       "libraryPath": "/library/movies/matrix/matrix.mkv",
-      "addedAt": "2026-03-22T22:06:43.737Z",
+      "addedAt": "2026-03-25T13:37:40.305Z",
       "duration": 135,
       "collectionId": 2344,
       "collectionName": "Matrix - Saga",
@@ -105,11 +105,11 @@
       "heroBackground": "/library/movies/harry-potter-a-l-ecole-des-sorciers/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-a-l-ecole-des-sorciers/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-a-l-ecole-des-sorciers/logo.png",
       "clearart": "/library/movies/harry-potter-a-l-ecole-des-sorciers/clearart.png",
       "ratingScore": 7.9,
-      "ratingCount": 29276,
+      "ratingCount": 29286,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -164,7 +164,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-a-l-ecole-des-sorciers/harry-potter-a-l-ecole-des-sorciers.mkv",
       "libraryPath": "/library/movies/harry-potter-a-l-ecole-des-sorciers/harry-potter-a-l-ecole-des-sorciers.mkv",
-      "addedAt": "2026-03-22T22:06:31.464Z",
+      "addedAt": "2026-03-25T13:37:20.386Z",
       "duration": 153,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -190,11 +190,11 @@
       "heroBackground": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/hero-background.jpg",
       "cardImage": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/logo.png",
       "clearart": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/clearart.png",
       "ratingScore": 8.4,
-      "ratingCount": 27183,
+      "ratingCount": 27200,
       "cast": [
         {
           "name": "Elijah Wood",
@@ -249,7 +249,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/le-seigneur-des-anneaux-la-communaute-de-l-anneau.mkv",
       "libraryPath": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/le-seigneur-des-anneaux-la-communaute-de-l-anneau.mkv",
-      "addedAt": "2026-03-22T22:06:36.856Z",
+      "addedAt": "2026-03-25T13:37:29.310Z",
       "duration": 179,
       "collectionId": 119,
       "collectionName": "Le Seigneur des anneaux - Saga",
@@ -274,11 +274,11 @@
       "heroBackground": "/library/movies/harry-potter-et-la-chambre-des-secrets/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-et-la-chambre-des-secrets/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-et-la-chambre-des-secrets/logo.png",
       "clearart": "/library/movies/harry-potter-et-la-chambre-des-secrets/clearart.png",
       "ratingScore": 7.7,
-      "ratingCount": 23347,
+      "ratingCount": 23352,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -333,7 +333,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-et-la-chambre-des-secrets/harry-potter-et-la-chambre-des-secrets.mkv",
       "libraryPath": "/library/movies/harry-potter-et-la-chambre-des-secrets/harry-potter-et-la-chambre-des-secrets.mkv",
-      "addedAt": "2026-03-22T22:06:32.162Z",
+      "addedAt": "2026-03-25T13:37:21.521Z",
       "duration": 161,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -359,11 +359,11 @@
       "heroBackground": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/hero-background.jpg",
       "cardImage": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/logo.png",
       "clearart": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/clearart.png",
       "ratingScore": 8.4,
-      "ratingCount": 23584,
+      "ratingCount": 23600,
       "cast": [
         {
           "name": "Elijah Wood",
@@ -418,7 +418,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/le-seigneur-des-anneaux-les-deux-tours/le-seigneur-des-anneaux-les-deux-tours.mkv",
       "libraryPath": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/le-seigneur-des-anneaux-les-deux-tours.mkv",
-      "addedAt": "2026-03-22T22:06:37.526Z",
+      "addedAt": "2026-03-25T13:37:30.424Z",
       "duration": 180,
       "collectionId": 119,
       "collectionName": "Le Seigneur des anneaux - Saga",
@@ -444,11 +444,11 @@
       "heroBackground": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/hero-background.jpg",
       "cardImage": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/logo.png",
       "clearart": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/clearart.png",
       "ratingScore": 8.5,
-      "ratingCount": 26196,
+      "ratingCount": 26213,
       "cast": [
         {
           "name": "Elijah Wood",
@@ -503,7 +503,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/le-seigneur-des-anneaux-le-retour-du-roi/le-seigneur-des-anneaux-le-retour-du-roi.mkv",
       "libraryPath": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/le-seigneur-des-anneaux-le-retour-du-roi.mkv",
-      "addedAt": "2026-03-22T22:06:38.304Z",
+      "addedAt": "2026-03-25T13:37:31.567Z",
       "duration": 201,
       "collectionId": 119,
       "collectionName": "Le Seigneur des anneaux - Saga",
@@ -530,11 +530,11 @@
       "heroBackground": "/library/movies/matrix-reloaded/hero-background.jpg",
       "cardImage": "/library/movies/matrix-reloaded/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/matrix-reloaded/logo.png",
       "clearart": "/library/movies/matrix-reloaded/clearart.png",
       "ratingScore": 7.1,
-      "ratingCount": 11791,
+      "ratingCount": 11798,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -589,7 +589,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/matrix-reloaded/matrix-reloaded.mkv",
       "libraryPath": "/library/movies/matrix-reloaded/matrix-reloaded.mkv",
-      "addedAt": "2026-03-22T22:06:44.324Z",
+      "addedAt": "2026-03-25T13:37:41.358Z",
       "duration": 138,
       "collectionId": 2344,
       "collectionName": "Matrix - Saga",
@@ -616,11 +616,11 @@
       "heroBackground": "/library/movies/matrix-revolutions/hero-background.jpg",
       "cardImage": "/library/movies/matrix-revolutions/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/matrix-revolutions/logo.png",
       "clearart": "/library/movies/matrix-revolutions/clearart.png",
       "ratingScore": 6.7,
-      "ratingCount": 10656,
+      "ratingCount": 10663,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -675,7 +675,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/matrix-revolutions/matrix-revolutions.mkv",
       "libraryPath": "/library/movies/matrix-revolutions/matrix-revolutions.mkv",
-      "addedAt": "2026-03-22T22:06:44.932Z",
+      "addedAt": "2026-03-25T13:37:42.396Z",
       "duration": 128,
       "collectionId": 2344,
       "collectionName": "Matrix - Saga",
@@ -700,11 +700,11 @@
       "heroBackground": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/logo.png",
       "clearart": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/clearart.png",
       "ratingScore": 8,
-      "ratingCount": 22935,
+      "ratingCount": 22940,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -759,7 +759,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-et-le-prisonnier-d-azkaban/harry-potter-et-le-prisonnier-d-azkaban.mkv",
       "libraryPath": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/harry-potter-et-le-prisonnier-d-azkaban.mkv",
-      "addedAt": "2026-03-22T22:06:32.771Z",
+      "addedAt": "2026-03-25T13:37:22.583Z",
       "duration": 142,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -784,11 +784,11 @@
       "heroBackground": "/library/movies/harry-potter-et-la-coupe-de-feu/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-et-la-coupe-de-feu/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-et-la-coupe-de-feu/logo.png",
       "clearart": "/library/movies/harry-potter-et-la-coupe-de-feu/clearart.png",
       "ratingScore": 7.8,
-      "ratingCount": 21947,
+      "ratingCount": 21953,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -843,7 +843,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-et-la-coupe-de-feu/harry-potter-et-la-coupe-de-feu.mkv",
       "libraryPath": "/library/movies/harry-potter-et-la-coupe-de-feu/harry-potter-et-la-coupe-de-feu.mkv",
-      "addedAt": "2026-03-22T22:06:33.354Z",
+      "addedAt": "2026-03-25T13:37:23.631Z",
       "duration": 157,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -868,11 +868,11 @@
       "heroBackground": "/library/movies/harry-potter-et-l-ordre-du-phenix/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-et-l-ordre-du-phenix/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-et-l-ordre-du-phenix/logo.png",
       "clearart": "/library/movies/harry-potter-et-l-ordre-du-phenix/clearart.png",
       "ratingScore": 7.7,
-      "ratingCount": 20607,
+      "ratingCount": 20614,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -927,7 +927,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-et-l-ordre-du-phenix/harry-potter-et-l-ordre-du-phenix.mkv",
       "libraryPath": "/library/movies/harry-potter-et-l-ordre-du-phenix/harry-potter-et-l-ordre-du-phenix.mkv",
-      "addedAt": "2026-03-22T22:06:34.032Z",
+      "addedAt": "2026-03-25T13:37:24.777Z",
       "duration": 138,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -953,11 +953,11 @@
       "heroBackground": "/library/movies/the-dark-knight-le-chevalier-noir/hero-background.jpg",
       "cardImage": "/library/movies/the-dark-knight-le-chevalier-noir/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/the-dark-knight-le-chevalier-noir/logo.png",
       "clearart": "/library/movies/the-dark-knight-le-chevalier-noir/clearart.png",
       "ratingScore": 8.5,
-      "ratingCount": 35353,
+      "ratingCount": 35365,
       "cast": [
         {
           "name": "Christian Bale",
@@ -1007,12 +1007,12 @@
         {
           "name": "Cillian Murphy",
           "character": "Scarecrow",
-          "profile": "https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/dm6V24NjjvjMiCtbMkc8Y2WPm2e.jpg"
         }
       ],
       "sourcePath": "/mnt/nas/videos/movies/the-dark-knight-le-chevalier-noir/the-dark-knight-le-chevalier-noir.mkv",
       "libraryPath": "/library/movies/the-dark-knight-le-chevalier-noir/the-dark-knight-le-chevalier-noir.mkv",
-      "addedAt": "2026-03-22T22:06:27.911Z",
+      "addedAt": "2026-03-25T13:37:14.629Z",
       "duration": 152,
       "collectionId": 263,
       "collectionName": "The Dark Knight - Saga",
@@ -1038,11 +1038,11 @@
       "heroBackground": "/library/movies/avatar/hero-background.jpg",
       "cardImage": "/library/movies/avatar/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/avatar/logo.png",
       "clearart": "/library/movies/avatar/clearart.png",
       "ratingScore": 7.6,
-      "ratingCount": 33636,
+      "ratingCount": 33647,
       "cast": [
         {
           "name": "Sam Worthington",
@@ -1097,7 +1097,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/avatar/avatar.mkv",
       "libraryPath": "/library/movies/avatar/avatar.mkv",
-      "addedAt": "2026-03-22T22:06:30.147Z",
+      "addedAt": "2026-03-25T13:37:18.178Z",
       "duration": 166,
       "collectionId": 87096,
       "collectionName": "Avatar - Saga",
@@ -1122,11 +1122,11 @@
       "heroBackground": "/library/movies/harry-potter-et-le-prince-de-sang-mele/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-et-le-prince-de-sang-mele/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-et-le-prince-de-sang-mele/logo.png",
       "clearart": "/library/movies/harry-potter-et-le-prince-de-sang-mele/clearart.png",
       "ratingScore": 7.7,
-      "ratingCount": 20585,
+      "ratingCount": 20589,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -1181,7 +1181,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-et-le-prince-de-sang-mele/harry-potter-et-le-prince-de-sang-mele.mkv",
       "libraryPath": "/library/movies/harry-potter-et-le-prince-de-sang-mele/harry-potter-et-le-prince-de-sang-mele.mkv",
-      "addedAt": "2026-03-22T22:06:34.625Z",
+      "addedAt": "2026-03-25T13:37:25.824Z",
       "duration": 153,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -1206,11 +1206,11 @@
       "heroBackground": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/logo.png",
       "clearart": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/clearart.png",
       "ratingScore": 7.7,
-      "ratingCount": 20188,
+      "ratingCount": 20193,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -1265,7 +1265,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/harry-potter-et-les-reliques-de-la-mort-1ere-partie.mkv",
       "libraryPath": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/harry-potter-et-les-reliques-de-la-mort-1ere-partie.mkv",
-      "addedAt": "2026-03-22T22:06:35.304Z",
+      "addedAt": "2026-03-25T13:37:26.948Z",
       "duration": 146,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -1291,16 +1291,16 @@
       "heroBackground": "/library/movies/inception/hero-background.jpg",
       "cardImage": "/library/movies/inception/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/inception/logo.png",
       "clearart": "/library/movies/inception/clearart.png",
       "ratingScore": 8.4,
-      "ratingCount": 38865,
+      "ratingCount": 38882,
       "cast": [
         {
           "name": "Leonardo DiCaprio",
           "character": "Dom Cobb",
-          "profile": "https://image.tmdb.org/t/p/w185/qZs7xVpe2gGXfGaS5NRkhjPOedW.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg"
         },
         {
           "name": "Joseph Gordon-Levitt",
@@ -1330,7 +1330,7 @@
         {
           "name": "Cillian Murphy",
           "character": "Robert Fischer, Jr.",
-          "profile": "https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/dm6V24NjjvjMiCtbMkc8Y2WPm2e.jpg"
         },
         {
           "name": "Tom Berenger",
@@ -1350,7 +1350,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/inception/inception.mkv",
       "libraryPath": "/library/movies/inception/inception.mkv",
-      "addedAt": "2026-03-22T22:06:24.875Z",
+      "addedAt": "2026-03-25T13:37:09.268Z",
       "duration": 148,
       "type": "movie"
     },
@@ -1373,11 +1373,11 @@
       "heroBackground": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/hero-background.jpg",
       "cardImage": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/logo.png",
       "clearart": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/clearart.png",
       "ratingScore": 8.1,
-      "ratingCount": 21778,
+      "ratingCount": 21785,
       "cast": [
         {
           "name": "Daniel Radcliffe",
@@ -1432,7 +1432,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/harry-potter-et-les-reliques-de-la-mort-2eme-partie.mkv",
       "libraryPath": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/harry-potter-et-les-reliques-de-la-mort-2eme-partie.mkv",
-      "addedAt": "2026-03-22T22:06:36.063Z",
+      "addedAt": "2026-03-25T13:37:28.090Z",
       "duration": 130,
       "collectionId": 1241,
       "collectionName": "Harry Potter - Saga",
@@ -1458,11 +1458,11 @@
       "heroBackground": "/library/movies/le-hobbit-un-voyage-inattendu/hero-background.jpg",
       "cardImage": "/library/movies/le-hobbit-un-voyage-inattendu/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/le-hobbit-un-voyage-inattendu/logo.png",
       "clearart": "/library/movies/le-hobbit-un-voyage-inattendu/clearart.png",
       "ratingScore": 7.4,
-      "ratingCount": 19437,
+      "ratingCount": 19445,
       "cast": [
         {
           "name": "Martin Freeman",
@@ -1517,7 +1517,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/le-hobbit-un-voyage-inattendu/le-hobbit-un-voyage-inattendu.mkv",
       "libraryPath": "/library/movies/le-hobbit-un-voyage-inattendu/le-hobbit-un-voyage-inattendu.mkv",
-      "addedAt": "2026-03-22T22:06:39.002Z",
+      "addedAt": "2026-03-25T13:37:32.702Z",
       "duration": 169,
       "collectionId": 121938,
       "collectionName": "Le Hobbit - Saga",
@@ -1543,11 +1543,11 @@
       "heroBackground": "/library/movies/le-hobbit-la-desolation-de-smaug/hero-background.jpg",
       "cardImage": "/library/movies/le-hobbit-la-desolation-de-smaug/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/le-hobbit-la-desolation-de-smaug/logo.png",
       "clearart": "/library/movies/le-hobbit-la-desolation-de-smaug/clearart.png",
       "ratingScore": 7.6,
-      "ratingCount": 14034,
+      "ratingCount": 14039,
       "cast": [
         {
           "name": "Ian McKellen",
@@ -1602,7 +1602,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/le-hobbit-la-desolation-de-smaug/le-hobbit-la-desolation-de-smaug.mkv",
       "libraryPath": "/library/movies/le-hobbit-la-desolation-de-smaug/le-hobbit-la-desolation-de-smaug.mkv",
-      "addedAt": "2026-03-22T22:06:39.906Z",
+      "addedAt": "2026-03-25T13:37:33.857Z",
       "duration": 161,
       "collectionId": 121938,
       "collectionName": "Le Hobbit - Saga",
@@ -1628,11 +1628,11 @@
       "heroBackground": "/library/movies/interstellar/hero-background.jpg",
       "cardImage": "/library/movies/interstellar/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/interstellar/logo.png",
       "clearart": "/library/movies/interstellar/clearart.png",
       "ratingScore": 8.5,
-      "ratingCount": 39171,
+      "ratingCount": 39190,
       "cast": [
         {
           "name": "Matthew McConaughey",
@@ -1687,7 +1687,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/interstellar/interstellar.mkv",
       "libraryPath": "/library/movies/interstellar/interstellar.mkv",
-      "addedAt": "2026-03-22T22:06:25.484Z",
+      "addedAt": "2026-03-25T13:37:10.324Z",
       "duration": 169,
       "type": "movie"
     },
@@ -1710,11 +1710,11 @@
       "heroBackground": "/library/movies/john-wick/hero-background.jpg",
       "cardImage": "/library/movies/john-wick/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/john-wick/logo.png",
       "clearart": "/library/movies/john-wick/clearart.png",
       "ratingScore": 7.5,
-      "ratingCount": 20577,
+      "ratingCount": 20589,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -1769,7 +1769,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/john-wick/john-wick.mkv",
       "libraryPath": "/library/movies/john-wick/john-wick.mkv",
-      "addedAt": "2026-03-22T22:06:41.254Z",
+      "addedAt": "2026-03-25T13:37:35.968Z",
       "duration": 101,
       "collectionId": 404609,
       "collectionName": "John Wick - Saga",
@@ -1795,11 +1795,11 @@
       "heroBackground": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/hero-background.jpg",
       "cardImage": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/logo.png",
       "clearart": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/clearart.png",
       "ratingScore": 7.3,
-      "ratingCount": 15193,
+      "ratingCount": 15198,
       "cast": [
         {
           "name": "Ian McKellen",
@@ -1854,7 +1854,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/le-hobbit-la-bataille-des-cinq-armees/le-hobbit-la-bataille-des-cinq-armees.mkv",
       "libraryPath": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/le-hobbit-la-bataille-des-cinq-armees.mkv",
-      "addedAt": "2026-03-22T22:06:40.692Z",
+      "addedAt": "2026-03-25T13:37:35.046Z",
       "duration": 144,
       "collectionId": 121938,
       "collectionName": "Le Hobbit - Saga",
@@ -1880,11 +1880,11 @@
       "heroBackground": "/library/movies/mad-max-fury-road/hero-background.jpg",
       "cardImage": "/library/movies/mad-max-fury-road/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/mad-max-fury-road/logo.png",
       "clearart": "/library/movies/mad-max-fury-road/clearart.png",
       "ratingScore": 7.6,
-      "ratingCount": 23853,
+      "ratingCount": 23860,
       "cast": [
         {
           "name": "Tom Hardy",
@@ -1939,7 +1939,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/mad-max-fury-road/mad-max-fury-road.mkv",
       "libraryPath": "/library/movies/mad-max-fury-road/mad-max-fury-road.mkv",
-      "addedAt": "2026-03-22T22:06:29.477Z",
+      "addedAt": "2026-03-25T13:37:16.924Z",
       "duration": 120,
       "collectionId": 8945,
       "collectionName": "Mad Max - Saga",
@@ -1964,11 +1964,11 @@
       "heroBackground": "/library/movies/blade-runner-2049/hero-background.jpg",
       "cardImage": "/library/movies/blade-runner-2049/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/blade-runner-2049/logo.png",
       "clearart": "/library/movies/blade-runner-2049/clearart.png",
       "ratingScore": 7.6,
-      "ratingCount": 14893,
+      "ratingCount": 14904,
       "cast": [
         {
           "name": "Ryan Gosling",
@@ -1983,7 +1983,7 @@
         {
           "name": "Ana de Armas",
           "character": "Joi",
-          "profile": "https://image.tmdb.org/t/p/w185/tkBWBvcLTihUcVf6iwbMQTFqEEv.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/3vxvsmYLTf4jnr163SUlBIw51ee.jpg"
         },
         {
           "name": "Dave Bautista",
@@ -2023,7 +2023,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/blade-runner-2049/blade-runner-2049.mkv",
       "libraryPath": "/library/movies/blade-runner-2049/blade-runner-2049.mkv",
-      "addedAt": "2026-03-22T22:06:28.698Z",
+      "addedAt": "2026-03-25T13:37:15.768Z",
       "duration": 164,
       "collectionId": 422837,
       "collectionName": "Blade Runner - Saga",
@@ -2049,11 +2049,11 @@
       "heroBackground": "/library/movies/john-wick-chapitre-2/hero-background.jpg",
       "cardImage": "/library/movies/john-wick-chapitre-2/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/john-wick-chapitre-2/logo.png",
       "clearart": "/library/movies/john-wick-chapitre-2/clearart.png",
       "ratingScore": 7.3,
-      "ratingCount": 14068,
+      "ratingCount": 14075,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -2108,7 +2108,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/john-wick-chapitre-2/john-wick-chapitre-2.mkv",
       "libraryPath": "/library/movies/john-wick-chapitre-2/john-wick-chapitre-2.mkv",
-      "addedAt": "2026-03-22T22:06:41.860Z",
+      "addedAt": "2026-03-25T13:37:37.092Z",
       "duration": 122,
       "collectionId": 404609,
       "collectionName": "John Wick - Saga",
@@ -2134,11 +2134,11 @@
       "heroBackground": "/library/movies/john-wick-parabellum/hero-background.jpg",
       "cardImage": "/library/movies/john-wick-parabellum/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/john-wick-parabellum/logo.png",
       "clearart": "/library/movies/john-wick-parabellum/clearart.png",
       "ratingScore": 7.4,
-      "ratingCount": 11558,
+      "ratingCount": 11564,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -2193,7 +2193,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/john-wick-parabellum/john-wick-parabellum.mkv",
       "libraryPath": "/library/movies/john-wick-parabellum/john-wick-parabellum.mkv",
-      "addedAt": "2026-03-22T22:06:42.541Z",
+      "addedAt": "2026-03-25T13:37:38.220Z",
       "duration": 130,
       "collectionId": 404609,
       "collectionName": "John Wick - Saga",
@@ -2218,16 +2218,16 @@
       "heroBackground": "/library/movies/dune-premiere-partie/hero-background.jpg",
       "cardImage": "/library/movies/dune-premiere-partie/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/dune-premiere-partie/logo.png",
       "clearart": "/library/movies/dune-premiere-partie/clearart.png",
       "ratingScore": 7.8,
-      "ratingCount": 14596,
+      "ratingCount": 14611,
       "cast": [
         {
           "name": "Timothée Chalamet",
           "character": "Paul Atreides",
-          "profile": "https://image.tmdb.org/t/p/w185/98pz2MH2JT7Yw0sUJGrA5Oqtbo8.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/axENiFIrSz5B7UuWkMT7PDe7CaO.jpg"
         },
         {
           "name": "Rebecca Ferguson",
@@ -2277,7 +2277,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/dune-premiere-partie/dune-premiere-partie.mkv",
       "libraryPath": "/library/movies/dune-premiere-partie/dune-premiere-partie.mkv",
-      "addedAt": "2026-03-22T22:06:26.057Z",
+      "addedAt": "2026-03-25T13:37:11.429Z",
       "duration": 155,
       "collectionId": 726871,
       "collectionName": "Dune - Saga",
@@ -2303,11 +2303,11 @@
       "heroBackground": "/library/movies/matrix-resurrections/hero-background.jpg",
       "cardImage": "/library/movies/matrix-resurrections/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/matrix-resurrections/logo.png",
       "clearart": "/library/movies/matrix-resurrections/clearart.png",
       "ratingScore": 6.3,
-      "ratingCount": 6345,
+      "ratingCount": 6351,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -2362,7 +2362,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/matrix-resurrections/matrix-resurrections.mkv",
       "libraryPath": "/library/movies/matrix-resurrections/matrix-resurrections.mkv",
-      "addedAt": "2026-03-22T22:06:45.517Z",
+      "addedAt": "2026-03-25T13:37:43.428Z",
       "duration": 148,
       "collectionId": 2344,
       "collectionName": "Matrix - Saga",
@@ -2388,11 +2388,11 @@
       "heroBackground": "/library/movies/avatar-la-voie-de-l-eau/hero-background.jpg",
       "cardImage": "/library/movies/avatar-la-voie-de-l-eau/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/avatar-la-voie-de-l-eau/logo.png",
       "clearart": "/library/movies/avatar-la-voie-de-l-eau/clearart.png",
       "ratingScore": 7.6,
-      "ratingCount": 13854,
+      "ratingCount": 13863,
       "cast": [
         {
           "name": "Sam Worthington",
@@ -2447,7 +2447,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/avatar-la-voie-de-l-eau/avatar-la-voie-de-l-eau.mkv",
       "libraryPath": "/library/movies/avatar-la-voie-de-l-eau/avatar-la-voie-de-l-eau.mkv",
-      "addedAt": "2026-03-22T22:06:30.753Z",
+      "addedAt": "2026-03-25T13:37:19.226Z",
       "duration": 192,
       "collectionId": 87096,
       "collectionName": "Avatar - Saga",
@@ -2472,11 +2472,11 @@
       "heroBackground": "/library/movies/top-gun-maverick/hero-background.jpg",
       "cardImage": "/library/movies/top-gun-maverick/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/top-gun-maverick/logo.png",
       "clearart": "/library/movies/top-gun-maverick/clearart.png",
       "ratingScore": 8.2,
-      "ratingCount": 10679,
+      "ratingCount": 10689,
       "cast": [
         {
           "name": "Tom Cruise",
@@ -2531,7 +2531,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/top-gun-maverick/top-gun-maverick.mkv",
       "libraryPath": "/library/movies/top-gun-maverick/top-gun-maverick.mkv",
-      "addedAt": "2026-03-22T22:06:27.222Z",
+      "addedAt": "2026-03-25T13:37:13.496Z",
       "duration": 130,
       "collectionId": 531330,
       "collectionName": "Top Gun - Saga",
@@ -2557,11 +2557,11 @@
       "heroBackground": "/library/movies/john-wick-chapitre-4/hero-background.jpg",
       "cardImage": "/library/movies/john-wick-chapitre-4/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/john-wick-chapitre-4/logo.png",
       "clearart": "/library/movies/john-wick-chapitre-4/clearart.png",
       "ratingScore": 7.7,
-      "ratingCount": 7765,
+      "ratingCount": 7773,
       "cast": [
         {
           "name": "Keanu Reeves",
@@ -2616,7 +2616,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/john-wick-chapitre-4/john-wick-chapitre-4.mkv",
       "libraryPath": "/library/movies/john-wick-chapitre-4/john-wick-chapitre-4.mkv",
-      "addedAt": "2026-03-22T22:06:43.137Z",
+      "addedAt": "2026-03-25T13:37:39.274Z",
       "duration": 169,
       "collectionId": 404609,
       "collectionName": "John Wick - Saga",
@@ -2641,16 +2641,16 @@
       "heroBackground": "/library/movies/dune-deuxieme-partie/hero-background.jpg",
       "cardImage": "/library/movies/dune-deuxieme-partie/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/movies/dune-deuxieme-partie/logo.png",
       "clearart": "/library/movies/dune-deuxieme-partie/clearart.png",
       "ratingScore": 8.1,
-      "ratingCount": 7661,
+      "ratingCount": 7675,
       "cast": [
         {
           "name": "Timothée Chalamet",
           "character": "Paul Atreides",
-          "profile": "https://image.tmdb.org/t/p/w185/98pz2MH2JT7Yw0sUJGrA5Oqtbo8.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/axENiFIrSz5B7UuWkMT7PDe7CaO.jpg"
         },
         {
           "name": "Zendaya",
@@ -2700,7 +2700,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/movies/dune-deuxieme-partie/dune-deuxieme-partie.mkv",
       "libraryPath": "/library/movies/dune-deuxieme-partie/dune-deuxieme-partie.mkv",
-      "addedAt": "2026-03-22T22:06:26.660Z",
+      "addedAt": "2026-03-25T13:37:12.555Z",
       "duration": 165,
       "collectionId": 726871,
       "collectionName": "Dune - Saga",
@@ -2725,11 +2725,11 @@
       "heroBackground": "/library/series/breaking-bad/hero-background.jpg",
       "cardImage": "/library/series/breaking-bad/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/breaking-bad/logo.png",
+      "clearart": "/library/series/breaking-bad/clearart.png",
       "ratingScore": 8.9,
-      "ratingCount": 17358,
+      "ratingCount": 17372,
       "cast": [
         {
           "name": "Bryan Cranston",
@@ -2774,7 +2774,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/breaking-bad",
       "libraryPath": "/library/series/breaking-bad",
-      "addedAt": "2026-03-22T22:06:45.895Z",
+      "addedAt": "2026-03-25T13:37:45.094Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -2986,11 +2986,11 @@
       "heroBackground": "/library/series/game-of-thrones/hero-background.jpg",
       "cardImage": "/library/series/game-of-thrones/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/game-of-thrones/logo.png",
+      "clearart": "/library/series/game-of-thrones/clearart.png",
       "ratingScore": 8.5,
-      "ratingCount": 26492,
+      "ratingCount": 26501,
       "cast": [
         {
           "name": "Peter Dinklage",
@@ -3045,7 +3045,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/game-of-thrones",
       "libraryPath": "/library/series/game-of-thrones",
-      "addedAt": "2026-03-22T22:06:47.096Z",
+      "addedAt": "2026-03-25T13:37:50.165Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -3265,16 +3265,16 @@
       "heroBackground": "/library/series/peaky-blinders/hero-background.jpg",
       "cardImage": "/library/series/peaky-blinders/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/peaky-blinders/logo.png",
+      "clearart": "/library/series/peaky-blinders/clearart.png",
       "ratingScore": 8.5,
-      "ratingCount": 10882,
+      "ratingCount": 10898,
       "cast": [
         {
           "name": "Cillian Murphy",
           "character": "Thomas Shelby",
-          "profile": "https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/dm6V24NjjvjMiCtbMkc8Y2WPm2e.jpg"
         },
         {
           "name": "Paul Anderson",
@@ -3294,7 +3294,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/peaky-blinders",
       "libraryPath": "/library/series/peaky-blinders",
-      "addedAt": "2026-03-22T22:06:48.550Z",
+      "addedAt": "2026-03-25T13:37:56.587Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -3442,11 +3442,11 @@
       "heroBackground": "/library/series/true-detective/hero-background.jpg",
       "cardImage": "/library/series/true-detective/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/true-detective/logo.png",
+      "clearart": "/library/series/true-detective/clearart.png",
       "ratingScore": 8.3,
-      "ratingCount": 4001,
+      "ratingCount": 4005,
       "cast": [
         {
           "name": "Jodie Foster",
@@ -3481,7 +3481,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/true-detective",
       "libraryPath": "/library/series/true-detective",
-      "addedAt": "2026-03-22T22:06:49.278Z",
+      "addedAt": "2026-03-25T13:37:59.801Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -3665,11 +3665,11 @@
       "heroBackground": "/library/series/better-call-saul/hero-background.jpg",
       "cardImage": "/library/series/better-call-saul/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/better-call-saul/logo.png",
+      "clearart": "/library/series/better-call-saul/clearart.png",
       "ratingScore": 8.7,
-      "ratingCount": 6283,
+      "ratingCount": 6291,
       "cast": [
         {
           "name": "Bob Odenkirk",
@@ -3699,7 +3699,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/better-call-saul",
       "libraryPath": "/library/series/better-call-saul",
-      "addedAt": "2026-03-22T22:06:46.309Z",
+      "addedAt": "2026-03-25T13:37:46.776Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -3920,11 +3920,11 @@
       "heroBackground": "/library/series/stranger-things/hero-background.jpg",
       "cardImage": "/library/series/stranger-things/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/stranger-things/logo.png",
+      "clearart": "/library/series/stranger-things/clearart.png",
       "ratingScore": 8.6,
-      "ratingCount": 20872,
+      "ratingCount": 20886,
       "cast": [
         {
           "name": "Winona Ryder",
@@ -3944,7 +3944,7 @@
         {
           "name": "Finn Wolfhard",
           "character": "Mike Wheeler",
-          "profile": "https://image.tmdb.org/t/p/w185/gsVIdhYh4DpDXjW5U5baQzcARsB.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/a1uynFLYQHij42kWu8yW1SvdJSG.jpg"
         },
         {
           "name": "Gaten Matarazzo",
@@ -3979,7 +3979,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/stranger-things",
       "libraryPath": "/library/series/stranger-things",
-      "addedAt": "2026-03-22T22:06:46.691Z",
+      "addedAt": "2026-03-25T13:37:48.466Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -4174,11 +4174,11 @@
       "heroBackground": "/library/series/dark/hero-background.jpg",
       "cardImage": "/library/series/dark/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/dark/logo.png",
+      "clearart": "/library/series/dark/clearart.png",
       "ratingScore": 8.4,
-      "ratingCount": 7435,
+      "ratingCount": 7439,
       "cast": [
         {
           "name": "Louis Hofmann",
@@ -4188,7 +4188,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/dark",
       "libraryPath": "/library/series/dark",
-      "addedAt": "2026-03-22T22:06:48.228Z",
+      "addedAt": "2026-03-25T13:37:55.078Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -4390,11 +4390,11 @@
       "heroBackground": "/library/series/the-witcher/hero-background.jpg",
       "cardImage": "/library/series/the-witcher/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/the-witcher/logo.png",
+      "clearart": "/library/series/the-witcher/clearart.png",
       "ratingScore": 7.9,
-      "ratingCount": 6592,
+      "ratingCount": 6597,
       "cast": [
         {
           "name": "Liam Hemsworth",
@@ -4449,7 +4449,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/the-witcher",
       "libraryPath": "/library/series/the-witcher",
-      "addedAt": "2026-03-22T22:06:47.840Z",
+      "addedAt": "2026-03-25T13:37:53.564Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -4634,11 +4634,11 @@
       "heroBackground": "/library/series/house-of-the-dragon/hero-background.jpg",
       "cardImage": "/library/series/house-of-the-dragon/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/house-of-the-dragon/logo.png",
+      "clearart": "/library/series/house-of-the-dragon/clearart.png",
       "ratingScore": 8.3,
-      "ratingCount": 5796,
+      "ratingCount": 5802,
       "cast": [
         {
           "name": "Matt Smith",
@@ -4693,7 +4693,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/series/house-of-the-dragon",
       "libraryPath": "/library/series/house-of-the-dragon",
-      "addedAt": "2026-03-22T22:06:47.493Z",
+      "addedAt": "2026-03-25T13:37:51.855Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -4894,21 +4894,21 @@
       "heroBackground": "/library/series/the-last-of-us/hero-background.jpg",
       "cardImage": "/library/series/the-last-of-us/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/series/the-last-of-us/logo.png",
+      "clearart": "/library/series/the-last-of-us/clearart.png",
       "ratingScore": 8.4,
-      "ratingCount": 6855,
+      "ratingCount": 6860,
       "cast": [
         {
           "name": "Bella Ramsey",
           "character": "Ellie Williams",
-          "profile": "https://image.tmdb.org/t/p/w185/wbVOq34tJXME1rK6cHSlq6FjNV3.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/vDbgxc7RYawpB1wK7JDEj62j06H.jpg"
         },
         {
           "name": "Gabriel Luna",
           "character": "Tommy Miller",
-          "profile": "https://image.tmdb.org/t/p/w185/2NNNl3od5K7HXOLUqlK3tzdxKkD.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/bIPORtYxTJPEUJIThbZrpqf4A11.jpg"
         },
         {
           "name": "Isabela Merced",
@@ -4918,12 +4918,12 @@
         {
           "name": "Young Mazino",
           "character": "Jesse",
-          "profile": "https://image.tmdb.org/t/p/w185/cRuVRx1DMe2hBkz5pssVqdpCtaQ.jpg"
+          "profile": "https://image.tmdb.org/t/p/w185/obh9i5mr0fpk91HVxr2SmDNZlVF.jpg"
         }
       ],
       "sourcePath": "/mnt/nas/videos/series/the-last-of-us",
       "libraryPath": "/library/series/the-last-of-us",
-      "addedAt": "2026-03-22T22:06:48.919Z",
+      "addedAt": "2026-03-25T13:37:58.147Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -5109,9 +5109,9 @@
       "heroBackground": "/library/anime/code-geass-lelouch-of-the-rebellion/hero-background.jpg",
       "cardImage": "/library/anime/code-geass-lelouch-of-the-rebellion/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/code-geass-lelouch-of-the-rebellion/logo.png",
+      "clearart": "/library/anime/code-geass-lelouch-of-the-rebellion/clearart.png",
       "ratingScore": 8.3,
       "ratingCount": 855,
       "cast": [
@@ -5133,7 +5133,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/code-geass-lelouch-of-the-rebellion",
       "libraryPath": "/library/anime/code-geass-lelouch-of-the-rebellion",
-      "addedAt": "2026-03-22T22:06:53.150Z",
+      "addedAt": "2026-03-25T13:38:23.475Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -5390,11 +5390,11 @@
       "heroBackground": "/library/anime/death-note/hero-background.jpg",
       "cardImage": "/library/anime/death-note/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/death-note/logo.png",
+      "clearart": "/library/anime/death-note/clearart.png",
       "ratingScore": 8.6,
-      "ratingCount": 4792,
+      "ratingCount": 4794,
       "cast": [
         {
           "name": "Mamoru Miyano",
@@ -5434,7 +5434,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/death-note",
       "libraryPath": "/library/anime/death-note",
-      "addedAt": "2026-03-22T22:06:51.188Z",
+      "addedAt": "2026-03-25T13:38:09.849Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -5576,11 +5576,11 @@
       "heroBackground": "/library/anime/fullmetal-alchemist-brotherhood/hero-background.jpg",
       "cardImage": "/library/anime/fullmetal-alchemist-brotherhood/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/fullmetal-alchemist-brotherhood/logo.png",
+      "clearart": "/library/anime/fullmetal-alchemist-brotherhood/clearart.png",
       "ratingScore": 8.7,
-      "ratingCount": 2382,
+      "ratingCount": 2384,
       "cast": [
         {
           "name": "Rie Kugimiya",
@@ -5600,7 +5600,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/fullmetal-alchemist-brotherhood",
       "libraryPath": "/library/anime/fullmetal-alchemist-brotherhood",
-      "addedAt": "2026-03-22T22:06:51.954Z",
+      "addedAt": "2026-03-25T13:38:12.834Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -5723,26 +5723,29 @@
     },
     {
       "id": "series-attack-on-titan",
-      "tmdbId": 224499,
+      "tmdbId": 233735,
       "slug": "attack-on-titan",
-      "title": "ちみキャラ劇場",
-      "originalTitle": "ちみキャラ劇場",
+      "title": "「進撃の巨人」ちみキャラ劇場\"とんでけ! 訓練兵団\"",
+      "originalTitle": "「進撃の巨人」ちみキャラ劇場\"とんでけ! 訓練兵団\"",
       "category": "anime",
-      "shortDescription": "ちみキャラ劇場",
-      "longDescription": "Description indisponible.",
+      "shortDescription": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée",
+      "longDescription": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
       "year": 2013,
       "genres": [
-        "Animation"
+        "Science-Fiction & Fantastique",
+        "Comédie",
+        "Animation",
+        "Action & Adventure"
       ],
       "poster": "/library/anime/attack-on-titan/poster.jpg",
       "backdrop": "/library/anime/attack-on-titan/backdrop.jpg",
       "heroBackground": "/library/anime/attack-on-titan/hero-background.jpg",
-      "cardImage": "/library/anime/attack-on-titan/card-thumb.jpg",
+      "cardImage": "/library/anime/attack-on-titan/poster.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
+      "cardImageType": "poster",
       "logo": null,
       "clearart": null,
-      "ratingScore": 4,
+      "ratingScore": 10,
       "ratingCount": 1,
       "cast": [
         {
@@ -5757,13 +5760,18 @@
         },
         {
           "name": "Hiroshi Kamiya",
-          "character": "",
+          "character": "Levi (voice)",
           "profile": "https://image.tmdb.org/t/p/w185/5aAAOlQ2hW5EqEQOzk4UeroxcTN.jpg"
+        },
+        {
+          "name": "Yu Kobayashi",
+          "character": "Sasha Blouse (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/p3OKrnliz2C8ub14Pn5pN3T8Q9B.jpg"
         }
       ],
       "sourcePath": "/mnt/nas/videos/anime/attack-on-titan",
       "libraryPath": "/library/anime/attack-on-titan",
-      "addedAt": "2026-03-22T22:06:50.054Z",
+      "addedAt": "2026-03-25T13:38:04.892Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -5773,8 +5781,8 @@
           "episodes": [
             {
               "episodeNumber": 1,
-              "title": "Épisode 1",
-              "overview": "Description indisponible.",
+              "title": "Episode 1",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
               "duration": 7,
               "still": "/library/anime/attack-on-titan/episode-s01-e01.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E01.mkv",
@@ -5782,8 +5790,8 @@
             },
             {
               "episodeNumber": 2,
-              "title": "Épisode 2",
-              "overview": "Description indisponible.",
+              "title": "Episode 2",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
               "duration": 7,
               "still": "/library/anime/attack-on-titan/episode-s01-e02.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E02.mkv",
@@ -5791,17 +5799,17 @@
             },
             {
               "episodeNumber": 3,
-              "title": "Épisode 3",
-              "overview": "Description indisponible.",
-              "duration": 12,
+              "title": "Episode 3",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
+              "duration": 11,
               "still": "/library/anime/attack-on-titan/episode-s01-e03.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E03.mkv",
               "libraryPath": "/library/anime/attack-on-titan/season-01/episode-03.mkv"
             },
             {
               "episodeNumber": 4,
-              "title": "Épisode 4",
-              "overview": "Description indisponible.",
+              "title": "Episode 4",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
               "duration": 11,
               "still": "/library/anime/attack-on-titan/episode-s01-e04.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E04.mkv",
@@ -5809,8 +5817,8 @@
             },
             {
               "episodeNumber": 5,
-              "title": "Épisode 5",
-              "overview": "Description indisponible.",
+              "title": "Episode 5",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
               "duration": 11,
               "still": "/library/anime/attack-on-titan/episode-s01-e05.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E05.mkv",
@@ -5818,8 +5826,8 @@
             },
             {
               "episodeNumber": 6,
-              "title": "Épisode 6",
-              "overview": "Description indisponible.",
+              "title": "Episode 6",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
               "duration": 13,
               "still": "/library/anime/attack-on-titan/episode-s01-e06.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E06.mkv",
@@ -5827,8 +5835,8 @@
             },
             {
               "episodeNumber": 7,
-              "title": "Épisode 7",
-              "overview": "Description indisponible.",
+              "title": "Episode 7",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
               "duration": 14,
               "still": "/library/anime/attack-on-titan/episode-s01-e07.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E07.mkv",
@@ -5836,110 +5844,21 @@
             },
             {
               "episodeNumber": 8,
-              "title": "Épisode 8",
-              "overview": "Description indisponible.",
-              "duration": 11,
+              "title": "Episode 8",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
+              "duration": 10,
               "still": "/library/anime/attack-on-titan/episode-s01-e08.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E08.mkv",
               "libraryPath": "/library/anime/attack-on-titan/season-01/episode-08.mkv"
             },
             {
               "episodeNumber": 9,
-              "title": "Épisode 9",
-              "overview": "Description indisponible.",
-              "duration": 11,
+              "title": "Episode 9",
+              "overview": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
+              "duration": 10,
               "still": "/library/anime/attack-on-titan/episode-s01-e09.jpg",
               "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S01E09.mkv",
               "libraryPath": "/library/anime/attack-on-titan/season-01/episode-09.mkv"
-            }
-          ]
-        },
-        {
-          "seasonNumber": 2,
-          "name": "Saison 2",
-          "overview": "Description indisponible.",
-          "poster": "/library/anime/attack-on-titan/season-02.jpg",
-          "episodes": [
-            {
-              "episodeNumber": 1,
-              "title": "Épisode 1",
-              "overview": "Description indisponible.",
-              "duration": 2,
-              "still": "/library/anime/attack-on-titan/episode-s02-e01.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E01.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-01.mkv"
-            },
-            {
-              "episodeNumber": 2,
-              "title": "Épisode 2",
-              "overview": "Description indisponible.",
-              "duration": 2,
-              "still": "/library/anime/attack-on-titan/episode-s02-e02.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E02.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-02.mkv"
-            },
-            {
-              "episodeNumber": 3,
-              "title": "Épisode 3",
-              "overview": "Description indisponible.",
-              "duration": 2,
-              "still": "/library/anime/attack-on-titan/episode-s02-e03.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E03.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-03.mkv"
-            },
-            {
-              "episodeNumber": 4,
-              "title": "Épisode 4",
-              "overview": "Description indisponible.",
-              "duration": 2,
-              "still": "/library/anime/attack-on-titan/episode-s02-e04.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E04.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-04.mkv"
-            },
-            {
-              "episodeNumber": 5,
-              "title": "Épisode 5",
-              "overview": "Description indisponible.",
-              "duration": 2,
-              "still": "/library/anime/attack-on-titan/episode-s02-e05.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E05.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-05.mkv"
-            },
-            {
-              "episodeNumber": 6,
-              "title": "Épisode 6",
-              "overview": "Description indisponible.",
-              "duration": 2,
-              "still": "/library/anime/attack-on-titan/episode-s02-e06.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E06.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-06.mkv"
-            },
-            {
-              "episodeNumber": 7,
-              "title": "Épisode 7",
-              "overview": "Description indisponible.",
-              "duration": 2,
-              "still": "/library/anime/attack-on-titan/episode-s02-e07.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E07.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-07.mkv"
-            },
-            {
-              "episodeNumber": 8,
-              "title": "Épisode 8",
-              "overview": "Description indisponible.",
-              "duration": 5,
-              "still": "/library/anime/attack-on-titan/episode-s02-e08.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E08.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-08.mkv"
-            },
-            {
-              "episodeNumber": 9,
-              "title": "Épisode 9",
-              "overview": "Description indisponible.",
-              "duration": 5,
-              "still": "/library/anime/attack-on-titan/episode-s02-e09.jpg",
-              "sourcePath": "/mnt/nas/videos/anime/attack-on-titan/S02E09.mkv",
-              "libraryPath": "/library/anime/attack-on-titan/season-02/episode-09.mkv"
             }
           ]
         }
@@ -5966,11 +5885,11 @@
       "heroBackground": "/library/anime/tokyo-ghoul/hero-background.jpg",
       "cardImage": "/library/anime/tokyo-ghoul/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/tokyo-ghoul/logo.png",
+      "clearart": "/library/anime/tokyo-ghoul/clearart.png",
       "ratingScore": 8.3,
-      "ratingCount": 2495,
+      "ratingCount": 2496,
       "cast": [
         {
           "name": "Natsuki Hanae",
@@ -5990,7 +5909,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/tokyo-ghoul",
       "libraryPath": "/library/anime/tokyo-ghoul",
-      "addedAt": "2026-03-22T22:06:51.635Z",
+      "addedAt": "2026-03-25T13:38:11.550Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -6248,11 +6167,11 @@
       "heroBackground": "/library/anime/one-punch-man/hero-background.jpg",
       "cardImage": "/library/anime/one-punch-man/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/one-punch-man/logo.png",
+      "clearart": "/library/anime/one-punch-man/clearart.png",
       "ratingScore": 8.4,
-      "ratingCount": 4041,
+      "ratingCount": 4045,
       "cast": [
         {
           "name": "Makoto Furukawa",
@@ -6262,7 +6181,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/one-punch-man",
       "libraryPath": "/library/anime/one-punch-man",
-      "addedAt": "2026-03-22T22:06:50.838Z",
+      "addedAt": "2026-03-25T13:38:08.542Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -6519,11 +6438,11 @@
       "heroBackground": "/library/anime/my-hero-academia/hero-background.jpg",
       "cardImage": "/library/anime/my-hero-academia/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/my-hero-academia/logo.png",
+      "clearart": "/library/anime/my-hero-academia/clearart.png",
       "ratingScore": 8.6,
-      "ratingCount": 5217,
+      "ratingCount": 5218,
       "cast": [
         {
           "name": "Daiki Yamashita",
@@ -6533,7 +6452,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/my-hero-academia",
       "libraryPath": "/library/anime/my-hero-academia",
-      "addedAt": "2026-03-22T22:06:52.403Z",
+      "addedAt": "2026-03-25T13:38:14.631Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -6790,11 +6709,11 @@
       "heroBackground": "/library/anime/demon-slayer-kimetsu-no-yaiba/hero-background.jpg",
       "cardImage": "/library/anime/demon-slayer-kimetsu-no-yaiba/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/demon-slayer-kimetsu-no-yaiba/logo.png",
+      "clearart": "/library/anime/demon-slayer-kimetsu-no-yaiba/clearart.png",
       "ratingScore": 8.6,
-      "ratingCount": 7109,
+      "ratingCount": 7111,
       "cast": [
         {
           "name": "Natsuki Hanae",
@@ -6829,7 +6748,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/demon-slayer-kimetsu-no-yaiba",
       "libraryPath": "/library/anime/demon-slayer-kimetsu-no-yaiba",
-      "addedAt": "2026-03-22T22:06:49.658Z",
+      "addedAt": "2026-03-25T13:38:01.500Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -7041,15 +6960,15 @@
       "heroBackground": "/library/anime/jujutsu-kaisen/hero-background.jpg",
       "cardImage": "/library/anime/jujutsu-kaisen/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/jujutsu-kaisen/logo.png",
+      "clearart": "/library/anime/jujutsu-kaisen/clearart.png",
       "ratingScore": 8.6,
-      "ratingCount": 4260,
+      "ratingCount": 4266,
       "cast": [],
       "sourcePath": "/mnt/nas/videos/anime/jujutsu-kaisen",
       "libraryPath": "/library/anime/jujutsu-kaisen",
-      "addedAt": "2026-03-22T22:06:50.411Z",
+      "addedAt": "2026-03-25T13:38:06.733Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -7191,11 +7110,11 @@
       "heroBackground": "/library/anime/chainsaw-man/hero-background.jpg",
       "cardImage": "/library/anime/chainsaw-man/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/anime/chainsaw-man/logo.png",
+      "clearart": "/library/anime/chainsaw-man/clearart.png",
       "ratingScore": 8.5,
-      "ratingCount": 2070,
+      "ratingCount": 2071,
       "cast": [
         {
           "name": "Tomori Kusunoki",
@@ -7210,7 +7129,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/anime/chainsaw-man",
       "libraryPath": "/library/anime/chainsaw-man",
-      "addedAt": "2026-03-22T22:06:52.716Z",
+      "addedAt": "2026-03-25T13:38:21.582Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -7349,9 +7268,9 @@
       "heroBackground": "/library/documentaries/planete-terre/hero-background.jpg",
       "cardImage": "/library/documentaries/planete-terre/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/documentaries/planete-terre/logo.png",
+      "clearart": "/library/documentaries/planete-terre/clearart.png",
       "ratingScore": 8.6,
       "ratingCount": 1213,
       "cast": [
@@ -7363,7 +7282,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/planete-terre",
       "libraryPath": "/library/documentaries/planete-terre",
-      "addedAt": "2026-03-22T22:06:53.441Z",
+      "addedAt": "2026-03-25T13:38:24.761Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -7493,9 +7412,9 @@
       "heroBackground": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/hero-background.jpg",
       "cardImage": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/logo.png",
+      "clearart": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/clearart.png",
       "ratingScore": 8.5,
       "ratingCount": 1659,
       "cast": [
@@ -7512,7 +7431,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/cosmos-une-odyssee-a-travers-l-univers",
       "libraryPath": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers",
-      "addedAt": "2026-03-22T22:06:57.400Z",
+      "addedAt": "2026-03-25T13:38:35.920Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -7768,11 +7687,11 @@
       "heroBackground": "/library/documentaries/making-a-murderer/hero-background.jpg",
       "cardImage": "/library/documentaries/making-a-murderer/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/documentaries/making-a-murderer/logo.png",
       "clearart": null,
       "ratingScore": 7.9,
-      "ratingCount": 554,
+      "ratingCount": 555,
       "cast": [
         {
           "name": "Kathleen Zellner",
@@ -7782,7 +7701,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/making-a-murderer",
       "libraryPath": "/library/documentaries/making-a-murderer",
-      "addedAt": "2026-03-22T22:06:56.958Z",
+      "addedAt": "2026-03-25T13:38:33.724Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -8002,11 +7921,11 @@
       "heroBackground": "/library/documentaries/free-solo/hero-background.jpg",
       "cardImage": "/library/documentaries/free-solo/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "moviethumb",
       "logo": "/library/documentaries/free-solo/logo.png",
       "clearart": "/library/documentaries/free-solo/clearart.png",
       "ratingScore": 7.9,
-      "ratingCount": 1482,
+      "ratingCount": 1483,
       "cast": [
         {
           "name": "Alex Honnold",
@@ -8046,7 +7965,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/free-solo/free-solo.mkv",
       "libraryPath": "/library/documentaries/free-solo/free-solo.mkv",
-      "addedAt": "2026-03-22T22:06:55.319Z",
+      "addedAt": "2026-03-25T13:38:27.689Z",
       "duration": 100,
       "type": "documentary"
     },
@@ -8067,13 +7986,13 @@
       "poster": "/library/documentaries/wild-wild-country/poster.jpg",
       "backdrop": "/library/documentaries/wild-wild-country/backdrop.jpg",
       "heroBackground": "/library/documentaries/wild-wild-country/hero-background.jpg",
-      "cardImage": "/library/documentaries/wild-wild-country/card-thumb.jpg",
+      "cardImage": "/library/documentaries/wild-wild-country/poster.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
+      "cardImageType": "poster",
+      "logo": "/library/documentaries/wild-wild-country/logo.png",
       "clearart": null,
       "ratingScore": 7.7,
-      "ratingCount": 290,
+      "ratingCount": 291,
       "cast": [
         {
           "name": "Ma Anand Sheela",
@@ -8118,7 +8037,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/wild-wild-country",
       "libraryPath": "/library/documentaries/wild-wild-country",
-      "addedAt": "2026-03-22T22:06:57.653Z",
+      "addedAt": "2026-03-25T13:38:37.092Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -8203,11 +8122,11 @@
       "heroBackground": "/library/documentaries/formula-1-pilotes-de-leur-destin/hero-background.jpg",
       "cardImage": "/library/documentaries/formula-1-pilotes-de-leur-destin/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
-      "logo": null,
-      "clearart": null,
+      "cardImageType": "tvthumb",
+      "logo": "/library/documentaries/formula-1-pilotes-de-leur-destin/logo.png",
+      "clearart": "/library/documentaries/formula-1-pilotes-de-leur-destin/clearart.png",
       "ratingScore": 8.2,
-      "ratingCount": 608,
+      "ratingCount": 610,
       "cast": [
         {
           "name": "Toto Wolff",
@@ -8222,7 +8141,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/formula-1-pilotes-de-leur-destin",
       "libraryPath": "/library/documentaries/formula-1-pilotes-de-leur-destin",
-      "addedAt": "2026-03-22T22:06:56.559Z",
+      "addedAt": "2026-03-25T13:38:30.899Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -8442,11 +8361,11 @@
       "heroBackground": "/library/documentaries/notre-planete/hero-background.jpg",
       "cardImage": "/library/documentaries/notre-planete/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "backdrop",
+      "cardImageType": "tvthumb",
       "logo": "/library/documentaries/notre-planete/logo.png",
-      "clearart": null,
+      "clearart": "/library/documentaries/notre-planete/clearart.png",
       "ratingScore": 8.5,
-      "ratingCount": 437,
+      "ratingCount": 438,
       "cast": [
         {
           "name": "David Attenborough",
@@ -8456,7 +8375,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/notre-planete",
       "libraryPath": "/library/documentaries/notre-planete",
-      "addedAt": "2026-03-22T22:06:54.488Z",
+      "addedAt": "2026-03-25T13:38:26.430Z",
       "seasons": [
         {
           "seasonNumber": 1,
@@ -8603,11 +8522,11 @@
       "heroBackground": "/library/documentaries/the-last-dance/hero-background.jpg",
       "cardImage": "/library/documentaries/the-last-dance/card-thumb.jpg",
       "cardImagePosition": "50% 50%",
-      "cardImageType": "thumb",
+      "cardImageType": "tvthumb",
       "logo": "/library/documentaries/the-last-dance/logo.png",
       "clearart": "/library/documentaries/the-last-dance/clearart.png",
       "ratingScore": 8.3,
-      "ratingCount": 1445,
+      "ratingCount": 1446,
       "cast": [
         {
           "name": "Michael Jordan",
@@ -8637,7 +8556,7 @@
       ],
       "sourcePath": "/mnt/nas/videos/documentaries/the-last-dance",
       "libraryPath": "/library/documentaries/the-last-dance",
-      "addedAt": "2026-03-22T22:06:56.167Z",
+      "addedAt": "2026-03-25T13:38:29.035Z",
       "seasons": [
         {
           "seasonNumber": 1,

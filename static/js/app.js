@@ -803,6 +803,17 @@
     const cardImagePosition = String(item.card_image_position || item.cardImagePosition || "50% 50%").trim() || "50% 50%";
     const cardImageType = String(item.card_image_type || item.cardImageType || "fallback").trim().toLowerCase();
     const cardFit = cardImageType === "poster" || cardImageType === "banner" ? "contain" : "cover";
+    const kind = item.kind || "movie";
+    const logoUrl = String(item.logo || "").trim();
+    const marketingThumbTypes = new Set(["thumb", "moviethumb", "tvthumb"]);
+    /* Séries / docs : TV thumb Fanart en fond + logo (hdclearlogo) par-dessus, comme Fanart.tv */
+    const showCardLogo = Boolean(
+      logoUrl && (kind === "series" || kind === "documentary")
+    );
+    /* Films : éviter double titre si le moviethumb intègre déjà le branding */
+    const showCardLogoMovie = Boolean(
+      logoUrl && kind === "movie" && !marketingThumbTypes.has(cardImageType)
+    );
     return {
       title: item.title || "Sans titre",
       year: item.year || "",
@@ -815,7 +826,9 @@
       cardImagePosition,
       cardImageType,
       cardFit,
-      kind: item.kind || "movie",
+      logo: logoUrl,
+      showCardLogo: showCardLogo || showCardLogoMovie,
+      kind,
       slug: item.slug || "",
       detailUrl: item.detail_url || buildDetailUrl(item),
       itemKey: item.item_key || buildItemKey(item)
@@ -869,10 +882,15 @@
         .toLowerCase()
     );
 
+    const logoBlock = it.showCardLogo
+      ? `    <div class="movie-card-logo" aria-hidden="true"><img loading="lazy" src="${safeUrl(it.logo)}" alt="" /></div>\n`
+      : "";
+
     return [
       '<article class="movie-card" data-item-key="' + esc(itemKey) + '" data-title="' + title + '" data-detail-url="' + esc(detailUrl) + '" data-search="' + searchBlob + '" tabindex="0" role="button" aria-label="Ouvrir ' + title + '">',
       `  <div class="${frameClass}" style="--card-image-pos:${imagePosition};--card-bg-image:url('${image}')">`,
       `    <img loading="lazy" src="${image}" alt="${title}" />`,
+      logoBlock,
       '    <div class="movie-overlay">',
       `      <h3 class="movie-title">${title}</h3>`,
       `      <div class="movie-meta">${genre} &bull; ${rating} &bull; ${duration}</div>`,

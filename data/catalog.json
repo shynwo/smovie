@@ -4,7 +4,7 @@
     "subtitle": "Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber‐espace. À cheval entre deux mondes, Neo est assailli par d'étranges songes et des messages cryptés provenant d'un certain Morpheus. Celui‐ci l'exhorte à aller au‐delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu'est‐ce que la Matrice ? Nul ne le sait, et aucun homme n'est encore parvenu à en percer les défenses. Mais Morpheus est persuadé que Neo est l'Élu, le libérateur mythique de l'humanité annoncé selon la prophétie. Ensemble, ils se lancent dans une lutte sans retour contre la Matrice et ses terribles agents…",
     "tagline": "Top-Movie",
     "cta_primary": "Regarder",
-    "cta_secondary": "Ajouter à ma liste",
+    "cta_secondary": "Ajouter a ma liste",
     "logo": "/library/movies/matrix/logo.png",
     "rating": "13+",
     "genre": "Action / Science-Fiction",
@@ -39,7 +39,7 @@
           "match": "★ 8.2",
           "score_label": "★ 8.2",
           "rating_score": 8.2,
-          "rating_count": 27536,
+          "rating_count": 27552,
           "tags": [
             "Action",
             "Science-Fiction"
@@ -47,7 +47,7 @@
           "image": "/library/movies/matrix/card-thumb.jpg",
           "card_image": "/library/movies/matrix/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix/hero-background.jpg",
           "poster": "/library/movies/matrix/poster.jpg",
           "logo": "/library/movies/matrix/logo.png",
@@ -136,7 +136,7 @@
           "match": "★ 7.9",
           "score_label": "★ 7.9",
           "rating_score": 7.9,
-          "rating_count": 29276,
+          "rating_count": 29286,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -144,7 +144,7 @@
           "image": "/library/movies/harry-potter-a-l-ecole-des-sorciers/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-a-l-ecole-des-sorciers/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-a-l-ecole-des-sorciers/hero-background.jpg",
           "poster": "/library/movies/harry-potter-a-l-ecole-des-sorciers/poster.jpg",
           "logo": "/library/movies/harry-potter-a-l-ecole-des-sorciers/logo.png",
@@ -233,7 +233,7 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 27183,
+          "rating_count": 27200,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -242,7 +242,7 @@
           "image": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/card-thumb.jpg",
           "card_image": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/hero-background.jpg",
           "poster": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/poster.jpg",
           "logo": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/logo.png",
@@ -331,7 +331,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 23347,
+          "rating_count": 23352,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -339,7 +339,7 @@
           "image": "/library/movies/harry-potter-et-la-chambre-des-secrets/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-la-chambre-des-secrets/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-la-chambre-des-secrets/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-la-chambre-des-secrets/poster.jpg",
           "logo": "/library/movies/harry-potter-et-la-chambre-des-secrets/logo.png",
@@ -428,7 +428,7 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 23584,
+          "rating_count": 23600,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -437,7 +437,7 @@
           "image": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/card-thumb.jpg",
           "card_image": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/hero-background.jpg",
           "poster": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/poster.jpg",
           "logo": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/logo.png",
@@ -526,7 +526,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 26196,
+          "rating_count": 26213,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -535,7 +535,7 @@
           "image": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/card-thumb.jpg",
           "card_image": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/hero-background.jpg",
           "poster": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/poster.jpg",
           "logo": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/logo.png",
@@ -624,7 +624,7 @@
           "match": "★ 7.1",
           "score_label": "★ 7.1",
           "rating_score": 7.1,
-          "rating_count": 11791,
+          "rating_count": 11798,
           "tags": [
             "Aventure",
             "Action",
@@ -633,7 +633,7 @@
           "image": "/library/movies/matrix-reloaded/card-thumb.jpg",
           "card_image": "/library/movies/matrix-reloaded/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix-reloaded/hero-background.jpg",
           "poster": "/library/movies/matrix-reloaded/poster.jpg",
           "logo": "/library/movies/matrix-reloaded/logo.png",
@@ -722,7 +722,7 @@
           "match": "★ 6.7",
           "score_label": "★ 6.7",
           "rating_score": 6.7,
-          "rating_count": 10656,
+          "rating_count": 10663,
           "tags": [
             "Aventure",
             "Action",
@@ -731,7 +731,7 @@
           "image": "/library/movies/matrix-revolutions/card-thumb.jpg",
           "card_image": "/library/movies/matrix-revolutions/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix-revolutions/hero-background.jpg",
           "poster": "/library/movies/matrix-revolutions/poster.jpg",
           "logo": "/library/movies/matrix-revolutions/logo.png",
@@ -820,7 +820,7 @@
           "match": "★ 8.0",
           "score_label": "★ 8.0",
           "rating_score": 8,
-          "rating_count": 22935,
+          "rating_count": 22940,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -828,7 +828,7 @@
           "image": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/poster.jpg",
           "logo": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/logo.png",
@@ -917,7 +917,7 @@
           "match": "★ 7.8",
           "score_label": "★ 7.8",
           "rating_score": 7.8,
-          "rating_count": 21947,
+          "rating_count": 21953,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -925,7 +925,7 @@
           "image": "/library/movies/harry-potter-et-la-coupe-de-feu/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-la-coupe-de-feu/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-la-coupe-de-feu/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-la-coupe-de-feu/poster.jpg",
           "logo": "/library/movies/harry-potter-et-la-coupe-de-feu/logo.png",
@@ -1014,7 +1014,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 20607,
+          "rating_count": 20614,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -1022,7 +1022,7 @@
           "image": "/library/movies/harry-potter-et-l-ordre-du-phenix/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-l-ordre-du-phenix/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-l-ordre-du-phenix/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-l-ordre-du-phenix/poster.jpg",
           "logo": "/library/movies/harry-potter-et-l-ordre-du-phenix/logo.png",
@@ -1111,7 +1111,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 35353,
+          "rating_count": 35365,
           "tags": [
             "Action",
             "Crime",
@@ -1120,7 +1120,7 @@
           "image": "/library/movies/the-dark-knight-le-chevalier-noir/card-thumb.jpg",
           "card_image": "/library/movies/the-dark-knight-le-chevalier-noir/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/the-dark-knight-le-chevalier-noir/hero-background.jpg",
           "poster": "/library/movies/the-dark-knight-le-chevalier-noir/poster.jpg",
           "logo": "/library/movies/the-dark-knight-le-chevalier-noir/logo.png",
@@ -1185,7 +1185,7 @@
             {
               "name": "Cillian Murphy",
               "role": "Scarecrow",
-              "image": "https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/dm6V24NjjvjMiCtbMkc8Y2WPm2e.jpg"
             }
           ],
           "timeline": [],
@@ -1209,7 +1209,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 33636,
+          "rating_count": 33647,
           "tags": [
             "Action",
             "Aventure",
@@ -1218,7 +1218,7 @@
           "image": "/library/movies/avatar/card-thumb.jpg",
           "card_image": "/library/movies/avatar/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/avatar/hero-background.jpg",
           "poster": "/library/movies/avatar/poster.jpg",
           "logo": "/library/movies/avatar/logo.png",
@@ -1307,7 +1307,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 20585,
+          "rating_count": 20589,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -1315,7 +1315,7 @@
           "image": "/library/movies/harry-potter-et-le-prince-de-sang-mele/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-le-prince-de-sang-mele/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-le-prince-de-sang-mele/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-le-prince-de-sang-mele/poster.jpg",
           "logo": "/library/movies/harry-potter-et-le-prince-de-sang-mele/logo.png",
@@ -1404,7 +1404,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 20188,
+          "rating_count": 20193,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -1412,7 +1412,7 @@
           "image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/poster.jpg",
           "logo": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/logo.png",
@@ -1501,7 +1501,7 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 38865,
+          "rating_count": 38882,
           "tags": [
             "Action",
             "Science-Fiction",
@@ -1510,7 +1510,7 @@
           "image": "/library/movies/inception/card-thumb.jpg",
           "card_image": "/library/movies/inception/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/inception/hero-background.jpg",
           "poster": "/library/movies/inception/poster.jpg",
           "logo": "/library/movies/inception/logo.png",
@@ -1530,7 +1530,7 @@
             {
               "name": "Leonardo DiCaprio",
               "role": "Dom Cobb",
-              "image": "https://image.tmdb.org/t/p/w185/qZs7xVpe2gGXfGaS5NRkhjPOedW.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg"
             },
             {
               "name": "Joseph Gordon-Levitt",
@@ -1560,7 +1560,7 @@
             {
               "name": "Cillian Murphy",
               "role": "Robert Fischer, Jr.",
-              "image": "https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/dm6V24NjjvjMiCtbMkc8Y2WPm2e.jpg"
             },
             {
               "name": "Tom Berenger",
@@ -1599,7 +1599,7 @@
           "match": "★ 8.1",
           "score_label": "★ 8.1",
           "rating_score": 8.1,
-          "rating_count": 21778,
+          "rating_count": 21785,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -1607,7 +1607,7 @@
           "image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/poster.jpg",
           "logo": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/logo.png",
@@ -1696,7 +1696,7 @@
           "match": "★ 7.4",
           "score_label": "★ 7.4",
           "rating_score": 7.4,
-          "rating_count": 19437,
+          "rating_count": 19445,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -1705,7 +1705,7 @@
           "image": "/library/movies/le-hobbit-un-voyage-inattendu/card-thumb.jpg",
           "card_image": "/library/movies/le-hobbit-un-voyage-inattendu/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-hobbit-un-voyage-inattendu/hero-background.jpg",
           "poster": "/library/movies/le-hobbit-un-voyage-inattendu/poster.jpg",
           "logo": "/library/movies/le-hobbit-un-voyage-inattendu/logo.png",
@@ -1794,7 +1794,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 14034,
+          "rating_count": 14039,
           "tags": [
             "Fantastique",
             "Aventure",
@@ -1803,7 +1803,7 @@
           "image": "/library/movies/le-hobbit-la-desolation-de-smaug/card-thumb.jpg",
           "card_image": "/library/movies/le-hobbit-la-desolation-de-smaug/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-hobbit-la-desolation-de-smaug/hero-background.jpg",
           "poster": "/library/movies/le-hobbit-la-desolation-de-smaug/poster.jpg",
           "logo": "/library/movies/le-hobbit-la-desolation-de-smaug/logo.png",
@@ -1892,7 +1892,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 39171,
+          "rating_count": 39190,
           "tags": [
             "Aventure",
             "Drame",
@@ -1901,7 +1901,7 @@
           "image": "/library/movies/interstellar/card-thumb.jpg",
           "card_image": "/library/movies/interstellar/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/interstellar/hero-background.jpg",
           "poster": "/library/movies/interstellar/poster.jpg",
           "logo": "/library/movies/interstellar/logo.png",
@@ -1990,7 +1990,7 @@
           "match": "★ 7.5",
           "score_label": "★ 7.5",
           "rating_score": 7.5,
-          "rating_count": 20577,
+          "rating_count": 20589,
           "tags": [
             "Action",
             "Thriller"
@@ -1998,7 +1998,7 @@
           "image": "/library/movies/john-wick/card-thumb.jpg",
           "card_image": "/library/movies/john-wick/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick/hero-background.jpg",
           "poster": "/library/movies/john-wick/poster.jpg",
           "logo": "/library/movies/john-wick/logo.png",
@@ -2087,7 +2087,7 @@
           "match": "★ 7.3",
           "score_label": "★ 7.3",
           "rating_score": 7.3,
-          "rating_count": 15193,
+          "rating_count": 15198,
           "tags": [
             "Action",
             "Aventure",
@@ -2096,7 +2096,7 @@
           "image": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/card-thumb.jpg",
           "card_image": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/hero-background.jpg",
           "poster": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/poster.jpg",
           "logo": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/logo.png",
@@ -2185,7 +2185,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 23853,
+          "rating_count": 23860,
           "tags": [
             "Action",
             "Aventure",
@@ -2194,7 +2194,7 @@
           "image": "/library/movies/mad-max-fury-road/card-thumb.jpg",
           "card_image": "/library/movies/mad-max-fury-road/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/mad-max-fury-road/hero-background.jpg",
           "poster": "/library/movies/mad-max-fury-road/poster.jpg",
           "logo": "/library/movies/mad-max-fury-road/logo.png",
@@ -2283,7 +2283,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 14893,
+          "rating_count": 14904,
           "tags": [
             "Science-Fiction",
             "Drame"
@@ -2291,7 +2291,7 @@
           "image": "/library/movies/blade-runner-2049/card-thumb.jpg",
           "card_image": "/library/movies/blade-runner-2049/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/blade-runner-2049/hero-background.jpg",
           "poster": "/library/movies/blade-runner-2049/poster.jpg",
           "logo": "/library/movies/blade-runner-2049/logo.png",
@@ -2321,7 +2321,7 @@
             {
               "name": "Ana de Armas",
               "role": "Joi",
-              "image": "https://image.tmdb.org/t/p/w185/tkBWBvcLTihUcVf6iwbMQTFqEEv.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/3vxvsmYLTf4jnr163SUlBIw51ee.jpg"
             },
             {
               "name": "Dave Bautista",
@@ -2380,7 +2380,7 @@
           "match": "★ 7.3",
           "score_label": "★ 7.3",
           "rating_score": 7.3,
-          "rating_count": 14068,
+          "rating_count": 14075,
           "tags": [
             "Action",
             "Thriller",
@@ -2389,7 +2389,7 @@
           "image": "/library/movies/john-wick-chapitre-2/card-thumb.jpg",
           "card_image": "/library/movies/john-wick-chapitre-2/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick-chapitre-2/hero-background.jpg",
           "poster": "/library/movies/john-wick-chapitre-2/poster.jpg",
           "logo": "/library/movies/john-wick-chapitre-2/logo.png",
@@ -2478,7 +2478,7 @@
           "match": "★ 7.4",
           "score_label": "★ 7.4",
           "rating_score": 7.4,
-          "rating_count": 11558,
+          "rating_count": 11564,
           "tags": [
             "Action",
             "Thriller",
@@ -2487,7 +2487,7 @@
           "image": "/library/movies/john-wick-parabellum/card-thumb.jpg",
           "card_image": "/library/movies/john-wick-parabellum/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick-parabellum/hero-background.jpg",
           "poster": "/library/movies/john-wick-parabellum/poster.jpg",
           "logo": "/library/movies/john-wick-parabellum/logo.png",
@@ -2576,7 +2576,7 @@
           "match": "★ 7.8",
           "score_label": "★ 7.8",
           "rating_score": 7.8,
-          "rating_count": 14596,
+          "rating_count": 14611,
           "tags": [
             "Science-Fiction",
             "Aventure"
@@ -2584,7 +2584,7 @@
           "image": "/library/movies/dune-premiere-partie/card-thumb.jpg",
           "card_image": "/library/movies/dune-premiere-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/dune-premiere-partie/hero-background.jpg",
           "poster": "/library/movies/dune-premiere-partie/poster.jpg",
           "logo": "/library/movies/dune-premiere-partie/logo.png",
@@ -2604,7 +2604,7 @@
             {
               "name": "Timothée Chalamet",
               "role": "Paul Atreides",
-              "image": "https://image.tmdb.org/t/p/w185/98pz2MH2JT7Yw0sUJGrA5Oqtbo8.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/axENiFIrSz5B7UuWkMT7PDe7CaO.jpg"
             },
             {
               "name": "Rebecca Ferguson",
@@ -2673,7 +2673,7 @@
           "match": "★ 6.3",
           "score_label": "★ 6.3",
           "rating_score": 6.3,
-          "rating_count": 6345,
+          "rating_count": 6351,
           "tags": [
             "Science-Fiction",
             "Action",
@@ -2682,7 +2682,7 @@
           "image": "/library/movies/matrix-resurrections/card-thumb.jpg",
           "card_image": "/library/movies/matrix-resurrections/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix-resurrections/hero-background.jpg",
           "poster": "/library/movies/matrix-resurrections/poster.jpg",
           "logo": "/library/movies/matrix-resurrections/logo.png",
@@ -2771,7 +2771,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 13854,
+          "rating_count": 13863,
           "tags": [
             "Action",
             "Aventure",
@@ -2780,7 +2780,7 @@
           "image": "/library/movies/avatar-la-voie-de-l-eau/card-thumb.jpg",
           "card_image": "/library/movies/avatar-la-voie-de-l-eau/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/avatar-la-voie-de-l-eau/hero-background.jpg",
           "poster": "/library/movies/avatar-la-voie-de-l-eau/poster.jpg",
           "logo": "/library/movies/avatar-la-voie-de-l-eau/logo.png",
@@ -2869,7 +2869,7 @@
           "match": "★ 8.2",
           "score_label": "★ 8.2",
           "rating_score": 8.2,
-          "rating_count": 10679,
+          "rating_count": 10689,
           "tags": [
             "Action",
             "Drame"
@@ -2877,7 +2877,7 @@
           "image": "/library/movies/top-gun-maverick/card-thumb.jpg",
           "card_image": "/library/movies/top-gun-maverick/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/top-gun-maverick/hero-background.jpg",
           "poster": "/library/movies/top-gun-maverick/poster.jpg",
           "logo": "/library/movies/top-gun-maverick/logo.png",
@@ -2966,7 +2966,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 7765,
+          "rating_count": 7773,
           "tags": [
             "Action",
             "Thriller",
@@ -2975,7 +2975,7 @@
           "image": "/library/movies/john-wick-chapitre-4/card-thumb.jpg",
           "card_image": "/library/movies/john-wick-chapitre-4/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick-chapitre-4/hero-background.jpg",
           "poster": "/library/movies/john-wick-chapitre-4/poster.jpg",
           "logo": "/library/movies/john-wick-chapitre-4/logo.png",
@@ -3064,7 +3064,7 @@
           "match": "★ 8.1",
           "score_label": "★ 8.1",
           "rating_score": 8.1,
-          "rating_count": 7661,
+          "rating_count": 7675,
           "tags": [
             "Science-Fiction",
             "Aventure"
@@ -3072,7 +3072,7 @@
           "image": "/library/movies/dune-deuxieme-partie/card-thumb.jpg",
           "card_image": "/library/movies/dune-deuxieme-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/dune-deuxieme-partie/hero-background.jpg",
           "poster": "/library/movies/dune-deuxieme-partie/poster.jpg",
           "logo": "/library/movies/dune-deuxieme-partie/logo.png",
@@ -3092,7 +3092,7 @@
             {
               "name": "Timothée Chalamet",
               "role": "Paul Atreides",
-              "image": "https://image.tmdb.org/t/p/w185/98pz2MH2JT7Yw0sUJGrA5Oqtbo8.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/axENiFIrSz5B7UuWkMT7PDe7CaO.jpg"
             },
             {
               "name": "Zendaya",
@@ -3167,7 +3167,7 @@
           "match": "★ 8.9",
           "score_label": "★ 8.9",
           "rating_score": 8.9,
-          "rating_count": 17358,
+          "rating_count": 17372,
           "tags": [
             "Drame",
             "Crime"
@@ -3175,11 +3175,11 @@
           "image": "/library/series/breaking-bad/card-thumb.jpg",
           "card_image": "/library/series/breaking-bad/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/breaking-bad/hero-background.jpg",
           "poster": "/library/series/breaking-bad/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/breaking-bad/logo.png",
+          "clearart": "/library/series/breaking-bad/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -3242,6 +3242,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/breaking-bad/season-01.jpg",
               "episodes": [
                 {
                   "title": "Chute libre",
@@ -3332,6 +3333,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/breaking-bad/season-02.jpg",
               "episodes": [
                 {
                   "title": "Traqués",
@@ -3495,7 +3497,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 26492,
+          "rating_count": 26501,
           "tags": [
             "Science-Fiction & Fantastique",
             "Drame",
@@ -3504,11 +3506,11 @@
           "image": "/library/series/game-of-thrones/card-thumb.jpg",
           "card_image": "/library/series/game-of-thrones/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/game-of-thrones/hero-background.jpg",
           "poster": "/library/series/game-of-thrones/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/game-of-thrones/logo.png",
+          "clearart": "/library/series/game-of-thrones/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -3581,6 +3583,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/game-of-thrones/season-01.jpg",
               "episodes": [
                 {
                   "title": "L'hiver vient",
@@ -3707,6 +3710,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/game-of-thrones/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le Nord se souvient",
@@ -3846,7 +3850,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 10882,
+          "rating_count": 10898,
           "tags": [
             "Drame",
             "Crime"
@@ -3854,11 +3858,11 @@
           "image": "/library/series/peaky-blinders/card-thumb.jpg",
           "card_image": "/library/series/peaky-blinders/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/peaky-blinders/hero-background.jpg",
           "poster": "/library/series/peaky-blinders/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/peaky-blinders/logo.png",
+          "clearart": "/library/series/peaky-blinders/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -3874,7 +3878,7 @@
             {
               "name": "Cillian Murphy",
               "role": "Thomas Shelby",
-              "image": "https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/dm6V24NjjvjMiCtbMkc8Y2WPm2e.jpg"
             },
             {
               "name": "Paul Anderson",
@@ -3901,6 +3905,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/peaky-blinders/season-01.jpg",
               "episodes": [
                 {
                   "title": "Episode 1",
@@ -3979,6 +3984,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/peaky-blinders/season-02.jpg",
               "episodes": [
                 {
                   "title": "Episode 1",
@@ -4070,7 +4076,7 @@
           "match": "★ 8.3",
           "score_label": "★ 8.3",
           "rating_score": 8.3,
-          "rating_count": 4001,
+          "rating_count": 4005,
           "tags": [
             "Drame",
             "Mystère"
@@ -4078,11 +4084,11 @@
           "image": "/library/series/true-detective/card-thumb.jpg",
           "card_image": "/library/series/true-detective/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/true-detective/hero-background.jpg",
           "poster": "/library/series/true-detective/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/true-detective/logo.png",
+          "clearart": "/library/series/true-detective/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -4135,6 +4141,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/true-detective/season-01.jpg",
               "episodes": [
                 {
                   "title": "La longue obscurité lumineuse",
@@ -4237,6 +4244,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/true-detective/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le livre des morts occidental",
@@ -4352,7 +4360,7 @@
           "match": "★ 8.7",
           "score_label": "★ 8.7",
           "rating_score": 8.7,
-          "rating_count": 6283,
+          "rating_count": 6291,
           "tags": [
             "Crime",
             "Drame"
@@ -4360,11 +4368,11 @@
           "image": "/library/series/better-call-saul/card-thumb.jpg",
           "card_image": "/library/series/better-call-saul/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/better-call-saul/hero-background.jpg",
           "poster": "/library/series/better-call-saul/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/better-call-saul/logo.png",
+          "clearart": "/library/series/better-call-saul/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -4412,6 +4420,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/better-call-saul/season-01.jpg",
               "episodes": [
                 {
                   "title": "Uno",
@@ -4538,6 +4547,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/better-call-saul/season-02.jpg",
               "episodes": [
                 {
                   "title": "Un nouveau chapitre",
@@ -4677,7 +4687,7 @@
           "match": "★ 8.6",
           "score_label": "★ 8.6",
           "rating_score": 8.6,
-          "rating_count": 20872,
+          "rating_count": 20886,
           "tags": [
             "Science-Fiction & Fantastique",
             "Mystère",
@@ -4686,11 +4696,11 @@
           "image": "/library/series/stranger-things/card-thumb.jpg",
           "card_image": "/library/series/stranger-things/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/stranger-things/hero-background.jpg",
           "poster": "/library/series/stranger-things/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/stranger-things/logo.png",
+          "clearart": "/library/series/stranger-things/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -4721,7 +4731,7 @@
             {
               "name": "Finn Wolfhard",
               "role": "Mike Wheeler",
-              "image": "https://image.tmdb.org/t/p/w185/gsVIdhYh4DpDXjW5U5baQzcARsB.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/a1uynFLYQHij42kWu8yW1SvdJSG.jpg"
             },
             {
               "name": "Gaten Matarazzo",
@@ -4763,6 +4773,7 @@
             {
               "number": 1,
               "title": "Stranger Things",
+              "poster": "/library/series/stranger-things/season-01.jpg",
               "episodes": [
                 {
                   "title": "Chapitre un : La Disparition de Will Byers",
@@ -4865,6 +4876,7 @@
             {
               "number": 2,
               "title": "Stranger Things 2",
+              "poster": "/library/series/stranger-things/season-02.jpg",
               "episodes": [
                 {
                   "title": "Chapitre un : MADMAX",
@@ -4992,7 +5004,7 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 7435,
+          "rating_count": 7439,
           "tags": [
             "Crime",
             "Drame",
@@ -5001,11 +5013,11 @@
           "image": "/library/series/dark/card-thumb.jpg",
           "card_image": "/library/series/dark/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/dark/hero-background.jpg",
           "poster": "/library/series/dark/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/dark/logo.png",
+          "clearart": "/library/series/dark/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -5033,6 +5045,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/dark/season-01.jpg",
               "episodes": [
                 {
                   "title": "Secrets",
@@ -5159,6 +5172,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/dark/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le début et la fin",
@@ -5274,7 +5288,7 @@
           "match": "★ 7.9",
           "score_label": "★ 7.9",
           "rating_score": 7.9,
-          "rating_count": 6592,
+          "rating_count": 6597,
           "tags": [
             "Drame",
             "Action & Adventure"
@@ -5282,11 +5296,11 @@
           "image": "/library/series/the-witcher/card-thumb.jpg",
           "card_image": "/library/series/the-witcher/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/the-witcher/hero-background.jpg",
           "poster": "/library/series/the-witcher/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/the-witcher/logo.png",
+          "clearart": "/library/series/the-witcher/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -5359,6 +5373,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/the-witcher/season-01.jpg",
               "episodes": [
                 {
                   "title": "Le début de la fin",
@@ -5461,6 +5476,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/the-witcher/season-02.jpg",
               "episodes": [
                 {
                   "title": "Un grain de vérité",
@@ -5576,7 +5592,7 @@
           "match": "★ 8.3",
           "score_label": "★ 8.3",
           "rating_score": 8.3,
-          "rating_count": 5796,
+          "rating_count": 5802,
           "tags": [
             "Science-Fiction & Fantastique",
             "Drame",
@@ -5585,11 +5601,11 @@
           "image": "/library/series/house-of-the-dragon/card-thumb.jpg",
           "card_image": "/library/series/house-of-the-dragon/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/house-of-the-dragon/hero-background.jpg",
           "poster": "/library/series/house-of-the-dragon/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/house-of-the-dragon/logo.png",
+          "clearart": "/library/series/house-of-the-dragon/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -5662,6 +5678,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/house-of-the-dragon/season-01.jpg",
               "episodes": [
                 {
                   "title": "Les héritiers du dragon",
@@ -5788,6 +5805,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/house-of-the-dragon/season-02.jpg",
               "episodes": [
                 {
                   "title": "Un fils pour un fils",
@@ -5903,18 +5921,18 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 6855,
+          "rating_count": 6860,
           "tags": [
             "Drame"
           ],
           "image": "/library/series/the-last-of-us/card-thumb.jpg",
           "card_image": "/library/series/the-last-of-us/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/the-last-of-us/hero-background.jpg",
           "poster": "/library/series/the-last-of-us/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/the-last-of-us/logo.png",
+          "clearart": "/library/series/the-last-of-us/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -5930,12 +5948,12 @@
             {
               "name": "Bella Ramsey",
               "role": "Ellie Williams",
-              "image": "https://image.tmdb.org/t/p/w185/wbVOq34tJXME1rK6cHSlq6FjNV3.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/vDbgxc7RYawpB1wK7JDEj62j06H.jpg"
             },
             {
               "name": "Gabriel Luna",
               "role": "Tommy Miller",
-              "image": "https://image.tmdb.org/t/p/w185/2NNNl3od5K7HXOLUqlK3tzdxKkD.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/bIPORtYxTJPEUJIThbZrpqf4A11.jpg"
             },
             {
               "name": "Isabela Merced",
@@ -5945,7 +5963,7 @@
             {
               "name": "Young Mazino",
               "role": "Jesse",
-              "image": "https://image.tmdb.org/t/p/w185/cRuVRx1DMe2hBkz5pssVqdpCtaQ.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/obh9i5mr0fpk91HVxr2SmDNZlVF.jpg"
             }
           ],
           "timeline": [],
@@ -5957,6 +5975,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/the-last-of-us/season-01.jpg",
               "episodes": [
                 {
                   "title": "Quand tu es perdu dans les ténèbres",
@@ -6071,6 +6090,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/the-last-of-us/season-02.jpg",
               "episodes": [
                 {
                   "title": "Les jours futurs",
@@ -6189,11 +6209,11 @@
           "image": "/library/anime/code-geass-lelouch-of-the-rebellion/card-thumb.jpg",
           "card_image": "/library/anime/code-geass-lelouch-of-the-rebellion/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/code-geass-lelouch-of-the-rebellion/hero-background.jpg",
           "poster": "/library/anime/code-geass-lelouch-of-the-rebellion/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/code-geass-lelouch-of-the-rebellion/logo.png",
+          "clearart": "/library/anime/code-geass-lelouch-of-the-rebellion/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -6231,6 +6251,7 @@
             {
               "number": 1,
               "title": "R1",
+              "poster": "/library/anime/code-geass-lelouch-of-the-rebellion/season-01.jpg",
               "episodes": [
                 {
                   "title": "Le jour où le démon vient au monde",
@@ -6381,6 +6402,7 @@
             {
               "number": 2,
               "title": "R2",
+              "poster": "/library/anime/code-geass-lelouch-of-the-rebellion/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le jour de l'éveil du Démon",
@@ -6544,7 +6566,7 @@
           "match": "★ 8.6",
           "score_label": "★ 8.6",
           "rating_score": 8.6,
-          "rating_count": 4792,
+          "rating_count": 4794,
           "tags": [
             "Animation",
             "Mystère",
@@ -6553,11 +6575,11 @@
           "image": "/library/anime/death-note/card-thumb.jpg",
           "card_image": "/library/anime/death-note/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/death-note/hero-background.jpg",
           "poster": "/library/anime/death-note/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/death-note/logo.png",
+          "clearart": "/library/anime/death-note/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -6615,6 +6637,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/anime/death-note/season-01.jpg",
               "episodes": [
                 {
                   "title": "Renaissance",
@@ -6778,7 +6801,7 @@
           "match": "★ 8.7",
           "score_label": "★ 8.7",
           "rating_score": 8.7,
-          "rating_count": 2382,
+          "rating_count": 2384,
           "tags": [
             "Animation",
             "Action & Adventure",
@@ -6787,11 +6810,11 @@
           "image": "/library/anime/fullmetal-alchemist-brotherhood/card-thumb.jpg",
           "card_image": "/library/anime/fullmetal-alchemist-brotherhood/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/fullmetal-alchemist-brotherhood/hero-background.jpg",
           "poster": "/library/anime/fullmetal-alchemist-brotherhood/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/fullmetal-alchemist-brotherhood/logo.png",
+          "clearart": "/library/anime/fullmetal-alchemist-brotherhood/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -6829,6 +6852,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/anime/fullmetal-alchemist-brotherhood/season-01.jpg",
               "episodes": [
                 {
                   "title": "Fullmetal Alchemist",
@@ -6980,26 +7004,28 @@
         },
         {
           "id": "series-attack-on-titan",
-          "title": "ちみキャラ劇場",
+          "title": "「進撃の巨人」ちみキャラ劇場\"とんでけ! 訓練兵団\"",
           "year": 2013,
           "rating": "13+",
-          "genre": "Animation",
+          "genre": "Science-Fiction & Fantastique / Comédie",
           "badge": "Anime",
           "tone_a": "#8b5cf6",
           "tone_b": "#0f172a",
           "duration": "Série",
           "runtime": "Série",
-          "match": "★ 4.0",
-          "score_label": "★ 4.0",
-          "rating_score": 4,
+          "match": "★ 10.0",
+          "score_label": "★ 10.0",
+          "rating_score": 10,
           "rating_count": 1,
           "tags": [
+            "Science-Fiction & Fantastique",
+            "Comédie",
             "Animation"
           ],
-          "image": "/library/anime/attack-on-titan/card-thumb.jpg",
-          "card_image": "/library/anime/attack-on-titan/card-thumb.jpg",
+          "image": "/library/anime/attack-on-titan/poster.jpg",
+          "card_image": "/library/anime/attack-on-titan/poster.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "poster",
           "hero_background": "/library/anime/attack-on-titan/hero-background.jpg",
           "poster": "/library/anime/attack-on-titan/poster.jpg",
           "logo": "",
@@ -7008,7 +7034,7 @@
           "trailer_hls": "",
           "kind": "series",
           "category": "anime",
-          "description": "Description indisponible.",
+          "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
           "slug": "attack-on-titan",
           "item_key": "series-attack-on-titan",
           "detail_url": "/serie/attack-on-titan",
@@ -7028,8 +7054,13 @@
             },
             {
               "name": "Hiroshi Kamiya",
-              "role": "",
+              "role": "Levi (voice)",
               "image": "https://image.tmdb.org/t/p/w185/5aAAOlQ2hW5EqEQOzk4UeroxcTN.jpg"
+            },
+            {
+              "name": "Yu Kobayashi",
+              "role": "Sasha Blouse (voice)",
+              "image": "https://image.tmdb.org/t/p/w185/p3OKrnliz2C8ub14Pn5pN3T8Q9B.jpg"
             }
           ],
           "timeline": [],
@@ -7041,10 +7072,11 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/anime/attack-on-titan/season-01.jpg",
               "episodes": [
                 {
-                  "title": "Épisode 1",
-                  "description": "Description indisponible.",
+                  "title": "Episode 1",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
                   "duration": "07min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e01.jpg",
@@ -7055,8 +7087,8 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-01.mkv"
                 },
                 {
-                  "title": "Épisode 2",
-                  "description": "Description indisponible.",
+                  "title": "Episode 2",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
                   "duration": "07min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e02.jpg",
@@ -7067,9 +7099,9 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-02.mkv"
                 },
                 {
-                  "title": "Épisode 3",
-                  "description": "Description indisponible.",
-                  "duration": "12min",
+                  "title": "Episode 3",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
+                  "duration": "11min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e03.jpg",
                   "trailer": "",
@@ -7079,8 +7111,8 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-03.mkv"
                 },
                 {
-                  "title": "Épisode 4",
-                  "description": "Description indisponible.",
+                  "title": "Episode 4",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
                   "duration": "11min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e04.jpg",
@@ -7091,8 +7123,8 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-04.mkv"
                 },
                 {
-                  "title": "Épisode 5",
-                  "description": "Description indisponible.",
+                  "title": "Episode 5",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
                   "duration": "11min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e05.jpg",
@@ -7103,8 +7135,8 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-05.mkv"
                 },
                 {
-                  "title": "Épisode 6",
-                  "description": "Description indisponible.",
+                  "title": "Episode 6",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
                   "duration": "13min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e06.jpg",
@@ -7115,8 +7147,8 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-06.mkv"
                 },
                 {
-                  "title": "Épisode 7",
-                  "description": "Description indisponible.",
+                  "title": "Episode 7",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
                   "duration": "14min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e07.jpg",
@@ -7127,9 +7159,9 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-07.mkv"
                 },
                 {
-                  "title": "Épisode 8",
-                  "description": "Description indisponible.",
-                  "duration": "11min",
+                  "title": "Episode 8",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
+                  "duration": "10min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e08.jpg",
                   "trailer": "",
@@ -7139,9 +7171,9 @@
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-08.mkv"
                 },
                 {
-                  "title": "Épisode 9",
-                  "description": "Description indisponible.",
-                  "duration": "11min",
+                  "title": "Episode 9",
+                  "description": "Shingeki no Kyojin Picture Drama est une série de courts métrages d'animation Flash inclus dans les disques Blu-ray/DVD, mettant en scène les personnages sous forme chibi. Composée de neuf épisodes, cette série prend une tournure légère et comique par rapport à la série SNK, avec de nombreuses scènes et dialogues mémorables de la série originale présentés de manière humoristique. Chaque épisode dépeint 2 ou 3 jours d'entraînement du 104e corps de stagiaires, qui s'entraîne à devenir l'espoir de l'humanité dans la guerre contre les Titans.",
+                  "duration": "10min",
                   "rating": "13+",
                   "image": "/library/anime/attack-on-titan/episode-s01-e09.jpg",
                   "trailer": "",
@@ -7149,120 +7181,6 @@
                   "item_key": "series-attack-on-titan|s01e09",
                   "source_path": "/mnt/nas/videos/anime/attack-on-titan/S01E09.mkv",
                   "library_path": "/library/anime/attack-on-titan/season-01/episode-09.mkv"
-                }
-              ]
-            },
-            {
-              "number": 2,
-              "title": "Saison 2",
-              "episodes": [
-                {
-                  "title": "Épisode 1",
-                  "description": "Description indisponible.",
-                  "duration": "02min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e01.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e01",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E01.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-01.mkv"
-                },
-                {
-                  "title": "Épisode 2",
-                  "description": "Description indisponible.",
-                  "duration": "02min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e02.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e02",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E02.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-02.mkv"
-                },
-                {
-                  "title": "Épisode 3",
-                  "description": "Description indisponible.",
-                  "duration": "02min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e03.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e03",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E03.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-03.mkv"
-                },
-                {
-                  "title": "Épisode 4",
-                  "description": "Description indisponible.",
-                  "duration": "02min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e04.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e04",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E04.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-04.mkv"
-                },
-                {
-                  "title": "Épisode 5",
-                  "description": "Description indisponible.",
-                  "duration": "02min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e05.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e05",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E05.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-05.mkv"
-                },
-                {
-                  "title": "Épisode 6",
-                  "description": "Description indisponible.",
-                  "duration": "02min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e06.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e06",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E06.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-06.mkv"
-                },
-                {
-                  "title": "Épisode 7",
-                  "description": "Description indisponible.",
-                  "duration": "02min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e07.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e07",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E07.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-07.mkv"
-                },
-                {
-                  "title": "Épisode 8",
-                  "description": "Description indisponible.",
-                  "duration": "05min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e08.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e08",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E08.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-08.mkv"
-                },
-                {
-                  "title": "Épisode 9",
-                  "description": "Description indisponible.",
-                  "duration": "05min",
-                  "rating": "13+",
-                  "image": "/library/anime/attack-on-titan/episode-s02-e09.jpg",
-                  "trailer": "",
-                  "trailer_hls": "",
-                  "item_key": "series-attack-on-titan|s02e09",
-                  "source_path": "/mnt/nas/videos/anime/attack-on-titan/S02E09.mkv",
-                  "library_path": "/library/anime/attack-on-titan/season-02/episode-09.mkv"
                 }
               ]
             }
@@ -7282,7 +7200,7 @@
           "match": "★ 8.3",
           "score_label": "★ 8.3",
           "rating_score": 8.3,
-          "rating_count": 2495,
+          "rating_count": 2496,
           "tags": [
             "Animation",
             "Drame",
@@ -7291,11 +7209,11 @@
           "image": "/library/anime/tokyo-ghoul/card-thumb.jpg",
           "card_image": "/library/anime/tokyo-ghoul/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/tokyo-ghoul/hero-background.jpg",
           "poster": "/library/anime/tokyo-ghoul/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/tokyo-ghoul/logo.png",
+          "clearart": "/library/anime/tokyo-ghoul/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -7333,6 +7251,7 @@
             {
               "number": 1,
               "title": "Tokyo Ghoul",
+              "poster": "/library/anime/tokyo-ghoul/season-01.jpg",
               "episodes": [
                 {
                   "title": "Tragédie",
@@ -7483,6 +7402,7 @@
             {
               "number": 2,
               "title": "Tokyo Ghoul √A",
+              "poster": "/library/anime/tokyo-ghoul/season-02.jpg",
               "episodes": [
                 {
                   "title": "Foi",
@@ -7646,7 +7566,7 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 4041,
+          "rating_count": 4045,
           "tags": [
             "Animation",
             "Comédie",
@@ -7655,11 +7575,11 @@
           "image": "/library/anime/one-punch-man/card-thumb.jpg",
           "card_image": "/library/anime/one-punch-man/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/one-punch-man/hero-background.jpg",
           "poster": "/library/anime/one-punch-man/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/one-punch-man/logo.png",
+          "clearart": "/library/anime/one-punch-man/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -7687,6 +7607,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/anime/one-punch-man/season-01.jpg",
               "episodes": [
                 {
                   "title": "L'homme le plus fort du monde",
@@ -7837,6 +7758,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/anime/one-punch-man/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le retour du héros",
@@ -8000,7 +7922,7 @@
           "match": "★ 8.6",
           "score_label": "★ 8.6",
           "rating_score": 8.6,
-          "rating_count": 5217,
+          "rating_count": 5218,
           "tags": [
             "Action & Adventure",
             "Animation",
@@ -8009,11 +7931,11 @@
           "image": "/library/anime/my-hero-academia/card-thumb.jpg",
           "card_image": "/library/anime/my-hero-academia/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/my-hero-academia/hero-background.jpg",
           "poster": "/library/anime/my-hero-academia/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/my-hero-academia/logo.png",
+          "clearart": "/library/anime/my-hero-academia/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -8041,6 +7963,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/anime/my-hero-academia/season-01.jpg",
               "episodes": [
                 {
                   "title": "Izuku Midoriya : Les origines",
@@ -8191,6 +8114,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/anime/my-hero-academia/season-02.jpg",
               "episodes": [
                 {
                   "title": "Les raisons d'Ochaco",
@@ -8354,7 +8278,7 @@
           "match": "★ 8.6",
           "score_label": "★ 8.6",
           "rating_score": 8.6,
-          "rating_count": 7109,
+          "rating_count": 7111,
           "tags": [
             "Animation",
             "Action & Adventure",
@@ -8363,11 +8287,11 @@
           "image": "/library/anime/demon-slayer-kimetsu-no-yaiba/card-thumb.jpg",
           "card_image": "/library/anime/demon-slayer-kimetsu-no-yaiba/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/demon-slayer-kimetsu-no-yaiba/hero-background.jpg",
           "poster": "/library/anime/demon-slayer-kimetsu-no-yaiba/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/demon-slayer-kimetsu-no-yaiba/logo.png",
+          "clearart": "/library/anime/demon-slayer-kimetsu-no-yaiba/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -8420,6 +8344,7 @@
             {
               "number": 1,
               "title": "Arc - La volonté ardente de Tanjiro Kamado",
+              "poster": "/library/anime/demon-slayer-kimetsu-no-yaiba/season-01.jpg",
               "episodes": [
                 {
                   "title": "Cruauté",
@@ -8570,6 +8495,7 @@
             {
               "number": 2,
               "title": "Arc - Le train de l'infini",
+              "poster": "/library/anime/demon-slayer-kimetsu-no-yaiba/season-02.jpg",
               "episodes": [
                 {
                   "title": "Rengoku Kyôjurô, le pilier de la flamme",
@@ -8673,7 +8599,7 @@
           "match": "★ 8.6",
           "score_label": "★ 8.6",
           "rating_score": 8.6,
-          "rating_count": 4260,
+          "rating_count": 4266,
           "tags": [
             "Animation",
             "Action & Adventure",
@@ -8682,11 +8608,11 @@
           "image": "/library/anime/jujutsu-kaisen/card-thumb.jpg",
           "card_image": "/library/anime/jujutsu-kaisen/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/jujutsu-kaisen/hero-background.jpg",
           "poster": "/library/anime/jujutsu-kaisen/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/jujutsu-kaisen/logo.png",
+          "clearart": "/library/anime/jujutsu-kaisen/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -8708,6 +8634,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/anime/jujutsu-kaisen/season-01.jpg",
               "episodes": [
                 {
                   "title": "Ryomen Sukuna",
@@ -8871,7 +8798,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 2070,
+          "rating_count": 2071,
           "tags": [
             "Animation",
             "Action & Adventure",
@@ -8880,11 +8807,11 @@
           "image": "/library/anime/chainsaw-man/card-thumb.jpg",
           "card_image": "/library/anime/chainsaw-man/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/anime/chainsaw-man/hero-background.jpg",
           "poster": "/library/anime/chainsaw-man/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/anime/chainsaw-man/logo.png",
+          "clearart": "/library/anime/chainsaw-man/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -8917,6 +8844,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/anime/chainsaw-man/season-01.jpg",
               "episodes": [
                 {
                   "title": "Chien et Tronçonneuse",
@@ -9093,11 +9021,11 @@
           "image": "/library/documentaries/planete-terre/card-thumb.jpg",
           "card_image": "/library/documentaries/planete-terre/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/planete-terre/hero-background.jpg",
           "poster": "/library/documentaries/planete-terre/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/documentaries/planete-terre/logo.png",
+          "clearart": "/library/documentaries/planete-terre/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -9125,6 +9053,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/planete-terre/season-01.jpg",
               "episodes": [
                 {
                   "title": "D’un pôle à l’autre",
@@ -9283,11 +9212,11 @@
           "image": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/card-thumb.jpg",
           "card_image": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/hero-background.jpg",
           "poster": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/logo.png",
+          "clearart": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -9320,6 +9249,7 @@
             {
               "number": 1,
               "title": "Une odyssée à travers l'univers",
+              "poster": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/season-01.jpg",
               "episodes": [
                 {
                   "title": "La Voie Lactée",
@@ -9470,6 +9400,7 @@
             {
               "number": 2,
               "title": "Nouveaux Mondes",
+              "poster": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/season-02.jpg",
               "episodes": [
                 {
                   "title": "Vers les étoiles",
@@ -9633,7 +9564,7 @@
           "match": "★ 7.9",
           "score_label": "★ 7.9",
           "rating_score": 7.9,
-          "rating_count": 554,
+          "rating_count": 555,
           "tags": [
             "Documentaire",
             "Crime"
@@ -9641,10 +9572,10 @@
           "image": "/library/documentaries/making-a-murderer/card-thumb.jpg",
           "card_image": "/library/documentaries/making-a-murderer/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/making-a-murderer/hero-background.jpg",
           "poster": "/library/documentaries/making-a-murderer/poster.jpg",
-          "logo": "",
+          "logo": "/library/documentaries/making-a-murderer/logo.png",
           "clearart": "",
           "trailer": "",
           "trailer_hls": "",
@@ -9673,6 +9604,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/making-a-murderer/season-01.jpg",
               "episodes": [
                 {
                   "title": "Dix-huit années perdues",
@@ -9799,6 +9731,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/documentaries/making-a-murderer/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le dix-huitième",
@@ -9938,7 +9871,7 @@
           "match": "★ 7.9",
           "score_label": "★ 7.9",
           "rating_score": 7.9,
-          "rating_count": 1482,
+          "rating_count": 1483,
           "tags": [
             "Documentaire",
             "Aventure"
@@ -9946,7 +9879,7 @@
           "image": "/library/documentaries/free-solo/card-thumb.jpg",
           "card_image": "/library/documentaries/free-solo/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/documentaries/free-solo/hero-background.jpg",
           "poster": "/library/documentaries/free-solo/poster.jpg",
           "logo": "/library/documentaries/free-solo/logo.png",
@@ -10020,18 +9953,18 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 290,
+          "rating_count": 291,
           "tags": [
             "Documentaire",
             "Crime"
           ],
-          "image": "/library/documentaries/wild-wild-country/card-thumb.jpg",
-          "card_image": "/library/documentaries/wild-wild-country/card-thumb.jpg",
+          "image": "/library/documentaries/wild-wild-country/poster.jpg",
+          "card_image": "/library/documentaries/wild-wild-country/poster.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "poster",
           "hero_background": "/library/documentaries/wild-wild-country/hero-background.jpg",
           "poster": "/library/documentaries/wild-wild-country/poster.jpg",
-          "logo": "",
+          "logo": "/library/documentaries/wild-wild-country/logo.png",
           "clearart": "",
           "trailer": "",
           "trailer_hls": "",
@@ -10095,6 +10028,7 @@
             {
               "number": 1,
               "title": "Mini-série",
+              "poster": "/library/documentaries/wild-wild-country/season-01.jpg",
               "episodes": [
                 {
                   "title": "Partie 1",
@@ -10186,18 +10120,18 @@
           "match": "★ 8.2",
           "score_label": "★ 8.2",
           "rating_score": 8.2,
-          "rating_count": 608,
+          "rating_count": 610,
           "tags": [
             "Documentaire"
           ],
           "image": "/library/documentaries/formula-1-pilotes-de-leur-destin/card-thumb.jpg",
           "card_image": "/library/documentaries/formula-1-pilotes-de-leur-destin/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/formula-1-pilotes-de-leur-destin/hero-background.jpg",
           "poster": "/library/documentaries/formula-1-pilotes-de-leur-destin/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/documentaries/formula-1-pilotes-de-leur-destin/logo.png",
+          "clearart": "/library/documentaries/formula-1-pilotes-de-leur-destin/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -10230,6 +10164,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/formula-1-pilotes-de-leur-destin/season-01.jpg",
               "episodes": [
                 {
                   "title": "Tout reste à jouer à Melbourne",
@@ -10356,6 +10291,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/documentaries/formula-1-pilotes-de-leur-destin/season-02.jpg",
               "episodes": [
                 {
                   "title": "Quand les lumières s'éteignent",
@@ -10495,7 +10431,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 437,
+          "rating_count": 438,
           "tags": [
             "Documentaire",
             "Familial"
@@ -10503,11 +10439,11 @@
           "image": "/library/documentaries/notre-planete/card-thumb.jpg",
           "card_image": "/library/documentaries/notre-planete/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/notre-planete/hero-background.jpg",
           "poster": "/library/documentaries/notre-planete/poster.jpg",
           "logo": "/library/documentaries/notre-planete/logo.png",
-          "clearart": "",
+          "clearart": "/library/documentaries/notre-planete/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -10535,6 +10471,7 @@
             {
               "number": 1,
               "title": "Notre planète",
+              "poster": "/library/documentaries/notre-planete/season-01.jpg",
               "episodes": [
                 {
                   "title": "Une seule planète",
@@ -10637,6 +10574,7 @@
             {
               "number": 2,
               "title": "Notre planète II",
+              "poster": "/library/documentaries/notre-planete/season-02.jpg",
               "episodes": [
                 {
                   "title": "Chapitre 1 : Un monde en mouvement",
@@ -10704,14 +10642,14 @@
           "match": "★ 8.3",
           "score_label": "★ 8.3",
           "rating_score": 8.3,
-          "rating_count": 1445,
+          "rating_count": 1446,
           "tags": [
             "Documentaire"
           ],
           "image": "/library/documentaries/the-last-dance/card-thumb.jpg",
           "card_image": "/library/documentaries/the-last-dance/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/the-last-dance/hero-background.jpg",
           "poster": "/library/documentaries/the-last-dance/poster.jpg",
           "logo": "/library/documentaries/the-last-dance/logo.png",
@@ -10763,6 +10701,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/the-last-dance/season-01.jpg",
               "episodes": [
                 {
                   "title": "Épisode I",
@@ -10908,7 +10847,7 @@
           "match": "★ 8.2",
           "score_label": "★ 8.2",
           "rating_score": 8.2,
-          "rating_count": 27536,
+          "rating_count": 27552,
           "tags": [
             "Action",
             "Science-Fiction"
@@ -10916,7 +10855,7 @@
           "image": "/library/movies/matrix/card-thumb.jpg",
           "card_image": "/library/movies/matrix/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix/hero-background.jpg",
           "poster": "/library/movies/matrix/poster.jpg",
           "logo": "/library/movies/matrix/logo.png",
@@ -11005,7 +10944,7 @@
           "match": "★ 7.1",
           "score_label": "★ 7.1",
           "rating_score": 7.1,
-          "rating_count": 11791,
+          "rating_count": 11798,
           "tags": [
             "Aventure",
             "Action",
@@ -11014,7 +10953,7 @@
           "image": "/library/movies/matrix-reloaded/card-thumb.jpg",
           "card_image": "/library/movies/matrix-reloaded/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix-reloaded/hero-background.jpg",
           "poster": "/library/movies/matrix-reloaded/poster.jpg",
           "logo": "/library/movies/matrix-reloaded/logo.png",
@@ -11103,7 +11042,7 @@
           "match": "★ 6.7",
           "score_label": "★ 6.7",
           "rating_score": 6.7,
-          "rating_count": 10656,
+          "rating_count": 10663,
           "tags": [
             "Aventure",
             "Action",
@@ -11112,7 +11051,7 @@
           "image": "/library/movies/matrix-revolutions/card-thumb.jpg",
           "card_image": "/library/movies/matrix-revolutions/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix-revolutions/hero-background.jpg",
           "poster": "/library/movies/matrix-revolutions/poster.jpg",
           "logo": "/library/movies/matrix-revolutions/logo.png",
@@ -11201,7 +11140,7 @@
           "match": "★ 6.3",
           "score_label": "★ 6.3",
           "rating_score": 6.3,
-          "rating_count": 6345,
+          "rating_count": 6351,
           "tags": [
             "Science-Fiction",
             "Action",
@@ -11210,7 +11149,7 @@
           "image": "/library/movies/matrix-resurrections/card-thumb.jpg",
           "card_image": "/library/movies/matrix-resurrections/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix-resurrections/hero-background.jpg",
           "poster": "/library/movies/matrix-resurrections/poster.jpg",
           "logo": "/library/movies/matrix-resurrections/logo.png",
@@ -11299,7 +11238,7 @@
           "match": "★ 7.9",
           "score_label": "★ 7.9",
           "rating_score": 7.9,
-          "rating_count": 29276,
+          "rating_count": 29286,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11307,7 +11246,7 @@
           "image": "/library/movies/harry-potter-a-l-ecole-des-sorciers/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-a-l-ecole-des-sorciers/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-a-l-ecole-des-sorciers/hero-background.jpg",
           "poster": "/library/movies/harry-potter-a-l-ecole-des-sorciers/poster.jpg",
           "logo": "/library/movies/harry-potter-a-l-ecole-des-sorciers/logo.png",
@@ -11396,7 +11335,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 23347,
+          "rating_count": 23352,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11404,7 +11343,7 @@
           "image": "/library/movies/harry-potter-et-la-chambre-des-secrets/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-la-chambre-des-secrets/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-la-chambre-des-secrets/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-la-chambre-des-secrets/poster.jpg",
           "logo": "/library/movies/harry-potter-et-la-chambre-des-secrets/logo.png",
@@ -11493,7 +11432,7 @@
           "match": "★ 8.0",
           "score_label": "★ 8.0",
           "rating_score": 8,
-          "rating_count": 22935,
+          "rating_count": 22940,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11501,7 +11440,7 @@
           "image": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/poster.jpg",
           "logo": "/library/movies/harry-potter-et-le-prisonnier-d-azkaban/logo.png",
@@ -11590,7 +11529,7 @@
           "match": "★ 7.8",
           "score_label": "★ 7.8",
           "rating_score": 7.8,
-          "rating_count": 21947,
+          "rating_count": 21953,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11598,7 +11537,7 @@
           "image": "/library/movies/harry-potter-et-la-coupe-de-feu/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-la-coupe-de-feu/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-la-coupe-de-feu/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-la-coupe-de-feu/poster.jpg",
           "logo": "/library/movies/harry-potter-et-la-coupe-de-feu/logo.png",
@@ -11687,7 +11626,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 20607,
+          "rating_count": 20614,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11695,7 +11634,7 @@
           "image": "/library/movies/harry-potter-et-l-ordre-du-phenix/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-l-ordre-du-phenix/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-l-ordre-du-phenix/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-l-ordre-du-phenix/poster.jpg",
           "logo": "/library/movies/harry-potter-et-l-ordre-du-phenix/logo.png",
@@ -11784,7 +11723,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 20585,
+          "rating_count": 20589,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11792,7 +11731,7 @@
           "image": "/library/movies/harry-potter-et-le-prince-de-sang-mele/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-le-prince-de-sang-mele/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-le-prince-de-sang-mele/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-le-prince-de-sang-mele/poster.jpg",
           "logo": "/library/movies/harry-potter-et-le-prince-de-sang-mele/logo.png",
@@ -11881,7 +11820,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 20188,
+          "rating_count": 20193,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11889,7 +11828,7 @@
           "image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/poster.jpg",
           "logo": "/library/movies/harry-potter-et-les-reliques-de-la-mort-1ere-partie/logo.png",
@@ -11978,7 +11917,7 @@
           "match": "★ 8.1",
           "score_label": "★ 8.1",
           "rating_score": 8.1,
-          "rating_count": 21778,
+          "rating_count": 21785,
           "tags": [
             "Aventure",
             "Fantastique"
@@ -11986,7 +11925,7 @@
           "image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/card-thumb.jpg",
           "card_image": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/hero-background.jpg",
           "poster": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/poster.jpg",
           "logo": "/library/movies/harry-potter-et-les-reliques-de-la-mort-2eme-partie/logo.png",
@@ -12075,7 +12014,7 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 27183,
+          "rating_count": 27200,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -12084,7 +12023,7 @@
           "image": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/card-thumb.jpg",
           "card_image": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/hero-background.jpg",
           "poster": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/poster.jpg",
           "logo": "/library/movies/le-seigneur-des-anneaux-la-communaute-de-l-anneau/logo.png",
@@ -12173,7 +12112,7 @@
           "match": "★ 8.4",
           "score_label": "★ 8.4",
           "rating_score": 8.4,
-          "rating_count": 23584,
+          "rating_count": 23600,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -12182,7 +12121,7 @@
           "image": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/card-thumb.jpg",
           "card_image": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/hero-background.jpg",
           "poster": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/poster.jpg",
           "logo": "/library/movies/le-seigneur-des-anneaux-les-deux-tours/logo.png",
@@ -12271,7 +12210,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 26196,
+          "rating_count": 26213,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -12280,7 +12219,7 @@
           "image": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/card-thumb.jpg",
           "card_image": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/hero-background.jpg",
           "poster": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/poster.jpg",
           "logo": "/library/movies/le-seigneur-des-anneaux-le-retour-du-roi/logo.png",
@@ -12369,7 +12308,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 33636,
+          "rating_count": 33647,
           "tags": [
             "Action",
             "Aventure",
@@ -12378,7 +12317,7 @@
           "image": "/library/movies/avatar/card-thumb.jpg",
           "card_image": "/library/movies/avatar/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/avatar/hero-background.jpg",
           "poster": "/library/movies/avatar/poster.jpg",
           "logo": "/library/movies/avatar/logo.png",
@@ -12467,7 +12406,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 13854,
+          "rating_count": 13863,
           "tags": [
             "Action",
             "Aventure",
@@ -12476,7 +12415,7 @@
           "image": "/library/movies/avatar-la-voie-de-l-eau/card-thumb.jpg",
           "card_image": "/library/movies/avatar-la-voie-de-l-eau/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/avatar-la-voie-de-l-eau/hero-background.jpg",
           "poster": "/library/movies/avatar-la-voie-de-l-eau/poster.jpg",
           "logo": "/library/movies/avatar-la-voie-de-l-eau/logo.png",
@@ -12565,7 +12504,7 @@
           "match": "★ 7.4",
           "score_label": "★ 7.4",
           "rating_score": 7.4,
-          "rating_count": 19437,
+          "rating_count": 19445,
           "tags": [
             "Aventure",
             "Fantastique",
@@ -12574,7 +12513,7 @@
           "image": "/library/movies/le-hobbit-un-voyage-inattendu/card-thumb.jpg",
           "card_image": "/library/movies/le-hobbit-un-voyage-inattendu/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-hobbit-un-voyage-inattendu/hero-background.jpg",
           "poster": "/library/movies/le-hobbit-un-voyage-inattendu/poster.jpg",
           "logo": "/library/movies/le-hobbit-un-voyage-inattendu/logo.png",
@@ -12663,7 +12602,7 @@
           "match": "★ 7.6",
           "score_label": "★ 7.6",
           "rating_score": 7.6,
-          "rating_count": 14034,
+          "rating_count": 14039,
           "tags": [
             "Fantastique",
             "Aventure",
@@ -12672,7 +12611,7 @@
           "image": "/library/movies/le-hobbit-la-desolation-de-smaug/card-thumb.jpg",
           "card_image": "/library/movies/le-hobbit-la-desolation-de-smaug/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-hobbit-la-desolation-de-smaug/hero-background.jpg",
           "poster": "/library/movies/le-hobbit-la-desolation-de-smaug/poster.jpg",
           "logo": "/library/movies/le-hobbit-la-desolation-de-smaug/logo.png",
@@ -12761,7 +12700,7 @@
           "match": "★ 7.3",
           "score_label": "★ 7.3",
           "rating_score": 7.3,
-          "rating_count": 15193,
+          "rating_count": 15198,
           "tags": [
             "Action",
             "Aventure",
@@ -12770,7 +12709,7 @@
           "image": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/card-thumb.jpg",
           "card_image": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/hero-background.jpg",
           "poster": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/poster.jpg",
           "logo": "/library/movies/le-hobbit-la-bataille-des-cinq-armees/logo.png",
@@ -12859,7 +12798,7 @@
           "match": "★ 7.5",
           "score_label": "★ 7.5",
           "rating_score": 7.5,
-          "rating_count": 20577,
+          "rating_count": 20589,
           "tags": [
             "Action",
             "Thriller"
@@ -12867,7 +12806,7 @@
           "image": "/library/movies/john-wick/card-thumb.jpg",
           "card_image": "/library/movies/john-wick/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick/hero-background.jpg",
           "poster": "/library/movies/john-wick/poster.jpg",
           "logo": "/library/movies/john-wick/logo.png",
@@ -12956,7 +12895,7 @@
           "match": "★ 7.3",
           "score_label": "★ 7.3",
           "rating_score": 7.3,
-          "rating_count": 14068,
+          "rating_count": 14075,
           "tags": [
             "Action",
             "Thriller",
@@ -12965,7 +12904,7 @@
           "image": "/library/movies/john-wick-chapitre-2/card-thumb.jpg",
           "card_image": "/library/movies/john-wick-chapitre-2/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick-chapitre-2/hero-background.jpg",
           "poster": "/library/movies/john-wick-chapitre-2/poster.jpg",
           "logo": "/library/movies/john-wick-chapitre-2/logo.png",
@@ -13054,7 +12993,7 @@
           "match": "★ 7.4",
           "score_label": "★ 7.4",
           "rating_score": 7.4,
-          "rating_count": 11558,
+          "rating_count": 11564,
           "tags": [
             "Action",
             "Thriller",
@@ -13063,7 +13002,7 @@
           "image": "/library/movies/john-wick-parabellum/card-thumb.jpg",
           "card_image": "/library/movies/john-wick-parabellum/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick-parabellum/hero-background.jpg",
           "poster": "/library/movies/john-wick-parabellum/poster.jpg",
           "logo": "/library/movies/john-wick-parabellum/logo.png",
@@ -13152,7 +13091,7 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 7765,
+          "rating_count": 7773,
           "tags": [
             "Action",
             "Thriller",
@@ -13161,7 +13100,7 @@
           "image": "/library/movies/john-wick-chapitre-4/card-thumb.jpg",
           "card_image": "/library/movies/john-wick-chapitre-4/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/john-wick-chapitre-4/hero-background.jpg",
           "poster": "/library/movies/john-wick-chapitre-4/poster.jpg",
           "logo": "/library/movies/john-wick-chapitre-4/logo.png",
@@ -13250,7 +13189,7 @@
           "match": "★ 7.8",
           "score_label": "★ 7.8",
           "rating_score": 7.8,
-          "rating_count": 14596,
+          "rating_count": 14611,
           "tags": [
             "Science-Fiction",
             "Aventure"
@@ -13258,7 +13197,7 @@
           "image": "/library/movies/dune-premiere-partie/card-thumb.jpg",
           "card_image": "/library/movies/dune-premiere-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/dune-premiere-partie/hero-background.jpg",
           "poster": "/library/movies/dune-premiere-partie/poster.jpg",
           "logo": "/library/movies/dune-premiere-partie/logo.png",
@@ -13278,7 +13217,7 @@
             {
               "name": "Timothée Chalamet",
               "role": "Paul Atreides",
-              "image": "https://image.tmdb.org/t/p/w185/98pz2MH2JT7Yw0sUJGrA5Oqtbo8.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/axENiFIrSz5B7UuWkMT7PDe7CaO.jpg"
             },
             {
               "name": "Rebecca Ferguson",
@@ -13347,7 +13286,7 @@
           "match": "★ 8.1",
           "score_label": "★ 8.1",
           "rating_score": 8.1,
-          "rating_count": 7661,
+          "rating_count": 7675,
           "tags": [
             "Science-Fiction",
             "Aventure"
@@ -13355,7 +13294,7 @@
           "image": "/library/movies/dune-deuxieme-partie/card-thumb.jpg",
           "card_image": "/library/movies/dune-deuxieme-partie/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/dune-deuxieme-partie/hero-background.jpg",
           "poster": "/library/movies/dune-deuxieme-partie/poster.jpg",
           "logo": "/library/movies/dune-deuxieme-partie/logo.png",
@@ -13375,7 +13314,7 @@
             {
               "name": "Timothée Chalamet",
               "role": "Paul Atreides",
-              "image": "https://image.tmdb.org/t/p/w185/98pz2MH2JT7Yw0sUJGrA5Oqtbo8.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/axENiFIrSz5B7UuWkMT7PDe7CaO.jpg"
             },
             {
               "name": "Zendaya",
@@ -13450,7 +13389,7 @@
           "match": "★ 8.2",
           "score_label": "★ 8.2",
           "rating_score": 8.2,
-          "rating_count": 27536,
+          "rating_count": 27552,
           "tags": [
             "Action",
             "Science-Fiction"
@@ -13458,7 +13397,7 @@
           "image": "/library/movies/matrix/card-thumb.jpg",
           "card_image": "/library/movies/matrix/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/movies/matrix/hero-background.jpg",
           "poster": "/library/movies/matrix/poster.jpg",
           "logo": "/library/movies/matrix/logo.png",
@@ -13547,7 +13486,7 @@
           "match": "★ 8.9",
           "score_label": "★ 8.9",
           "rating_score": 8.9,
-          "rating_count": 17358,
+          "rating_count": 17372,
           "tags": [
             "Drame",
             "Crime"
@@ -13555,11 +13494,11 @@
           "image": "/library/series/breaking-bad/card-thumb.jpg",
           "card_image": "/library/series/breaking-bad/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/breaking-bad/hero-background.jpg",
           "poster": "/library/series/breaking-bad/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/breaking-bad/logo.png",
+          "clearart": "/library/series/breaking-bad/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -13622,6 +13561,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/breaking-bad/season-01.jpg",
               "episodes": [
                 {
                   "title": "Chute libre",
@@ -13712,6 +13652,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/breaking-bad/season-02.jpg",
               "episodes": [
                 {
                   "title": "Traqués",
@@ -13875,7 +13816,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 26492,
+          "rating_count": 26501,
           "tags": [
             "Science-Fiction & Fantastique",
             "Drame",
@@ -13884,11 +13825,11 @@
           "image": "/library/series/game-of-thrones/card-thumb.jpg",
           "card_image": "/library/series/game-of-thrones/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/game-of-thrones/hero-background.jpg",
           "poster": "/library/series/game-of-thrones/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/game-of-thrones/logo.png",
+          "clearart": "/library/series/game-of-thrones/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -13961,6 +13902,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/game-of-thrones/season-01.jpg",
               "episodes": [
                 {
                   "title": "L'hiver vient",
@@ -14087,6 +14029,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/game-of-thrones/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le Nord se souvient",
@@ -14226,7 +14169,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 10882,
+          "rating_count": 10898,
           "tags": [
             "Drame",
             "Crime"
@@ -14234,11 +14177,11 @@
           "image": "/library/series/peaky-blinders/card-thumb.jpg",
           "card_image": "/library/series/peaky-blinders/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/peaky-blinders/hero-background.jpg",
           "poster": "/library/series/peaky-blinders/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/peaky-blinders/logo.png",
+          "clearart": "/library/series/peaky-blinders/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -14254,7 +14197,7 @@
             {
               "name": "Cillian Murphy",
               "role": "Thomas Shelby",
-              "image": "https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg"
+              "image": "https://image.tmdb.org/t/p/w185/dm6V24NjjvjMiCtbMkc8Y2WPm2e.jpg"
             },
             {
               "name": "Paul Anderson",
@@ -14281,6 +14224,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/peaky-blinders/season-01.jpg",
               "episodes": [
                 {
                   "title": "Episode 1",
@@ -14359,6 +14303,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/peaky-blinders/season-02.jpg",
               "episodes": [
                 {
                   "title": "Episode 1",
@@ -14450,7 +14395,7 @@
           "match": "★ 8.3",
           "score_label": "★ 8.3",
           "rating_score": 8.3,
-          "rating_count": 4001,
+          "rating_count": 4005,
           "tags": [
             "Drame",
             "Mystère"
@@ -14458,11 +14403,11 @@
           "image": "/library/series/true-detective/card-thumb.jpg",
           "card_image": "/library/series/true-detective/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/series/true-detective/hero-background.jpg",
           "poster": "/library/series/true-detective/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/series/true-detective/logo.png",
+          "clearart": "/library/series/true-detective/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "series",
@@ -14515,6 +14460,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/series/true-detective/season-01.jpg",
               "episodes": [
                 {
                   "title": "La longue obscurité lumineuse",
@@ -14617,6 +14563,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/series/true-detective/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le livre des morts occidental",
@@ -14738,18 +14685,18 @@
           "match": "★ 7.7",
           "score_label": "★ 7.7",
           "rating_score": 7.7,
-          "rating_count": 290,
+          "rating_count": 291,
           "tags": [
             "Documentaire",
             "Crime"
           ],
-          "image": "/library/documentaries/wild-wild-country/card-thumb.jpg",
-          "card_image": "/library/documentaries/wild-wild-country/card-thumb.jpg",
+          "image": "/library/documentaries/wild-wild-country/poster.jpg",
+          "card_image": "/library/documentaries/wild-wild-country/poster.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "poster",
           "hero_background": "/library/documentaries/wild-wild-country/hero-background.jpg",
           "poster": "/library/documentaries/wild-wild-country/poster.jpg",
-          "logo": "",
+          "logo": "/library/documentaries/wild-wild-country/logo.png",
           "clearart": "",
           "trailer": "",
           "trailer_hls": "",
@@ -14813,6 +14760,7 @@
             {
               "number": 1,
               "title": "Mini-série",
+              "poster": "/library/documentaries/wild-wild-country/season-01.jpg",
               "episodes": [
                 {
                   "title": "Partie 1",
@@ -14911,11 +14859,11 @@
           "image": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/card-thumb.jpg",
           "card_image": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/hero-background.jpg",
           "poster": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/logo.png",
+          "clearart": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -14948,6 +14896,7 @@
             {
               "number": 1,
               "title": "Une odyssée à travers l'univers",
+              "poster": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/season-01.jpg",
               "episodes": [
                 {
                   "title": "La Voie Lactée",
@@ -15098,6 +15047,7 @@
             {
               "number": 2,
               "title": "Nouveaux Mondes",
+              "poster": "/library/documentaries/cosmos-une-odyssee-a-travers-l-univers/season-02.jpg",
               "episodes": [
                 {
                   "title": "Vers les étoiles",
@@ -15261,7 +15211,7 @@
           "match": "★ 7.9",
           "score_label": "★ 7.9",
           "rating_score": 7.9,
-          "rating_count": 554,
+          "rating_count": 555,
           "tags": [
             "Documentaire",
             "Crime"
@@ -15269,10 +15219,10 @@
           "image": "/library/documentaries/making-a-murderer/card-thumb.jpg",
           "card_image": "/library/documentaries/making-a-murderer/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/making-a-murderer/hero-background.jpg",
           "poster": "/library/documentaries/making-a-murderer/poster.jpg",
-          "logo": "",
+          "logo": "/library/documentaries/making-a-murderer/logo.png",
           "clearart": "",
           "trailer": "",
           "trailer_hls": "",
@@ -15301,6 +15251,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/making-a-murderer/season-01.jpg",
               "episodes": [
                 {
                   "title": "Dix-huit années perdues",
@@ -15427,6 +15378,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/documentaries/making-a-murderer/season-02.jpg",
               "episodes": [
                 {
                   "title": "Le dix-huitième",
@@ -15566,18 +15518,18 @@
           "match": "★ 8.2",
           "score_label": "★ 8.2",
           "rating_score": 8.2,
-          "rating_count": 608,
+          "rating_count": 610,
           "tags": [
             "Documentaire"
           ],
           "image": "/library/documentaries/formula-1-pilotes-de-leur-destin/card-thumb.jpg",
           "card_image": "/library/documentaries/formula-1-pilotes-de-leur-destin/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/formula-1-pilotes-de-leur-destin/hero-background.jpg",
           "poster": "/library/documentaries/formula-1-pilotes-de-leur-destin/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/documentaries/formula-1-pilotes-de-leur-destin/logo.png",
+          "clearart": "/library/documentaries/formula-1-pilotes-de-leur-destin/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -15610,6 +15562,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/formula-1-pilotes-de-leur-destin/season-01.jpg",
               "episodes": [
                 {
                   "title": "Tout reste à jouer à Melbourne",
@@ -15736,6 +15689,7 @@
             {
               "number": 2,
               "title": "Saison 2",
+              "poster": "/library/documentaries/formula-1-pilotes-de-leur-destin/season-02.jpg",
               "episodes": [
                 {
                   "title": "Quand les lumières s'éteignent",
@@ -15875,14 +15829,14 @@
           "match": "★ 8.3",
           "score_label": "★ 8.3",
           "rating_score": 8.3,
-          "rating_count": 1445,
+          "rating_count": 1446,
           "tags": [
             "Documentaire"
           ],
           "image": "/library/documentaries/the-last-dance/card-thumb.jpg",
           "card_image": "/library/documentaries/the-last-dance/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/the-last-dance/hero-background.jpg",
           "poster": "/library/documentaries/the-last-dance/poster.jpg",
           "logo": "/library/documentaries/the-last-dance/logo.png",
@@ -15934,6 +15888,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/the-last-dance/season-01.jpg",
               "episodes": [
                 {
                   "title": "Épisode I",
@@ -16073,7 +16028,7 @@
           "match": "★ 7.9",
           "score_label": "★ 7.9",
           "rating_score": 7.9,
-          "rating_count": 1482,
+          "rating_count": 1483,
           "tags": [
             "Documentaire",
             "Aventure"
@@ -16081,7 +16036,7 @@
           "image": "/library/documentaries/free-solo/card-thumb.jpg",
           "card_image": "/library/documentaries/free-solo/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "thumb",
+          "card_image_type": "moviethumb",
           "hero_background": "/library/documentaries/free-solo/hero-background.jpg",
           "poster": "/library/documentaries/free-solo/poster.jpg",
           "logo": "/library/documentaries/free-solo/logo.png",
@@ -16155,7 +16110,7 @@
           "match": "★ 8.5",
           "score_label": "★ 8.5",
           "rating_score": 8.5,
-          "rating_count": 437,
+          "rating_count": 438,
           "tags": [
             "Documentaire",
             "Familial"
@@ -16163,11 +16118,11 @@
           "image": "/library/documentaries/notre-planete/card-thumb.jpg",
           "card_image": "/library/documentaries/notre-planete/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/notre-planete/hero-background.jpg",
           "poster": "/library/documentaries/notre-planete/poster.jpg",
           "logo": "/library/documentaries/notre-planete/logo.png",
-          "clearart": "",
+          "clearart": "/library/documentaries/notre-planete/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -16195,6 +16150,7 @@
             {
               "number": 1,
               "title": "Notre planète",
+              "poster": "/library/documentaries/notre-planete/season-01.jpg",
               "episodes": [
                 {
                   "title": "Une seule planète",
@@ -16297,6 +16253,7 @@
             {
               "number": 2,
               "title": "Notre planète II",
+              "poster": "/library/documentaries/notre-planete/season-02.jpg",
               "episodes": [
                 {
                   "title": "Chapitre 1 : Un monde en mouvement",
@@ -16371,11 +16328,11 @@
           "image": "/library/documentaries/planete-terre/card-thumb.jpg",
           "card_image": "/library/documentaries/planete-terre/card-thumb.jpg",
           "card_image_position": "50% 50%",
-          "card_image_type": "backdrop",
+          "card_image_type": "tvthumb",
           "hero_background": "/library/documentaries/planete-terre/hero-background.jpg",
           "poster": "/library/documentaries/planete-terre/poster.jpg",
-          "logo": "",
-          "clearart": "",
+          "logo": "/library/documentaries/planete-terre/logo.png",
+          "clearart": "/library/documentaries/planete-terre/clearart.png",
           "trailer": "",
           "trailer_hls": "",
           "kind": "documentary",
@@ -16403,6 +16360,7 @@
             {
               "number": 1,
               "title": "Saison 1",
+              "poster": "/library/documentaries/planete-terre/season-01.jpg",
               "episodes": [
                 {
                   "title": "D’un pôle à l’autre",

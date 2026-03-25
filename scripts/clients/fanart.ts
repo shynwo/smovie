@@ -4,6 +4,7 @@ interface FanartAssetRaw {
   url?: string;
   lang?: string;
   likes?: string | number;
+  season?: string | number;
 }
 
 type FanartPayload = Record<string, unknown>;
@@ -24,7 +25,7 @@ export interface FanartVisualAssets {
 export interface FanartClient {
   readonly enabled: boolean;
   getMovieAssets(tmdbId: number): Promise<FanartVisualAssets>;
-  getTvAssets(tmdbId: number, tvdbId?: number): Promise<FanartVisualAssets>;
+  getTvAssets(_tmdbId: number, tvdbId?: number): Promise<FanartVisualAssets>;
 }
 
 function toNumber(value: unknown): number {
@@ -259,7 +260,7 @@ function extractMovieAssets(payload: FanartPayload): FanartVisualAssets {
     cardImageCandidates: rankedCardImages,
     cardThumbCandidates: rankedThumbs,
     cardBannerCandidates: rankedBanners,
-    // Priority asked: hdmovielogo > movielogo > hdclearlogo > clearlogo
+    // Fanart movies: HD movie logo > movie logo > HD clearlogo > clearlogo
     logoUrl: pickFirstAvailable(payload, ["hdmovielogo", "movielogo", "hdclearlogo", "clearlogo"]),
     // Decorative only, never used as title replacement
     clearartUrl: pickFirstAvailable(payload, [
@@ -292,11 +293,12 @@ function extractTvAssets(payload: FanartPayload): FanartVisualAssets {
     cardBannerCandidates: rankedBanners,
     seasonPosterCandidatesBySeason: seasonPosterMaps.seasonPosterCandidatesBySeason,
     seasonPosterUrlBySeason: seasonPosterMaps.seasonPosterUrlBySeason,
-    // Priority asked: hdtvlogo > tvlogo > hdclearlogo > clearlogo
-    logoUrl: pickFirstAvailable(payload, ["hdtvlogo", "tvlogo", "hdclearlogo", "clearlogo"]),
+    // Fanart TV: HD TV logo > HD clearlogo > TV logo > clearlogo (aligné qualité « HD » comme les films)
+    logoUrl: pickFirstAvailable(payload, ["hdtvlogo", "hdclearlogo", "tvlogo", "clearlogo"]),
     // Decorative only, never used as title replacement
     clearartUrl: pickFirstAvailable(payload, [
       "tvhdclearart",
+      "hdtvclearart",
       "hdclearart",
       "tvclearart",
       "clearart",
@@ -331,29 +333,15 @@ class LiveFanartClient implements FanartClient {
     return extractMovieAssets(payload);
   }
 
-  async getTvAssets(tmdbId: number, tvdbId?: number): Promise<FanartVisualAssets> {
+  async getTvAssets(_tmdbId: number, tvdbId?: number): Promise<FanartVisualAssets> {
     const tvdb = Number(tvdbId || 0);
-    const tmdb = Number(tmdbId || 0);
-
-    const endpoints: string[] = [];
-    if (Number.isFinite(tvdb) && tvdb > 0) endpoints.push(`/tv/${tvdb}`);
-    if (Number.isFinite(tmdb) && tmdb > 0) endpoints.push(`/tv/${tmdb}`);
-    if (!endpoints.length) return {};
-
-    for (const endpoint of endpoints) {
-      const payload = await fetchFanartJson(this.apiKey, endpoint);
-      if (!payload) continue;
-      const assets = extractTvAssets(payload);
-      if (
-        assets.backdropUrl ||
-        assets.cardImageUrl ||
-        (Array.isArray(assets.cardImageCandidates) && assets.cardImageCandidates.length > 0) ||
-        assets.logoUrl
-      ) {
-        return assets;
-      }
+    // Fanart.tv n'accepte que le TheTVDB id pour /tv/{id} — le TMDB id renvoie vide / erreur.
+    if (!Number.isFinite(tvdb) || tvdb <= 0) {
+      return {};
     }
-    return {};
+    const payload = await fetchFanartJson(this.apiKey, `/tv/${tvdb}`);
+    if (!payload) return {};
+    return extractTvAssets(payload);
   }
 }
 

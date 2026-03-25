@@ -1,5 +1,6 @@
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
+import { CATALOG_CARD_IMAGE_TYPE_SET } from "./catalog-card-types.js";
 import { MockMediaDataset } from "./types/media.js";
 
 const BASE_DIR = process.cwd();
@@ -53,6 +54,11 @@ async function main(): Promise<void> {
     if (!item.poster) errors.push(`${label}: poster manquant`);
     if (!item.heroBackground) errors.push(`${label}: heroBackground manquant`);
     if (!item.cardImage) errors.push(`${label}: cardImage manquant`);
+
+    const cardTypeKey = String(item.cardImageType ?? "").trim().toLowerCase();
+    if (item.cardImageType != null && String(item.cardImageType).trim() !== "" && !CATALOG_CARD_IMAGE_TYPE_SET.has(cardTypeKey)) {
+      warnings.push(`${label}: cardImageType inconnu (${item.cardImageType}) — attendu: moviethumb|tvthumb|thumb|banner|backdrop|poster|fallback`);
+    }
 
     if (item.id) {
       if (idSeen.has(item.id)) errors.push(`${label}: id dupliqué`);

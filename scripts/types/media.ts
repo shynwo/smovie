@@ -1,3 +1,5 @@
+import type { CatalogCardImageType } from "../catalog-card-types.js";
+
 export type MediaType = "movie" | "series" | "documentary";
 export type MediaCategory = "film" | "series" | "anime" | "documentary";
 
@@ -42,7 +44,7 @@ export interface BaseMediaItem {
   heroBackground: string;
   cardImage: string;
   cardImagePosition: string;
-  cardImageType: "movieThumb" | "tvThumb" | "thumb" | "banner" | "backdrop" | "poster" | "fallback";
+  cardImageType: CatalogCardImageType;
   logo: string | null;
   clearart: string | null;
   ratingScore: number | null;

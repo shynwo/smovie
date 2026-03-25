@@ -1424,6 +1424,27 @@ body.profile-switcher-open .mobile-dropdown {
   display: none;
 }
 
+/* TV thumb / fond + clearlogo (Fanart) par-dessus — aligné style Fanart.tv */
+.movie-card-logo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10% 8%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.movie-card-logo img {
+  max-width: 90%;
+  max-height: 46%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 28px rgba(0, 0, 0, 0.88));
+}
+
 .movie-title {
   margin: 0;
   font-family: "Bricolage Grotesque", sans-serif;

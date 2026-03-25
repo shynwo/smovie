@@ -6,6 +6,8 @@ import threading
 from pathlib import Path
 from typing import Any, Callable, Optional
 
+from smovie.structured_log import catalog_log, structured
+
 
 CatalogDict = dict[str, Any]
 SyncFn = Callable[[Path, Path], None]
@@ -125,7 +127,20 @@ class CatalogStore:
             if not needs_sync_locked:
                 return
 
-            self._sync_from_mock_media(self.path, self.mock_media_path)
+            try:
+                self._sync_from_mock_media(self.path, self.mock_media_path)
+            except Exception as exc:  # noqa: BLE001
+                structured(
+                    catalog_log(),
+                    logging.ERROR,
+                    component="catalog",
+                    event="mock_sync_failed",
+                    catalog_path=str(self.path),
+                    mock_path=str(self.mock_media_path),
+                    error_type=type(exc).__name__,
+                    exc_info=True,
+                )
+                return
             self._mock_mtime = mock_mtime
             self._mtime = None  # force reload
 
@@ -155,7 +170,15 @@ class CatalogStore:
         try:
             parsed = json.loads(self.path.read_text(encoding="utf-8-sig"))
         except Exception as exc:  # noqa: BLE001
-            logging.exception("catalog.json invalide: %s", exc)
+            structured(
+                catalog_log(),
+                logging.ERROR,
+                component="catalog",
+                event="json_invalid",
+                path=str(self.path),
+                error_type=type(exc).__name__,
+                exc_info=True,
+            )
             parsed = {"hero": {}, "rows": []}
 
         sanitized = self._sanitize(parsed)

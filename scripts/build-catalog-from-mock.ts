@@ -1,10 +1,27 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { normalizeCatalogCardImageType } from "./catalog-card-types.js";
 import { MediaItem, MockMediaDataset } from "./types/media.js";
 
 const BASE_DIR = process.cwd();
 const MOCK_PATH = path.join(BASE_DIR, "data", "mockMedia.json");
 const CATALOG_PATH = path.join(BASE_DIR, "data", "catalog.json");
+
+/** Même contrat que `tmdb-import` / app Python — normalise d’éventuelles valeurs legacy (ex. camelCase). */
+const CATALOG_CARD_IMAGE_TYPES = new Set([
+  "moviethumb",
+  "tvthumb",
+  "thumb",
+  "banner",
+  "backdrop",
+  "poster",
+  "fallback",
+]);
+
+function normalizeCardImageTypeForCatalog(raw: unknown): string {
+  const key = String(raw == null || raw === "" ? "fallback" : raw).trim().toLowerCase();
+  return CATALOG_CARD_IMAGE_TYPES.has(key) ? key : "fallback";
+}
 
 function scoreLabel(score: number | null | undefined): string {
   const parsed = Number(score);
@@ -59,7 +76,7 @@ function mapCatalogItem(item: MediaItem) {
     image: item.cardImage || item.poster || item.backdrop,
     card_image: item.cardImage || item.poster || item.backdrop,
     card_image_position: item.cardImagePosition || "50% 50%",
-    card_image_type: item.cardImageType || "fallback",
+    card_image_type: normalizeCatalogCardImageType(item.cardImageType),
     hero_background: item.heroBackground || item.backdrop || item.poster,
     poster: item.poster || item.cardImage || item.backdrop,
     logo: item.logo || "",

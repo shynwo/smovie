@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+import logging
 import sqlite3
 from pathlib import Path
 from typing import Any, Callable, Optional
 
 from flask import abort, jsonify, redirect, request, send_from_directory, session
 from werkzeug.security import check_password_hash, generate_password_hash
+
+from smovie.structured_log import auth_log, structured
 
 
 def register_routes(
@@ -134,6 +137,15 @@ def register_routes(
     def api_catalog():
         allowed, retry_after = catalog_limiter.allow(client_ip())
         if not allowed:
+            structured(
+                auth_log(),
+                logging.WARNING,
+                component="auth",
+                event="rate_limited",
+                client_ip=client_ip(),
+                route="api_catalog",
+                retry_after=str(retry_after),
+            )
             response = jsonify(
                 {
                     "error": "rate_limited",
@@ -150,6 +162,15 @@ def register_routes(
     def api_view_data():
         allowed, retry_after = catalog_limiter.allow(client_ip())
         if not allowed:
+            structured(
+                auth_log(),
+                logging.WARNING,
+                component="auth",
+                event="rate_limited",
+                client_ip=client_ip(),
+                route="api_view_data",
+                retry_after=str(retry_after),
+            )
             response = jsonify(
                 {
                     "error": "rate_limited",
@@ -232,6 +253,14 @@ def register_routes(
         password = clean_text(payload.get("password"), max_len=128)
 
         if not username or not password:
+            structured(
+                auth_log(),
+                logging.INFO,
+                component="auth",
+                event="login_rejected",
+                client_ip=client_ip(),
+                reason="missing_fields",
+            )
             return jsonify({"error": "invalid_credentials", "message": "Identifiants invalides."}), 400
 
         with db_connect() as conn:
@@ -241,6 +270,14 @@ def register_routes(
             ).fetchone()
 
         if not row or not check_password_hash(str(row["password_hash"]), password):
+            structured(
+                auth_log(),
+                logging.WARNING,
+                component="auth",
+                event="login_failed",
+                client_ip=client_ip(),
+                reason="bad_credentials",
+            )
             return jsonify({"error": "invalid_credentials", "message": "Identifiants invalides."}), 401
 
         uid = int(row["id"])

@@ -32,7 +32,9 @@ class PayloadService:
         clean_bg_position: Callable[..., str],
         clean_bg_fit: Callable[..., str],
         clean_card_image_type: Callable[..., str],
-        pick_best_visual: Callable[..., str],
+        pick_logo_for_item: Callable[[dict[str, Any]], str],
+        pick_clearart_for_item: Callable[[dict[str, Any]], str],
+        item_display_title: Callable[..., str],
         build_item_key: Callable[[dict[str, Any]], str],
         build_item_slug: Callable[[dict[str, Any]], str],
         normalize_key: Callable[[Any], str],
@@ -69,7 +71,9 @@ class PayloadService:
         self._clean_bg_position = clean_bg_position
         self._clean_bg_fit = clean_bg_fit
         self._clean_card_image_type = clean_card_image_type
-        self._pick_best_visual = pick_best_visual
+        self._pick_logo_for_item = pick_logo_for_item
+        self._pick_clearart_for_item = pick_clearart_for_item
+        self._item_display_title = item_display_title
         self._build_item_key = build_item_key
         self._build_item_slug = build_item_slug
         self._normalize_key = normalize_key
@@ -210,7 +214,7 @@ class PayloadService:
             "documentary" if kind == "documentary" else ("series" if kind == "series" else "film"),
         )
         return {
-            "title": self._clean_text(item.get("title"), "Sans titre", 120),
+            "title": self._item_display_title(item, "Sans titre", 120),
             "year": self._clean_year(item.get("year"), 2025),
             "rating": self._clean_text(item.get("rating"), "13+", 12),
             "duration": self._clean_text(item.get("duration"), "", 24) or self._clean_text(item.get("runtime"), "2h", 24),
@@ -254,7 +258,7 @@ class PayloadService:
         )
         description = self._clean_text(item.get("description"), "", 1200)
         if not description:
-            description = f"{self._clean_text(item.get('title'), 'Titre', 120)} - fiche detaillee SMovie."
+            description = f"{self._item_display_title(item, 'Titre', 120)} - fiche detaillee SMovie."
 
         if kind == "series":
             kind_label = "Anime" if category == "anime" else "Série"
@@ -284,7 +288,7 @@ class PayloadService:
                 key=lambda x: (
                     self._clean_int(x.get("collection_order"), 0, -10_000, 10_000),
                     self._clean_year(x.get("year"), 2025),
-                    self._clean_text(x.get("title"), "", 120),
+                    self._item_display_title(x, "", 120),
                 ),
             )
             collection_sorted_all = candidates
@@ -307,11 +311,7 @@ class PayloadService:
                     1,
                     999,
                 )
-                season_title = self._clean_text(
-                    season_raw.get("title"),
-                    self._clean_text(season_raw.get("name"), f"Saison {season_number}", 120),
-                    120,
-                )
+                season_title = self._item_display_title(season_raw, f"Saison {season_number}", 120)
                 season_poster_candidate = (
                     self._clean_image(season_raw.get("poster"), "")
                     or self._clean_image(season_raw.get("seasonPoster"), "")
@@ -326,7 +326,7 @@ class PayloadService:
                         if not isinstance(ep_raw, dict):
                             continue
                         episode_number = ep_idx + 1
-                        ep_title = self._clean_text(ep_raw.get("title"), f"Episode {episode_number}", 120)
+                        ep_title = self._item_display_title(ep_raw, f"Episode {episode_number}", 120)
                         ep_duration = self._clean_text(ep_raw.get("duration"), "", 24) or self._clean_text(
                             ep_raw.get("runtime"), "45min", 24
                         )
@@ -367,7 +367,7 @@ class PayloadService:
             for idx, candidate in enumerate(collection_sorted_all):
                 if not isinstance(candidate, dict):
                     continue
-                candidate_title = self._clean_text(candidate.get("title"), "Volet", 120)
+                candidate_title = self._item_display_title(candidate, "Volet", 120)
                 candidate_year = self._clean_year(candidate.get("year"), 0)
                 candidate_description = self._clean_text(candidate.get("description"), "", 320)
                 generated_timeline.append(
@@ -385,7 +385,7 @@ class PayloadService:
                     key=lambda x: (
                         self._clean_int(x.get("order"), 0, -10_000, 10_000),
                         self._clean_year(x.get("year"), 9999),
-                        self._clean_text(x.get("title"), "", 120),
+                        self._item_display_title(x, "", 120),
                     ),
                 )
             ]
@@ -432,7 +432,7 @@ class PayloadService:
             facts.append({"label": "Recompenses", "value": awards_text})
 
         return {
-            "title": self._clean_text(item.get("title"), "Sans titre", 120),
+            "title": self._item_display_title(item, "Sans titre", 120),
             "kind": kind,
             "category": category,
             "kind_label": kind_label,
@@ -451,14 +451,8 @@ class PayloadService:
             "card_image_position": self._clean_bg_position(item.get("card_image_position"), "50% 50%"),
             "card_image_type": self._clean_card_image_type(item.get("card_image_type"), "fallback"),
             "hero_background": hero_background,
-            "logo": self._pick_best_visual(
-                item,
-                ["logo", "hdmovielogo", "movielogo", "hdtvlogo", "clearlogo"],
-            ),
-            "clearart": self._pick_best_visual(
-                item,
-                ["clearart", "hdclearart", "moviehdclearart", "hdmovieclearart", "tvhdclearart", "tvclearart"],
-            ),
+            "logo": self._pick_logo_for_item(item),
+            "clearart": self._pick_clearart_for_item(item),
             "tone_a": self._clean_hex(item.get("tone_a"), "#1f2937"),
             "tone_b": self._clean_hex(item.get("tone_b"), "#0f172a"),
             "detail_url": self._item_detail_path(item),

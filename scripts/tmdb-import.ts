@@ -2,6 +2,7 @@ import "dotenv/config";
 import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { createFanartClient, FanartClient, FanartVisualAssets } from "./clients/fanart.js";
+import type { CatalogCardImageType } from "./catalog-card-types.js";
 import {
   CastMember,
   Collection,
@@ -31,6 +32,7 @@ interface TmdbConfiguration {
     poster_sizes: string[];
     backdrop_sizes: string[];
     still_sizes: string[];
+    logo_sizes?: string[];
   };
 }
 
@@ -64,6 +66,7 @@ interface TmdbImageAsset {
 
 interface TmdbImageSet {
   backdrops?: TmdbImageAsset[];
+  logos?: TmdbImageAsset[];
 }
 
 const BASE_DIR = process.cwd();
@@ -293,20 +296,11 @@ function selectCleanFanartBackdrop(
   return undefined;
 }
 
-type CardAssetType =
-  | "movieThumb"
-  | "tvThumb"
-  | "thumb"
-  | "banner"
-  | "backdrop"
-  | "poster"
-  | "fallback";
-
 type CardStrategy = "movie" | "series";
 
 interface SelectedCardAsset {
   url: string;
-  type: CardAssetType;
+  type: CatalogCardImageType;
   position: string;
 }
 
@@ -314,7 +308,7 @@ function selectReadableFanartCardAsset(
   fanart: FanartVisualAssets,
   strategy: CardStrategy
 ): SelectedCardAsset | undefined {
-  const thumbType: CardAssetType = strategy === "series" ? "tvThumb" : "movieThumb";
+  const thumbType: CatalogCardImageType = strategy === "series" ? "tvthumb" : "moviethumb";
   const thumbCandidates = Array.isArray(fanart.cardThumbCandidates) ? fanart.cardThumbCandidates : [];
   for (const raw of thumbCandidates) {
     const candidate = String(raw || "").trim();
@@ -342,6 +336,103 @@ function selectReadableFanartCardAsset(
   }
 
   return undefined;
+}
+
+async function applyFanartHeroBackground(
+  fanart: FanartVisualAssets,
+  denylist: Set<string>,
+  heroBackgroundAbs: string,
+  tmdbHeroPublicUrl: string,
+  backdropPublicUrl: string
+): Promise<string> {
+  let hero = tmdbHeroPublicUrl;
+  const selected = selectCleanFanartBackdrop(fanart, denylist);
+  if (selected) {
+    const fromFanart = await downloadExternalImageAsPublic(selected, heroBackgroundAbs);
+    if (fromFanart) hero = fromFanart;
+  }
+  if (!hero) hero = backdropPublicUrl;
+  return hero;
+}
+
+/**
+ * Ordre fixe: Fanart thumb/banner → poster TMDb → backdrop TMDb → dernier repli backdrop/hero locaux.
+ */
+async function resolveCatalogCardImage(opts: {
+  fanart: FanartVisualAssets;
+  strategy: CardStrategy;
+  cardThumbAbs: string;
+  poster: string;
+  backdrop: string;
+  heroBackground: string;
+  config: TmdbConfiguration;
+  selectedTmdbBackdropPath: string | undefined;
+}): Promise<{ cardImage: string; cardImageType: CatalogCardImageType; cardImagePosition: string }> {
+  const { fanart, strategy, cardThumbAbs, poster, backdrop, heroBackground, config, selectedTmdbBackdropPath } = opts;
+
+  const selected = selectReadableFanartCardAsset(fanart, strategy);
+  if (selected) {
+    const local = await downloadExternalImageAsPublic(selected.url, cardThumbAbs);
+    if (local) {
+      return {
+        cardImage: local,
+        cardImageType: selected.type,
+        cardImagePosition: selected.position,
+      };
+    }
+  }
+
+  if (poster) {
+    return { cardImage: poster, cardImageType: "poster", cardImagePosition: "50% 50%" };
+  }
+
+  const tmdbBackdropForCard = await resolveAndDownloadImage(
+    config,
+    selectedTmdbBackdropPath,
+    cardThumbAbs,
+    ["w780", "w1280", "original"]
+  );
+  if (tmdbBackdropForCard) {
+    return { cardImage: tmdbBackdropForCard, cardImageType: "backdrop", cardImagePosition: "50% 50%" };
+  }
+
+  const last = backdrop || heroBackground || "";
+  return {
+    cardImage: last,
+    cardImageType: last ? "backdrop" : "fallback",
+    cardImagePosition: "50% 50%",
+  };
+}
+
+async function downloadFanartLogoAndClearart(
+  fanart: FanartVisualAssets,
+  logoAbs: string,
+  clearartAbs: string
+): Promise<{ logo: string | null; clearart: string | null }> {
+  let logo: string | null = null;
+  let clearart: string | null = null;
+  if (fanart.logoUrl) {
+    const localLogo = await downloadExternalImageAsPublic(fanart.logoUrl, logoAbs);
+    if (localLogo) logo = localLogo;
+  }
+  if (fanart.clearartUrl) {
+    const localClearart = await downloadExternalImageAsPublic(fanart.clearartUrl, clearartAbs);
+    if (localClearart) clearart = localClearart;
+  }
+  return { logo, clearart };
+}
+
+async function ensureTvLogoFromTmdbIfMissing(
+  logo: string | null,
+  images: TmdbImageSet | null | undefined,
+  config: TmdbConfiguration,
+  logoAbs: string
+): Promise<string | null> {
+  if (logo) return logo;
+  const logoPath = selectTmdbLogoPath(images);
+  if (!logoPath) return null;
+  const fromTmdb = await resolveTmdbLogoImage(config, logoPath, logoAbs);
+  return fromTmdb || null;
 }
 
 function pickFanartSeasonPoster(fanart: FanartVisualAssets, seasonNumber: number): string | undefined {
@@ -572,6 +663,48 @@ async function resolveAndDownloadImage(
   return ok ? publicPathFromAbsolute(localAbsolutePath) : "";
 }
 
+async function resolveTmdbLogoImage(
+  config: TmdbConfiguration,
+  tmdbPath: string | undefined,
+  localAbsolutePath: string
+): Promise<string> {
+  if (!tmdbPath) return "";
+  const logoSizes =
+    Array.isArray(config.images.logo_sizes) && config.images.logo_sizes.length
+      ? config.images.logo_sizes
+      : ["w500", "original"];
+  const size = pickImageSize(logoSizes, ["w500", "w300", "original"]);
+  const url = `${config.images.secure_base_url}${size}${tmdbPath}`;
+  const ok = await downloadImage(url, localAbsolutePath);
+  return ok ? publicPathFromAbsolute(localAbsolutePath) : "";
+}
+
+function selectTmdbLogoPath(images: TmdbImageSet | null | undefined): string | undefined {
+  const logos = Array.isArray(images?.logos) ? images!.logos! : [];
+  if (!logos.length) return undefined;
+  const scored = logos
+    .map((entry) => {
+      const filePath = String(entry?.file_path || "").trim();
+      if (!filePath) return null;
+      const lang = String(entry?.iso_639_1 ?? "")
+        .trim()
+        .toLowerCase();
+      const votes = Number(entry?.vote_average || 0);
+      const width = Number(entry?.width || 0);
+      let langScore = 0;
+      if (lang === "fr") langScore = 85;
+      else if (lang === "en" || lang === "us") langScore = 72;
+      else if (!lang || lang === "null") langScore = 58;
+      else langScore = 28;
+      const sizeScore = Math.min(45, width / 12);
+      return { filePath, score: langScore + votes * 10 + sizeScore };
+    })
+    .filter((row): row is { filePath: string; score: number } => !!row);
+  if (!scored.length) return undefined;
+  scored.sort((a, b) => b.score - a.score);
+  return scored[0]?.filePath;
+}
+
 async function downloadExternalImageAsPublic(
   url: string | undefined,
   localAbsolutePath: string
@@ -667,63 +800,30 @@ async function importMovieLike(
     heroBackgroundAbs,
     ["w1280", "original"]
   );
-  let logo: string | null = null;
-  let clearart: string | null = null;
-
   const fanart = await fanartClient.getMovieAssets(Number(detail.id || result.id));
-  const selectedFanartBackdrop = selectCleanFanartBackdrop(fanart, fanartBackdropDenylist);
-  if (selectedFanartBackdrop) {
-    const fromFanart = await downloadExternalImageAsPublic(selectedFanartBackdrop, heroBackgroundAbs);
-    if (fromFanart) heroBackground = fromFanart;
-  }
-  if (!heroBackground) heroBackground = backdrop;
+  heroBackground = await applyFanartHeroBackground(
+    fanart,
+    fanartBackdropDenylist,
+    heroBackgroundAbs,
+    heroBackground,
+    backdrop
+  );
 
-  let cardImage = "";
-  let cardImageType: CardAssetType = "fallback";
-  let cardImagePosition = "50% 50%";
-  const selectedCardAsset = selectReadableFanartCardAsset(fanart, "movie");
-  if (selectedCardAsset) {
-    const local = await downloadExternalImageAsPublic(selectedCardAsset.url, cardThumbAbs);
-    if (local) {
-      cardImage = local;
-      cardImageType = selectedCardAsset.type;
-      cardImagePosition = selectedCardAsset.position;
-    }
-  }
-  if (!cardImage) {
-    cardImage = poster || "";
-    cardImageType = cardImage ? "poster" : "fallback";
-    cardImagePosition = "50% 50%";
-  }
-  if (!cardImage) {
-    const tmdbBackdropForCard = await resolveAndDownloadImage(
-      config,
-      selectedTmdbBackdropPath,
-      cardThumbAbs,
-      ["w780", "w1280", "original"]
-    );
-    if (tmdbBackdropForCard) {
-      cardImage = tmdbBackdropForCard;
-      cardImageType = "backdrop";
-      cardImagePosition = "50% 50%";
-    }
-  }
-  if (!cardImage) {
-    cardImage = backdrop || heroBackground || "";
-    cardImageType = cardImage ? "backdrop" : "fallback";
-    cardImagePosition = "50% 50%";
-  }
+  const cardResolved = await resolveCatalogCardImage({
+    fanart,
+    strategy: "movie",
+    cardThumbAbs,
+    poster,
+    backdrop,
+    heroBackground,
+    config,
+    selectedTmdbBackdropPath,
+  });
+  const { cardImage, cardImageType, cardImagePosition } = cardResolved;
 
-  if (fanart.logoUrl) {
-    const logoAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "logo.png");
-    const localLogo = await downloadExternalImageAsPublic(fanart.logoUrl, logoAbs);
-    if (localLogo) logo = localLogo;
-  }
-  if (fanart.clearartUrl) {
-    const clearartAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "clearart.png");
-    const localClearart = await downloadExternalImageAsPublic(fanart.clearartUrl, clearartAbs);
-    if (localClearart) clearart = localClearart;
-  }
+  const logoAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "logo.png");
+  const clearartAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "clearart.png");
+  const { logo, clearart } = await downloadFanartLogoAndClearart(fanart, logoAbs, clearartAbs);
 
   const common = {
     id: `${mediaType}-${slug}`,
@@ -810,64 +910,37 @@ async function importSeriesLike(
     heroBackgroundAbs,
     ["w1280", "original"]
   );
-  let logo: string | null = null;
-  let clearart: string | null = null;
-
   const tvdbId = Number(detail?.external_ids?.tvdb_id || 0);
-  const fanart = await fanartClient.getTvAssets(Number(detail.id || result.id), tvdbId);
-  const selectedFanartBackdrop = selectCleanFanartBackdrop(fanart, fanartBackdropDenylist);
-  if (selectedFanartBackdrop) {
-    const fromFanart = await downloadExternalImageAsPublic(selectedFanartBackdrop, heroBackgroundAbs);
-    if (fromFanart) heroBackground = fromFanart;
-  }
-  if (!heroBackground) heroBackground = backdrop;
-
-  let cardImage = "";
-  let cardImageType: CardAssetType = "fallback";
-  let cardImagePosition = "50% 50%";
-  const selectedCardAsset = selectReadableFanartCardAsset(fanart, "series");
-  if (selectedCardAsset) {
-    const local = await downloadExternalImageAsPublic(selectedCardAsset.url, cardThumbAbs);
-    if (local) {
-      cardImage = local;
-      cardImageType = selectedCardAsset.type;
-      cardImagePosition = selectedCardAsset.position;
-    }
-  }
-  if (!cardImage) {
-    cardImage = poster || "";
-    cardImageType = cardImage ? "poster" : "fallback";
-    cardImagePosition = "50% 50%";
-  }
-  if (!cardImage) {
-    const tmdbBackdropForCard = await resolveAndDownloadImage(
-      config,
-      selectedTmdbBackdropPath,
-      cardThumbAbs,
-      ["w780", "w1280", "original"]
+  if (fanartClient.enabled && (!Number.isFinite(tvdbId) || tvdbId <= 0)) {
+    console.warn(
+      `  ! ${title}: pas d'id TheTVDB sur TMDb — Fanart.tv (logo HD, tvthumb, clearart) indisponible pour cette série.`
     );
-    if (tmdbBackdropForCard) {
-      cardImage = tmdbBackdropForCard;
-      cardImageType = "backdrop";
-      cardImagePosition = "50% 50%";
-    }
   }
-  if (!cardImage) {
-    cardImage = backdrop || heroBackground || "";
-    cardImageType = cardImage ? "backdrop" : "fallback";
-    cardImagePosition = "50% 50%";
-  }
+  const fanart = await fanartClient.getTvAssets(Number(detail.id || result.id), tvdbId);
+  heroBackground = await applyFanartHeroBackground(
+    fanart,
+    fanartBackdropDenylist,
+    heroBackgroundAbs,
+    heroBackground,
+    backdrop
+  );
 
-  if (fanart.logoUrl) {
-    const logoAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "logo.png");
-    const localLogo = await downloadExternalImageAsPublic(fanart.logoUrl, logoAbs);
-    if (localLogo) logo = localLogo;
-  }
-  if (fanart.clearartUrl) {
-    const clearartAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "clearart.png");
-    const localClearart = await downloadExternalImageAsPublic(fanart.clearartUrl, clearartAbs);
-    if (localClearart) clearart = localClearart;
-  }
+  const cardResolved = await resolveCatalogCardImage({
+    fanart,
+    strategy: "series",
+    cardThumbAbs,
+    poster,
+    backdrop,
+    heroBackground,
+    config,
+    selectedTmdbBackdropPath,
+  });
+  const { cardImage, cardImageType, cardImagePosition } = cardResolved;
+
+  const logoAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "logo.png");
+  const clearartAbs = path.join(OUTPUT_LIBRARY_DIR, folder, slug, "clearart.png");
+  let { logo, clearart } = await downloadFanartLogoAndClearart(fanart, logoAbs, clearartAbs);
+  logo = await ensureTvLogoFromTmdbIfMissing(logo, images, config, logoAbs);
 
   const seasons: Season[] = [];
   const seasonDefs = (Array.isArray(detail.seasons) ? detail.seasons : [])
