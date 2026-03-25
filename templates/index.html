@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  {% set preload_hero = hero_init or {} %}
+  {% set preload_hero_image = preload_hero.get('hero_background', preload_hero.get('image', '/static/template-assets/hero-bg.jpg')) %}
+  {% set preload_hero_logo = preload_hero.get('logo', '') %}
+  {% set preload_hero_slug = preload_hero.get('slug', '') %}
+  {% set preload_logo_norm = (preload_hero_logo or '')|lower %}
+  {% set preload_slug_norm = (preload_hero_slug or '')|lower %}
+  {% set preload_logo_valid = preload_hero_logo and preload_slug_norm and (('/' ~ preload_slug_norm ~ '/') in preload_logo_norm or ('-' ~ preload_slug_norm ~ '-') in preload_logo_norm) %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>{{ title or "StreamNest" }}</title>
+  {% if preload_hero_image %}
+  <link rel="preload" as="image" href="{{ preload_hero_image }}" fetchpriority="high" />
+  {% endif %}
+  {% if preload_logo_valid %}
+  <link rel="preload" as="image" href="{{ preload_hero_logo }}" />
+  {% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css', v='20260325tvsmooth1') }}" />
+</head>
+<body
+  data-initial-view="{{ current_view or 'home' }}"
+  data-profile-color-init="{{ profile_color_init or '#f97316' }}"
+  data-profile-name-init="{{ profile_name_init or 'Profil actif' }}"
+  data-avatar-init="{{ avatar_init or 'ST' }}"
+  data-active-profile-id="{{ profile_id_init or '' }}"
+  style="
+    --primary: {{ profile_color_init or '#f97316' }};
+    --primary-rgb: {{ profile_color_rgb or '249, 115, 22' }};
+    --focus-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.9);
+    --focus-ring-soft: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+    --avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+    --avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+    --avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+    --hub-avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+    --hub-avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+    --hub-avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+  "
+>
+  {% set hero = hero_init or {} %}
+  {% set hero_empty = hero.get('hero_empty', False) %}
+  {% set hero_image = hero.get('hero_background', hero.get('image', '/static/template-assets/hero-bg.jpg')) %}
+  {% set hero_pos = hero.get('image_position', '50% 50%') %}
+  {% set hero_fit = hero.get('image_fit', 'cover') %}
+  {% set hero_title = '' if hero_empty else hero.get('title', 'SMOVIE') %}
+  {% set hero_subtitle = '' if hero_empty else hero.get('subtitle', '') %}
+  {% set hero_match = '' if hero_empty else hero.get('match', '') %}
+  {% set hero_rating = '' if hero_empty else hero.get('rating', '13+') %}
+  {% set hero_duration = '' if hero_empty else hero.get('duration', '') %}
+  {% set hero_year = '' if hero_empty else hero.get('year', '') %}
+  {% set hero_cta_primary = '' if hero_empty else hero.get('cta_primary', 'Regarder') %}
+  {% set hero_cta_secondary = '' if hero_empty else hero.get('cta_secondary', 'Ajouter à ma liste') %}
+  {% set hero_logo = '' if hero_empty else hero.get('logo', '') %}
+  {% set hero_slug = '' if hero_empty else hero.get('slug', '') %}
+  {% set hero_content_meta = '' if hero_empty else hero.get('content_meta_summary', hero.get('genre', '')) %}
+  {% set hero_media_info_primary = '' if hero_empty else hero.get('media_info_primary', '') %}
+  {% set hero_media_info_secondary = '' if hero_empty else hero.get('media_info_secondary', '') %}
+  {% set hero_media_info_tertiary = '' if hero_empty else hero.get('media_info_tertiary', '') %}
+  {% set hero_media_info_summary = '' if hero_empty else hero.get('media_info_summary', '') %}
+  {% if not hero_media_info_primary and hero_media_info_summary %}
+    {% set hero_media_info_primary = hero_media_info_summary %}
+  {% endif %}
+  {% set hero_logo_norm = (hero_logo or '')|lower %}
+  {% set hero_slug_norm = (hero_slug or '')|lower %}
+  {% set hero_logo_valid = hero_logo and hero_slug_norm and (('/' ~ hero_slug_norm ~ '/') in hero_logo_norm or ('-' ~ hero_slug_norm ~ '-') in hero_logo_norm) %}
+  {% set hero_logo_initial = hero_logo if hero_logo_valid else '' %}
+  <div class="page">
+    <header class="top-shell">
+      <button type="button" class="icon-btn mobile-menu-toggle-left glass-panel glass-edge" id="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <div class="brand-mark">SMOVIE</div>
+
+      <nav class="menu-pill glass-panel glass-edge">
+        <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}" data-nav-view="home">Accueil</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}" data-nav-view="films">Films</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}" data-nav-view="series">Séries</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}" data-nav-view="documentaires">Documentaires</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}" data-nav-view="my-list">Ma Liste</a>
+      </nav>
+
+      <div class="actions-pill glass-panel glass-edge">
+        <div class="top-search" id="top-search">
+          <button type="button" class="icon-btn search-btn" id="top-search-toggle" aria-label="Recherche">&#8981;</button>
+          <input
+            id="top-search-input"
+            class="top-search-input"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Rechercher un film, une série..."
+            aria-label="Rechercher un titre"
+          />
+        </div>
+        <button
+          type="button"
+          class="avatar-btn"
+          id="profile-avatar-btn"
+          aria-label="Changer de profil"
+          style="
+            --avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+            --avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+            --avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+          "
+        >{{ avatar_init or 'ST' }}</button>
+      </div>
+    </header>
+
+    <nav class="mobile-dropdown glass-panel glass-edge" id="mobile-dropdown" aria-label="Navigation mobile">
+      <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}" data-nav-view="home">Accueil</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}" data-nav-view="films">Films</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}" data-nav-view="series">Séries</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}" data-nav-view="documentaires">Documentaires</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}" data-nav-view="my-list">Ma Liste</a>
+    </nav>
+
+    <section class="hero{% if hero_empty %} is-empty{% endif %}">
+      <div class="hero-bg" id="hero-media" style="background-image: url('{{ hero_image }}'); --hero-pos: {{ hero_pos }}; --hero-fit: {{ hero_fit }};"></div>
+      <div class="hero-gradient"></div>
+      <div class="hero-left-gradient"></div>
+      <div class="hero-content">
+        <div class="hero-meta-top" id="hero-meta-top"{% if not hero_media_info_primary and not hero_media_info_secondary and not hero_media_info_tertiary %} style="display:none"{% endif %}>
+          <span class="text-category hero-meta-token" id="hero-kicker-1"{% if not hero_media_info_primary %} style="display:none"{% endif %}>{{ hero_media_info_primary }}</span>
+          <span class="dot-sep" id="hero-kicker-dot-1"{% if not hero_media_info_primary or not hero_media_info_secondary %} style="display:none"{% endif %}>&bull;</span>
+          <span class="text-category hero-meta-token" id="hero-kicker-2"{% if not hero_media_info_secondary %} style="display:none"{% endif %}>{{ hero_media_info_secondary }}</span>
+          <span class="dot-sep" id="hero-kicker-dot-2"{% if not hero_media_info_secondary or not hero_media_info_tertiary %} style="display:none"{% endif %}>&bull;</span>
+          <span class="text-category hero-meta-token" id="hero-kicker-3"{% if not hero_media_info_tertiary %} style="display:none"{% endif %}>{{ hero_media_info_tertiary }}</span>
+        </div>
+
+        <img
+          id="hero-logo"
+          class="hero-logo{% if not hero_logo_initial %} is-hidden{% endif %}"
+          {% if hero_logo_initial %}src="{{ hero_logo_initial }}"{% endif %}
+          alt="{{ hero_title }}"
+        />
+        <h1 class="text-display{% if hero_logo_initial %} is-hidden{% endif %}" id="hero-title">{{ hero_title }}</h1>
+
+        <div class="hero-stat-line"{% if not hero_match and not hero_rating and not hero_duration and not hero_year %} style="display:none"{% endif %}>
+          <span class="match" id="hero-match"{% if not hero_match %} style="display:none"{% endif %}>{{ hero_match }}</span>
+          <span class="badge" id="hero-rating"{% if not hero_rating %} style="display:none"{% endif %}>{{ hero_rating }}</span>
+          <span class="runtime" id="hero-duration"{% if not hero_duration %} style="display:none"{% endif %}>{{ hero_duration }}</span>
+          <span class="runtime" id="hero-year"{% if not hero_year %} style="display:none"{% endif %}>{{ hero_year }}</span>
+        </div>
+        <p class="hero-genre-line" id="hero-genre-line"{% if not hero_content_meta %} style="display:none"{% endif %}>{{ hero_content_meta }}</p>
+        <p class="hero-sub" id="hero-subtitle"{% if not hero_subtitle %} style="display:none"{% endif %}>{{ hero_subtitle }}</p>
+
+        <div class="hero-buttons">
+          <button class="btn-primary" type="button" id="hero-cta-primary">{{ hero_cta_primary }}</button>
+          <button class="btn-glass" type="button" id="hero-cta-secondary">{{ hero_cta_secondary }}</button>
+          <button class="btn-icon" type="button" id="hero-cta-info" aria-label="Informations du media">i</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="rows-zone" id="rows-zone">
+      <section id="rows-container"></section>
+      <p class="search-empty" id="search-empty">Aucun titre ne correspond a ta recherche.</p>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Stream. Tous droits réservés.</p>
+    </footer>
+  </div>
+
+  <div class="avatar-hub" id="avatar-hub" aria-hidden="true">
+    <div class="avatar-hub-backdrop" data-close-avatar-hub></div>
+    <section class="avatar-hub-panel glass-panel glass-edge" role="dialog" aria-modal="true" aria-labelledby="avatar-hub-title">
+      <p class="avatar-hub-kicker">SMOVIE</p>
+      <h3 id="avatar-hub-title" class="text-display">Espace compte</h3>
+      <p class="avatar-hub-sub">Choisis une action.</p>
+
+      <div class="avatar-hub-profile">
+        <span
+          class="avatar-hub-badge"
+          id="avatar-hub-badge"
+          style="
+            --hub-avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+            --hub-avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+            --hub-avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+          "
+        >{{ avatar_init or 'ST' }}</span>
+        <span class="avatar-hub-name" id="avatar-hub-name">{{ profile_name_init or 'Profil actif' }}</span>
+      </div>
+
+      <div class="avatar-hub-actions">
+        <button type="button" class="avatar-hub-btn" id="avatar-menu-switch-profile">Changer de profil</button>
+        <button type="button" class="avatar-hub-btn" id="avatar-menu-settings">Parametres</button>
+        <button type="button" class="avatar-hub-btn danger" id="avatar-menu-logout">Se deconnecter</button>
+      </div>
+
+      <button type="button" class="avatar-hub-close" data-close-avatar-hub>Fermer</button>
+    </section>
+  </div>
+
+  <div class="profile-switcher" id="profile-switcher" aria-hidden="true">
+    <div class="profile-switcher-backdrop" data-close-profile-switcher></div>
+    <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="profile-switcher-title">
+      <div class="profile-center">
+        <h2 id="profile-switcher-title" class="text-display">Qui va partir a l'aventure ?</h2>
+        <p class="profile-subtitle">Selectionne un profil pour continuer.</p>
+
+        <div class="profile-grid" id="profile-grid"></div>
+
+        <form class="profile-form" id="profile-form" autocomplete="off">
+          <h3>Ajouter un profil</h3>
+          <div class="profile-form-fields">
+            <label class="profile-field">
+              <span>Nom</span>
+              <input type="text" id="profile-name-input" maxlength="24" placeholder="Ex: Invites" />
+            </label>
+            <label class="profile-field">
+              <span>Couleur</span>
+              <input type="color" id="profile-color-input" value="#f97316" />
+            </label>
+          </div>
+          <div class="profile-form-actions">
+            <button type="submit" class="profile-action-btn">Creer</button>
+            <button type="button" class="profile-action-btn ghost" id="profile-cancel-btn">Annuler</button>
+          </div>
+        </form>
+
+        <div class="profile-bottom-actions">
+          <button type="button" class="profile-action-btn">Gerer les profils</button>
+          <button type="button" class="profile-link-btn" data-close-profile-switcher>Retour</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="auth-gate" id="auth-gate" aria-hidden="true">
+    <div class="auth-gate-backdrop"></div>
+    <section class="auth-card glass-panel glass-edge" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <p class="auth-kicker">SMOVIE CLOUD</p>
+      <h2 class="text-display" id="auth-title">Connexion compte</h2>
+      <p class="auth-message" id="auth-message">Connecte-toi pour synchroniser tes favoris sur tous tes appareils.</p>
+
+      <form id="auth-form" class="auth-form" autocomplete="off">
+        <label class="auth-field">
+          <span>Identifiant</span>
+          <input id="auth-username" type="text" minlength="3" maxlength="64" placeholder="ex: shynwo" required />
+        </label>
+        <label class="auth-field">
+          <span>Mot de passe</span>
+          <input id="auth-password" type="password" minlength="6" maxlength="128" placeholder="6 caracteres minimum" required />
+        </label>
+        <div class="auth-actions">
+          <button type="submit" class="auth-btn primary" id="auth-login-btn">Connexion</button>
+          <button type="submit" class="auth-btn" id="auth-register-btn">Creer un compte</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js', v='20260324autoplayfix1') }}"></script>
+</body>
+</html>
+
+

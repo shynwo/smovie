@@ -1,0 +1,22 @@
+{
+  "name": "smovie-tools",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "tmdb:import": "tsx scripts/tmdb-import.ts",
+    "tmdb:check": "tsc --noEmit",
+    "tmdb:audit": "tsx scripts/audit-mock-media.ts",
+    "tmdb:catalog": "tsx scripts/build-catalog-from-mock.ts",
+    "tmdb:reset": "tsx scripts/tmdb-import.ts && tsx scripts/build-catalog-from-mock.ts && tsx scripts/audit-mock-media.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "playwright": "^1.58.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,5 @@
+# SMOVIE Fanart backdrop denylist
+# One URL per line. Lines starting with # are ignored.
+# Use this file to block branded Fanart backdrops (logo/title baked into image).
+
+https://assets.fanart.tv/fanart/top-gun-maverick-5e05648c64576.jpg

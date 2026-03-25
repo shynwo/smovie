@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>{{ title or "SMovie" }}</title>
+  {% set detail_preload_bg = (detail or {}).get('hero_background', (detail or {}).get('image', '')) %}
+  {% if detail_preload_bg %}
+  <link rel="preload" as="image" href="{{ detail_preload_bg }}" fetchpriority="high" />
+  {% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css', v='20260325tvsmooth1') }}" />
+</head>
+<body
+  data-current-view="{{ current_view or 'home' }}"
+  data-profile-color-init="{{ profile_color_init or '#f97316' }}"
+  data-profile-name-init="{{ profile_name_init or 'Profil actif' }}"
+  data-avatar-init="{{ avatar_init or 'ST' }}"
+  data-active-profile-id="{{ profile_id_init or '' }}"
+  style="
+    --primary: {{ profile_color_init or '#f97316' }};
+    --primary-rgb: {{ profile_color_rgb or '249, 115, 22' }};
+    --focus-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.9);
+    --focus-ring-soft: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+    --avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+    --avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+    --avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+    --hub-avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+    --hub-avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+    --hub-avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+  "
+>
+  {% set media = detail or {} %}
+  {% set media_image = media.get('hero_background', media.get('image', '/static/template-assets/hero-bg.jpg')) %}
+  {% set media_title = media.get('title', 'Sans titre') %}
+  {% set media_description = media.get('description', '') %}
+  {% set media_kind = media.get('kind_label', 'Film') %}
+  {% set media_logo = media.get('logo', '') %}
+  {% set media_rating = media.get('rating', '13+') %}
+  {% set media_duration = media.get('duration', '2h') %}
+  {% set media_match = media.get('match', '95% Match') %}
+  {% set media_year = media.get('year', 2025) %}
+  {% set media_genre = media.get('genre', 'Catalogue') %}
+  {% set media_bg_position = media.get('detail_image_position', '50% 62%') %}
+  {% set media_bg_fit = media.get('detail_image_fit', 'cover') %}
+  {% set has_seasons = media.get('seasons') %}
+  {% set has_related = media.get('collection_items') %}
+  {% set is_film_like = media.get('kind') in ['movie', 'documentary', 'series'] %}
+
+  <div class="page detail-page">
+    <header class="top-shell">
+      <button type="button" class="icon-btn mobile-menu-toggle-left glass-panel glass-edge" id="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <a class="brand-mark" href="{{ url_for('home_page') }}">SMOVIE</a>
+      <nav class="menu-pill glass-panel glass-edge">
+        <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}">Accueil</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}">Films</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}">Séries</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}">Documentaires</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}">Ma Liste</a>
+      </nav>
+      <div class="actions-pill glass-panel glass-edge">
+        <div class="top-search" id="top-search">
+          <button type="button" class="icon-btn search-btn" id="top-search-toggle" aria-label="Recherche">&#8981;</button>
+          <input
+            id="top-search-input"
+            class="top-search-input"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Rechercher un film, une série..."
+            aria-label="Rechercher un titre"
+          />
+        </div>
+        <button
+          type="button"
+          class="avatar-btn"
+          id="profile-avatar-btn"
+          aria-label="Espace compte"
+          style="
+            --avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+            --avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+            --avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+          "
+        >{{ avatar_init or 'ST' }}</button>
+      </div>
+    </header>
+
+    <nav class="mobile-dropdown glass-panel glass-edge" id="mobile-dropdown" aria-label="Navigation mobile">
+      <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}">Accueil</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}">Films</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}">Séries</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}">Documentaires</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}">Ma Liste</a>
+    </nav>
+
+    <section class="detail-hero">
+      <div class="detail-hero-bg" style="background-image:url('{{ media_image }}'); --detail-bg-pos: {{ media_bg_position }}; --detail-bg-fit: {{ media_bg_fit }};"></div>
+      <div class="detail-hero-fade"></div>
+      <div class="detail-hero-content">
+        <div class="detail-layout">
+          <section class="detail-main-copy">
+            {% if media_logo %}
+            <img class="detail-media-logo" src="{{ media_logo }}" alt="{{ media_title }}" />
+            {% else %}
+            <h1 class="text-display">{{ media_title }}</h1>
+            {% endif %}
+            <div class="detail-meta-line">
+              <span class="match">{{ media_match }}</span>
+              <span class="detail-sep">&bull;</span>
+              <span class="badge">{{ media_rating }}</span>
+              <span class="detail-sep">&bull;</span>
+              <span class="runtime">{{ media_year }}</span>
+              <span class="detail-sep">&bull;</span>
+              <span class="runtime">{{ media_duration }}</span>
+              <span class="detail-sep">&bull;</span>
+              <span class="runtime">{{ media_genre }}</span>
+            </div>
+            <p class="detail-description">{{ media_description }}</p>
+            {% if media.get('tags') %}
+            <p class="detail-tag-links">
+              {% for tag in media.get('tags', []) %}
+              <span class="detail-tag-link">{{ tag }}</span>
+              {% if not loop.last %}<span class="detail-sep">&bull;</span>{% endif %}
+              {% endfor %}
+            </p>
+            {% endif %}
+
+            <div class="detail-actions-row">
+              <button
+                class="btn-primary detail-watch-main"
+                type="button"
+                id="detail-watch-btn"
+                data-detail-url="{{ media.get('detail_url', '#') }}"
+                data-item-key="{{ media.get('item_key', '') }}"
+              >
+                Regarder
+              </button>
+              {% if is_film_like %}
+              <button
+                type="button"
+                class="btn-glass detail-list-btn{% if media.get('is_favorite') %} active{% endif %}"
+                id="detail-favorite-btn"
+                data-item-key="{{ media.get('item_key', '') }}"
+                aria-label="{% if media.get('is_favorite') %}Retirer de ma liste{% else %}Ajouter à ma liste{% endif %}"
+              >
+                {% if media.get('is_favorite') %}Retirer de ma liste{% else %}Ajouter à ma liste{% endif %}
+              </button>
+              {% endif %}
+            </div>
+          </section>
+          <aside class="detail-sidebar glass-panel glass-edge">
+            <h3>Informations {{ media_kind|lower }}</h3>
+            <ul class="detail-facts-mini">
+              {% for fact in media.get('facts', [])[:6] %}
+              <li>
+                <span>{{ fact.get('label', '') }}</span>
+                <strong>{{ fact.get('value', '') }}</strong>
+              </li>
+              {% endfor %}
+            </ul>
+          </aside>
+        </div>
+
+        <div class="detail-prime-tabs" role="tablist" aria-label="Sections de la fiche">
+          {% if has_seasons %}
+          <button type="button" class="detail-tab-btn active" data-tab-target="episodes" role="tab" aria-selected="true">Episodes</button>
+          <button type="button" class="detail-tab-btn" data-tab-target="details" role="tab" aria-selected="false">Details</button>
+          {% elif has_related %}
+          <button type="button" class="detail-tab-btn active" data-tab-target="related" role="tab" aria-selected="true">Contenu associe</button>
+          <button type="button" class="detail-tab-btn" data-tab-target="details" role="tab" aria-selected="false">Details</button>
+          {% else %}
+          <button type="button" class="detail-tab-btn active" data-tab-target="details" role="tab" aria-selected="true">Details</button>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    <main class="detail-main">
+      {% if debug_mode %}
+      <section class="detail-debug-banner glass-panel glass-edge" aria-label="Debug media">
+        <strong>Debug média</strong>
+        <span>ID: {{ detail.get('debug_media', {}).get('id', '') }}</span>
+        <span>Slug: {{ detail.get('debug_media', {}).get('slug', '') }}</span>
+        <span>Type: {{ detail.get('debug_media', {}).get('type', '') }}</span>
+        <span>Category: {{ detail.get('debug_media', {}).get('category', '') }}</span>
+        <span>Logo: {{ detail.get('debug_media', {}).get('logo', '') }}</span>
+        <span>Hero: {{ detail.get('debug_media', {}).get('hero_background', '') }}</span>
+        <span>Card: {{ detail.get('debug_media', {}).get('card_image', '') }}</span>
+      </section>
+      {% endif %}
+
+      {% if not has_seasons and has_related %}
+      <section class="detail-section prime-collection glass-panel glass-edge" data-tab-panel="related">
+        <div class="detail-section-head">
+          <h2>Découvre la collection {{ media.get('collection_title', 'Saga') }}</h2>
+          <p>Contenu associé</p>
+        </div>
+        <div class="detail-related-grid">
+          {% for rel in media.get('collection_items', []) %}
+          <a class="detail-related-card" href="{{ rel.get('detail_url', '#') }}">
+            <span class="detail-related-thumb" style="background-image:url('{{ rel.get('poster', rel.get('image', '/static/template-assets/movie-1.jpg')) }}')"></span>
+            <span class="detail-related-meta">
+              <strong>{{ rel.get('title', 'Sans titre') }}</strong>
+              <small>{{ rel.get('year', '') }} &bull; {{ rel.get('duration', '') }}</small>
+            </span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <section class="detail-section detail-section-details glass-panel glass-edge" data-tab-panel="details" hidden>
+        <div class="detail-section-head">
+          <h2>Détails</h2>
+          <p>Cast, timeline et informations</p>
+        </div>
+        <section class="detail-cast-spotlight" aria-label="Casting principal">
+          <div class="detail-cast-head">
+            <h3>Casting</h3>
+            <p>Têtes d'affiche</p>
+          </div>
+          {% if media.get('cast') %}
+          <div class="detail-cast-grid" role="list" aria-label="Casting principal">
+            {% for actor in media.get('cast', []) %}
+            <article class="detail-cast-card" role="listitem" tabindex="0" aria-label="{{ actor.get('name', 'Acteur') }}{% if actor.get('role') %}, {{ actor.get('role') }}{% endif %}">
+              {% if actor.get('image') %}
+              <span class="detail-cast-photo" style="background-image:url('{{ actor.get('image') }}')"></span>
+              {% else %}
+              <span class="detail-cast-photo detail-cast-photo-fallback">{{ actor.get('name', '?')[:2] }}</span>
+              {% endif %}
+              <span class="detail-cast-name">{{ actor.get('name', 'Acteur') }}</span>
+              <small class="detail-cast-role">{{ actor.get('role', 'Rôle non renseigné') }}</small>
+            </article>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p class="detail-empty-note">Distribution non renseignée.</p>
+          {% endif %}
+        </section>
+        <div class="detail-details-grid">
+          <article class="detail-info-card">
+            <h3>Fiche technique</h3>
+            {% if media.get('facts') %}
+            <ul class="detail-facts-list">
+              {% for fact in media.get('facts', []) %}
+              <li>
+                <span>{{ fact.get('label', '') }}</span>
+                <strong>{{ fact.get('value', '') }}</strong>
+              </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+            <p class="detail-empty-note">Informations non renseignées.</p>
+            {% endif %}
+          </article>
+        </div>
+
+        <article class="detail-info-card detail-timeline-card">
+          <h3>Timeline saga</h3>
+          {% if media.get('timeline') %}
+          <ol class="detail-timeline-list">
+            {% for step in media.get('timeline', []) %}
+            <li>
+              <div class="detail-timeline-head">
+                <strong>{{ step.get('title', 'Etape') }}</strong>
+                {% if step.get('year') %}<span>{{ step.get('year') }}</span>{% endif %}
+              </div>
+              {% if step.get('description') %}
+              <p>{{ step.get('description') }}</p>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ol>
+          {% else %}
+          <p class="detail-empty-note">Timeline non renseignée.</p>
+          {% endif %}
+        </article>
+      </section>
+
+      {% if media.get('seasons') %}
+      <section class="detail-section glass-panel glass-edge" data-tab-panel="episodes">
+        <div class="detail-section-head">
+          <h2>Saisons et épisodes</h2>
+          <p>{{ media.get('episode_total', 0) }} épisode(s)</p>
+        </div>
+        <div class="season-selector" role="tablist" aria-label="Choisir une saison">
+          {% for season in media.get('seasons', []) %}
+          <button
+            type="button"
+            class="season-select-btn{% if loop.first %} active{% endif %}"
+            data-season-target="season-{{ loop.index }}"
+            aria-selected="{% if loop.first %}true{% else %}false{% endif %}"
+            style="--season-thumb:url('{{ season.get('poster', media.get('poster', media_image)) }}')"
+          >
+            <span class="season-select-thumb" aria-hidden="true"></span>
+            <span class="season-select-meta">
+              <span>{{ season.get('title', 'Saison') }}</span>
+              <small>{{ (season.get('episodes', []) | length) }} épisode(s)</small>
+            </span>
+          </button>
+          {% endfor %}
+        </div>
+
+        <div class="detail-seasons">
+          {% for season in media.get('seasons', []) %}
+          <section class="season-panel" data-season-panel="season-{{ loop.index }}" {% if not loop.first %}hidden{% endif %}>
+            <div class="season-episodes">
+              {% for episode in season.get('episodes', []) %}
+              <article class="episode-card">
+                <div class="episode-thumb" style="background-image:url('{{ episode.get('image', media_image) }}')"></div>
+                <div class="episode-body">
+                  <h3>S{{ '%02d' % (episode.get('season_number', 1)) }}E{{ '%02d' % (episode.get('episode_number', loop.index)) }} &bull; {{ episode.get('title', 'Épisode') }}</h3>
+                  <p>{{ episode.get('description', 'Épisode disponible.') }}</p>
+                  <div class="episode-meta">
+                    <span class="badge">{{ episode.get('rating', media_rating) }}</span>
+                    <span class="runtime">{{ episode.get('duration', '45min') }}</span>
+                  </div>
+                </div>
+                <div class="episode-actions">
+                  <button
+                    type="button"
+                    class="btn-primary episode-watch-btn"
+                    data-detail-url="{{ episode.get('detail_url', media.get('detail_url', '#')) }}"
+                    data-item-key="{{ episode.get('item_key', media.get('item_key', '')) }}"
+                  >
+                    Regarder
+                  </button>
+                </div>
+              </article>
+              {% endfor %}
+            </div>
+          </section>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </main>
+  </div>
+
+  <div class="avatar-hub" id="avatar-hub" aria-hidden="true">
+    <div class="avatar-hub-backdrop" data-close-avatar-hub></div>
+    <section class="avatar-hub-panel glass-panel glass-edge" role="dialog" aria-modal="true" aria-labelledby="avatar-hub-title">
+      <p class="avatar-hub-kicker">SMOVIE</p>
+      <h3 id="avatar-hub-title" class="text-display">Espace compte</h3>
+      <p class="avatar-hub-sub">Choisis une action.</p>
+
+      <div class="avatar-hub-profile">
+        <span
+          class="avatar-hub-badge"
+          id="avatar-hub-badge"
+          style="
+            --hub-avatar-bg: linear-gradient(145deg, rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.58), rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.24));
+            --hub-avatar-ring: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.55);
+            --hub-avatar-inner: rgba({{ profile_color_rgb or '249, 115, 22' }}, 0.22);
+          "
+        >{{ avatar_init or 'ST' }}</span>
+        <span class="avatar-hub-name" id="avatar-hub-name">{{ profile_name_init or 'Profil actif' }}</span>
+      </div>
+
+      <div class="avatar-hub-actions">
+        <button type="button" class="avatar-hub-btn" id="avatar-menu-switch-profile">Changer de profil</button>
+        <button type="button" class="avatar-hub-btn" id="avatar-menu-settings">Accueil</button>
+        <button type="button" class="avatar-hub-btn danger" id="avatar-menu-logout">Se deconnecter</button>
+      </div>
+
+      <button type="button" class="avatar-hub-close" data-close-avatar-hub>Fermer</button>
+    </section>
+  </div>
+
+  <script id="detail-data" type="application/json">{{ media | tojson }}</script>
+  <script src="{{ url_for('static', filename='js/detail.js', v='20260325tvsmooth1') }}"></script>
+</body>
+</html>
+
+

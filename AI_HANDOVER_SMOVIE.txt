@@ -1,0 +1,116 @@
+﻿SMOVIE - HANDOVER IA (reprise projet)
+Date: 2026-03-25
+
+1) OBJECTIF PRODUIT
+- SMOVIE est une plateforme de streaming locale (style Netflix/Prime) connectee a un NAS.
+- Front premium (dark + accents orange), pages Home/Films/Series/Documentaires/Ma Liste.
+- Fiches detail media (hero, contenu associe, details, cast, saisons/episodes).
+- Lecteur video en refonte: la route /watch redirige vers la fiche media.
+
+2) STACK TECHNIQUE
+- Backend: Flask (fichier principal: app.py)
+- Serveur prod Raspberry: Gunicorn + systemd
+- Front: templates Jinja + JS vanilla + CSS custom
+- Data: JSON local (catalog + mockMedia) + SQLite (session/progression/profils)
+- Scripts d'import/catalogue: TypeScript (npm scripts)
+
+3) ARBORESCENCE IMPORTANTE
+- app.py
+- templates/
+  - index.html
+  - detail.html
+- static/
+  - css/styles.css
+  - js/app.js
+  - js/detail.js
+- data/
+  - catalog.json
+  - mockMedia.json
+  - smovie.sqlite3
+- scripts/
+  - tmdb-import.ts
+  - build-catalog-from-mock.ts
+  - audit-mock-media.ts
+- public/library/ (assets locaux images)
+- Test-movie/ (videos de test)
+
+4) EXECUTION LOCALE
+- Python:
+  - pip install -r requirements.txt
+  - python app.py
+- Node (imports catalogue):
+  - npm install
+  - npm run tmdb:import
+  - npm run tmdb:catalog
+  - npm run tmdb:audit
+  - npm run tmdb:reset
+
+5) DEPLOIEMENT RASPBERRY
+- Service systemd: smovie.service
+- WorkingDirectory (prod): /home/shynwo/streamnest
+- Gunicorn ecoute sur: 0.0.0.0:8090
+- Commandes utiles:
+  - sudo systemctl restart smovie.service
+  - sudo systemctl status smovie.service --no-pager
+  - journalctl -u smovie.service -n 150 --no-pager
+
+6) LOGIQUE METIER CLE
+- Hero:
+  - affiche logo si dispo, sinon titre texte
+  - CTA principal intelligent (Regarder/Reprendre selon progression)
+  - CTA secondaire favoris (Ajouter/Retirer)
+- Progression:
+  - sauvegarde position lecture par profil + item_key
+- Favoris:
+  - par profil utilisateur
+  - alimente la page Ma Liste
+- Detail:
+  - onglets Contenu associe / Details (cast, fiche technique, timeline)
+  - Series: selection saisons + episodes
+  - actions Regarder/Reprendre restent sur la fiche (pas de player actif)
+
+7) DONNEES / MAPPING
+- Source principale metadata: TMDb
+- Enrichissement visuel: Fanart (logo/background/thumb selon disponibilite)
+- Champs importants media:
+  - item_key, slug, kind/category
+  - logo, hero_background, card_image, poster
+  - cast, seasons, episodes
+  - source_path/library_path (simulation NAS/bibliotheque)
+
+8) QUALITE / ENCODAGE
+- Le projet doit rester en UTF-8.
+- Correctifs mis en place:
+  - meta charset UTF-8 dans templates
+  - headers charset UTF-8 cote Flask
+  - fonction anti-mojibake dans app.py (_repair_mojibake)
+
+9) POINTS DE VIGILANCE
+- Ne pas melanger heroBackground et cardImage:
+  - hero: image clean/cinematographique
+  - cards: thumb lisible
+- Maintenir coherence media:
+  - un media = un objet coherent (titre/description/assets/cast)
+- Eviter regressions cache:
+  - augmenter version querystring des JS/CSS apres changements front.
+
+10) CHECKLIST RAPIDE SI CA CASSE
+1. sudo systemctl status smovie.service --no-pager
+2. journalctl -u smovie.service -n 150 --no-pager
+3. verifier JSON:
+   - data/catalog.json
+   - data/mockMedia.json
+4. verifier chemins assets:
+   - public/library/...
+5. hard refresh navigateur
+6. si besoin: relancer pipeline
+   - npm run tmdb:reset
+
+11) OBJECTIF DESIGN ACTUEL
+- Interface premium streaming:
+  - glass subtil
+  - contrastes lisibles
+  - animations fluides, non agressives
+  - compatibilite desktop/mobile/TV
+
+Fin du document.

@@ -1,0 +1,36 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Env & secrets (ne jamais versionner)
+.env
+.env.local
+data/.smovie_secret_key
+
+# Base locale & données générées
+*.sqlite3
+*.db
+
+# Node (tests / tooling)
+node_modules/
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+.tmp/
+tmp/
