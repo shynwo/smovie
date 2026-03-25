@@ -262,10 +262,13 @@ class PayloadService:
 
         if kind == "series":
             kind_label = "Anime" if category == "anime" else "Série"
+            watch_kind_segment = "serie"
         elif kind == "documentary":
             kind_label = "Documentaire"
+            watch_kind_segment = "documentaire"
         else:
             kind_label = "Film"
+            watch_kind_segment = "film"
 
         related_collection: list[dict[str, Any]] = []
         collection_sorted_all: list[dict[str, Any]] = []
@@ -436,6 +439,7 @@ class PayloadService:
             "kind": kind,
             "category": category,
             "kind_label": kind_label,
+            "watch_kind_segment": watch_kind_segment,
             "slug": slug,
             "item_key": item_key,
             "description": description,

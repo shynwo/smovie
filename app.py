@@ -2279,6 +2279,7 @@ def create_app() -> Flask:
         debug_mode = _clean_bool(request.args.get("debug"), False)
         detail_payload = build_detail_payload(catalog, item, favorite_keys, all_items=all_items)
         detail_payload["debug_enabled"] = bool(debug_mode)
+        watch_player_base = (os.getenv("SMOVIE_PLAYER_BASE") or "").strip().rstrip("/")
         (
             _payload,
             avatar_init,
@@ -2299,6 +2300,7 @@ def create_app() -> Flask:
             profile_id_init=profile_id_init,
             current_view=current_view,
             debug_mode=bool(debug_mode),
+            watch_player_base=watch_player_base,
         )
 
     register_routes(

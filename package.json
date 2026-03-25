@@ -1,14 +1,20 @@
 {
-  "name": "smovie-tools",
+  "name": "smovie-monorepo",
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
     "tmdb:import": "tsx tools/tmdb-import.ts",
     "tmdb:check": "tsc --noEmit",
     "tmdb:audit": "tsx tools/audit-mock-media.ts",
     "tmdb:catalog": "tsx tools/build-catalog-from-mock.ts",
-    "tmdb:reset": "tsx tools/tmdb-import.ts && tsx tools/build-catalog-from-mock.ts && tsx tools/audit-mock-media.ts"
+    "tmdb:reset": "tsx tools/tmdb-import.ts && tsx tools/build-catalog-from-mock.ts && tsx tools/audit-mock-media.ts",
+    "player:dev": "npm run dev -w smovie-web",
+    "player:build": "npm run build -w smovie-web"
   },
   "dependencies": {
     "dotenv": "^16.6.1",

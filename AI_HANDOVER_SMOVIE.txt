@@ -5,7 +5,7 @@ Date: 2026-03-25
 - SMOVIE est une plateforme de streaming locale (style Netflix/Prime) connectee a un NAS.
 - Front premium (dark + accents orange), pages Home/Films/Series/Documentaires/Ma Liste.
 - Fiches detail media (hero, contenu associe, details, cast, saisons/episodes).
-- Lecteur video en refonte: la route /watch redirige vers la fiche media.
+- Lecteur video: app Next `apps/smovie-web` (package `packages/glass-player`). Depuis Flask, definir `SMOVIE_PLAYER_BASE` (ex. http://127.0.0.1:3000) pour que « Regarder » ouvre `/watch/<kind>/<slug>`. Sans cette variable, les boutons restent sur la fiche uniquement.
 
 2) STACK TECHNIQUE
 - Backend: Flask (fichier principal: app.py)

@@ -22,6 +22,8 @@ data/.smovie_secret_key
 
 # Node (tests / tooling)
 node_modules/
+.next/
+out/
 
 # IDE & OS
 .idea/

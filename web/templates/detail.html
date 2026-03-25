@@ -135,6 +135,9 @@
                 type="button"
                 id="detail-watch-btn"
                 data-detail-url="{{ media.get('detail_url', '#') }}"
+                {% if watch_player_base %}
+                data-watch-url="{{ watch_player_base }}/watch/{{ media.watch_kind_segment }}/{{ media.slug }}"
+                {% endif %}
                 data-item-key="{{ media.get('item_key', '') }}"
               >
                 Regarder
@@ -325,6 +328,9 @@
                     type="button"
                     class="btn-primary episode-watch-btn"
                     data-detail-url="{{ episode.get('detail_url', media.get('detail_url', '#')) }}"
+                    {% if watch_player_base %}
+                    data-watch-url="{{ watch_player_base }}/watch/{{ media.watch_kind_segment }}/{{ media.slug }}?item_key={{ episode.get('item_key', '') | urlencode }}"
+                    {% endif %}
                     data-item-key="{{ episode.get('item_key', media.get('item_key', '')) }}"
                   >
                     Regarder
@@ -372,7 +378,7 @@
   </div>
 
   <script id="detail-data" type="application/json">{{ media | tojson }}</script>
-  <script src="{{ url_for('static', filename='js/detail.js', v='20260326scrollfix1') }}"></script>
+  <script src="{{ url_for('static', filename='js/detail.js', v='20260325player1') }}"></script>
 </body>
 </html>
 

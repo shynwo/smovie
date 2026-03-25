@@ -1,9 +1,9 @@
-﻿(function () {
+(function () {
   const detailDataNode = document.getElementById("detail-data");
   const detailWatchBtn = document.getElementById("detail-watch-btn");
   const detailResumeFill = document.getElementById("detail-resume-fill");
   const detailFavoriteBtn = document.getElementById("detail-favorite-btn");
-  const actionButtons = Array.from(document.querySelectorAll("[data-detail-url]"));
+  const actionButtons = Array.from(document.querySelectorAll("[data-detail-url], [data-watch-url]"));
 
   const detailTabButtons = Array.from(document.querySelectorAll(".detail-tab-btn[data-tab-target]"));
   const detailTabPanels = Array.from(document.querySelectorAll("[data-tab-panel]"));
@@ -285,15 +285,17 @@
     actionButtons.forEach((btn) => {
       if (!(btn instanceof HTMLElement)) return;
       btn.addEventListener("click", (event) => {
+        const watchUrl = String(btn.getAttribute("data-watch-url") || "").trim();
         const detailUrl = String(btn.getAttribute("data-detail-url") || "").trim();
-        if (!detailUrl || detailUrl === "#") return;
+        const targetUrl = watchUrl || detailUrl;
+        if (!targetUrl || targetUrl === "#") return;
         const currentUrl = `${window.location.pathname}${window.location.search}`;
-        if (detailUrl === currentUrl || detailUrl === window.location.pathname) {
+        if (targetUrl === currentUrl || targetUrl === window.location.pathname) {
           event.preventDefault();
           return;
         }
         event.preventDefault();
-        window.location.href = detailUrl;
+        window.location.href = targetUrl;
       });
     });
   }
