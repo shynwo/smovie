@@ -1,4 +1,4 @@
-﻿SMOVIE - HANDOVER IA (reprise projet)
+SMOVIE - HANDOVER IA (reprise projet)
 Date: 2026-03-25
 
 1) OBJECTIF PRODUIT
@@ -16,23 +16,20 @@ Date: 2026-03-25
 
 3) ARBORESCENCE IMPORTANTE
 - app.py
-- templates/
-  - index.html
-  - detail.html
-- static/
-  - css/styles.css
-  - js/app.js
-  - js/detail.js
+- smovie/ (package Python)
+- web/templates/ (index.html, detail.html)
+- web/static/ (css, js, template-assets)
 - data/
   - catalog.json
   - mockMedia.json
   - smovie.sqlite3
-- scripts/
+- tools/
   - tmdb-import.ts
   - build-catalog-from-mock.ts
   - audit-mock-media.ts
 - public/library/ (assets locaux images)
-- Test-movie/ (videos de test)
+- media/ (videos de test /media/)
+- vendor/slickstream-vision-main/ (prototype React, reference)
 
 4) EXECUTION LOCALE
 - Python:

@@ -34,7 +34,7 @@ except ImportError:
 
 CATALOG_PATH = BASE_DIR / "data" / "catalog.json"
 MOCK_MEDIA_PATH = BASE_DIR / "data" / "mockMedia.json"
-MEDIA_DIR = BASE_DIR / "Test-movie"
+MEDIA_DIR = BASE_DIR / "media"
 PUBLIC_LIBRARY_DIR = BASE_DIR / "public" / "library"
 DB_PATH = BASE_DIR / "data" / "smovie.sqlite3"
 DEFAULT_IMAGE = "/static/template-assets/movie-1.jpg"
@@ -341,7 +341,7 @@ def _item_uses_tv_fanart_visuals(item: dict[str, Any], kind: str) -> bool:
 
 
 def _fanart_logo_keys_for_item(item: dict[str, Any], kind: str) -> list[str]:
-    """Ordre aligné sur scripts/clients/fanart.ts (films vs séries). `logo` = fichier local importé."""
+    """Ordre aligné sur tools/clients/fanart.ts (films vs séries). `logo` = fichier local importé."""
     if _item_uses_tv_fanart_visuals(item, kind):
         return [
             "logo",
@@ -2043,7 +2043,12 @@ class SlidingWindowRateLimiter:
 
 
 def create_app() -> Flask:
-    app = Flask(__name__)
+    app = Flask(
+        __name__,
+        template_folder=str(BASE_DIR / "web" / "templates"),
+        static_folder=str(BASE_DIR / "web" / "static"),
+        static_url_path="/static",
+    )
     app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
     _lib_cache = _library_cache_max_age_seconds()
     app.config.update(

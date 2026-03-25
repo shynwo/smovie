@@ -1,4 +1,4 @@
-﻿# StreamNest (Netflix maison)
+# StreamNest (Netflix maison)
 
 Projet parallele pour un serveur media personnel sur Raspberry Pi.
 
@@ -21,16 +21,16 @@ Puis ouvrir:
 - http://localhost:8090
 
 ## Structure
-- `app.py`: app Flask
-- `templates/index.html`: page d'accueil style plateforme streaming
-- `static/css/styles.css`: UI moderne et responsive
-- `static/js/app.js`: rendu dynamique des ranges
+- `app.py`: point d'entrée Flask
+- `smovie/`: package Python (routes, catalogue, auth, payload)
+- `web/templates/`: pages Jinja (`index.html`, `detail.html`)
+- `web/static/`: CSS/JS et assets servis sous `/static/`
 - `data/catalog.json`: donnees front (`hero + rows`) generees automatiquement
 - `data/mockMedia.json`: dataset principal (films/series/documentaires)
-- `scripts/types/media.ts`: types TypeScript
-- `scripts/tmdb-import.ts`: import TMDb + enrichissement Fanart.tv + download images locales
-- `scripts/clients/fanart.ts`: client Fanart.tv minimal (backdrop/logo)
+- `tools/`: scripts TypeScript (import TMDb, audit, generation catalogue)
 - `public/library/...`: posters/backdrops/saisons/episodes locaux
+- `media/`: fichiers video de test servis sous `/media/`
+- `vendor/slickstream-vision-main/`: prototype React (reference, hors app Flask)
 
 ## Import TMDb (TypeScript)
 Prerequis: Node.js 18+

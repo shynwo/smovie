@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SRC="/home/shynwo/streamnest/Test-movie/attack-on-titan-trailer.mp4"
-DST="/home/shynwo/streamnest/Test-movie/hls/attack-on-titan-trailer"
+SRC="/home/shynwo/streamnest/media/attack-on-titan-trailer.mp4"
+DST="/home/shynwo/streamnest/media/hls/attack-on-titan-trailer"
 TMP="${DST}.tmp"
-LOG="/home/shynwo/streamnest/Test-movie/hls/rebuild_hls_audio_fast.log"
+LOG="/home/shynwo/streamnest/media/hls/rebuild_hls_audio_fast.log"
 
 mkdir -p "$(dirname "$LOG")"
 echo "[INFO] $(date -Iseconds) start rebuild FAST" >> "$LOG"

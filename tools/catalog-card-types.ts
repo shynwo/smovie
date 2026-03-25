@@ -1,5 +1,5 @@
 /**
- * Contrat unique vignette catalogue — aligné avec app.py (`_clean_card_image_type`) et `static/js/app.js`.
+ * Contrat unique vignette catalogue — aligné avec app.py (`_clean_card_image_type`) et `web/static/js/app.js`.
  * Fanart: moviethumb (films), tvthumb (séries / docs TV).
  */
 export const CATALOG_CARD_IMAGE_TYPES = [
