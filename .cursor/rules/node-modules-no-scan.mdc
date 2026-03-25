@@ -1,0 +1,10 @@
+---
+description: Ne pas explorer ni « reverifier » node_modules sauf demande explicite.
+alwaysApply: true
+---
+
+# node_modules — ne pas scanner par défaut
+
+- **Ne pas** lister, ouvrir, parcourir ou « reverifier » le dossier `node_modules/` à chaque tâche (pas de `Glob`, `Grep`, `Read` ou inventaire récurrent sur ce répertoire).
+- S’appuyer sur `package.json` / `package-lock.json` pour les dépendances et versions ; considérer `node_modules` comme une boîte noire gérée par `npm install`.
+- **Exception** : si l’utilisateur demande explicitement d’inspecter une dépendance, de déboguer un bug précis dedans, ou si une erreur d’exécution pointe vers un fichier précis sous `node_modules`, alors ouvrir uniquement ce qui est nécessaire.
