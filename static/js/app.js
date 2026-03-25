@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const heroMedia = document.getElementById("hero-media");
   const heroSection = document.querySelector(".hero");
   const heroLogo = document.getElementById("hero-logo");
@@ -85,6 +85,11 @@
   let currentSearchQuery = "";
   let searchFromUrlHydrated = false;
   let catalogState = { hero: {}, rows: [] };
+  /** Liste plate + index pour éviter de reconstruire le catalogue à chaque lookup (titre, hero, favoris). */
+  let catalogItemsFlat = [];
+  let catalogByItemKey = new Map();
+  let catalogBySlug = new Map();
+  let catalogItemsByTitle = new Map();
   let currentHeroItemKey = "";
   let tvKeyboardNavWired = false;
   const FETCH_TIMEOUT_MS = 7000;
@@ -912,14 +917,39 @@
     ].join("\n");
   }
 
-  function getCatalogItems() {
+  function rebuildCatalogIndexes() {
     const rows = Array.isArray(catalogState.rows) ? catalogState.rows : [];
-    const out = [];
+    const flat = [];
+    const byKey = new Map();
+    const bySlug = new Map();
+    const byTitle = new Map();
     rows.forEach((row) => {
       const items = Array.isArray(row && row.items) ? row.items : [];
-      items.forEach((item) => out.push(item));
+      items.forEach((item) => {
+        if (!item || typeof item !== "object") return;
+        flat.push(item);
+        const k = getCanonicalItemKey(item);
+        if (k) byKey.set(k, item);
+        const slug = normalizeKey(item.slug || "");
+        if (slug) {
+          if (!bySlug.has(slug)) bySlug.set(slug, []);
+          bySlug.get(slug).push(item);
+        }
+        const titleLower = String(item.title || "").trim().toLowerCase();
+        if (titleLower) {
+          if (!byTitle.has(titleLower)) byTitle.set(titleLower, []);
+          byTitle.get(titleLower).push(item);
+        }
+      });
     });
-    return out;
+    catalogItemsFlat = flat;
+    catalogByItemKey = byKey;
+    catalogBySlug = bySlug;
+    catalogItemsByTitle = byTitle;
+  }
+
+  function getCatalogItems() {
+    return catalogItemsFlat;
   }
 
   function getCanonicalItemKey(item) {
@@ -955,33 +985,27 @@
     const expectedSlug = normalizeKey(identity.slug || "");
     const expectedTitle = String(identity.title || "").trim().toLowerCase();
     const expectedKind = String(identity.kind || identity.item_kind || "").trim().toLowerCase();
-    const items = getCatalogItems();
 
     if (expectedKey) {
-      for (let idx = 0; idx < items.length; idx += 1) {
-        const candidate = items[idx];
-        if (!candidate || typeof candidate !== "object") continue;
-        if (getCanonicalItemKey(candidate) === expectedKey) return candidate;
-      }
+      const hit = catalogByItemKey.get(expectedKey);
+      if (hit) return hit;
     }
 
     if (expectedSlug) {
-      for (let idx = 0; idx < items.length; idx += 1) {
-        const candidate = items[idx];
+      const candidates = catalogBySlug.get(expectedSlug) || [];
+      for (let idx = 0; idx < candidates.length; idx += 1) {
+        const candidate = candidates[idx];
         if (!candidate || typeof candidate !== "object") continue;
-        const candidateSlug = normalizeKey(candidate.slug || "");
-        if (!candidateSlug || candidateSlug !== expectedSlug) continue;
         const candidateKind = String(candidate.kind || "").trim().toLowerCase();
         if (!expectedKind || !candidateKind || candidateKind === expectedKind) return candidate;
       }
     }
 
     if (expectedTitle) {
-      for (let idx = 0; idx < items.length; idx += 1) {
-        const candidate = items[idx];
+      const titleBucket = catalogItemsByTitle.get(expectedTitle) || [];
+      for (let idx = 0; idx < titleBucket.length; idx += 1) {
+        const candidate = titleBucket[idx];
         if (!candidate || typeof candidate !== "object") continue;
-        const candidateTitle = String(candidate.title || "").trim().toLowerCase();
-        if (!candidateTitle || candidateTitle !== expectedTitle) continue;
         const candidateKind = String(candidate.kind || "").trim().toLowerCase();
         if (!expectedKind || !candidateKind || candidateKind === expectedKind) return candidate;
       }
@@ -1074,13 +1098,7 @@
   function findCatalogItemByKey(itemKey) {
     const expectedKey = String(itemKey || "").trim();
     if (!expectedKey) return null;
-    const items = getCatalogItems();
-    for (let idx = 0; idx < items.length; idx += 1) {
-      const candidate = items[idx];
-      if (!candidate || typeof candidate !== "object") continue;
-      if (getCanonicalItemKey(candidate) === expectedKey) return candidate;
-    }
-    return null;
+    return catalogByItemKey.get(expectedKey) || null;
   }
 
   function findDetailUrlByItemKey(itemKey) {
@@ -1131,16 +1149,9 @@
   function findItemKeyByTitle(titleValue) {
     const title = String(titleValue || "").trim().toLowerCase();
     if (!title) return "";
-    const items = getCatalogItems();
-    for (let idx = 0; idx < items.length; idx += 1) {
-      const candidate = items[idx];
-      const candidateTitle = String(candidate && candidate.title ? candidate.title : "").trim().toLowerCase();
-      if (!candidateTitle) continue;
-      if (candidateTitle === title) {
-        return getCanonicalItemKey(candidate);
-      }
-    }
-    return "";
+    const bucket = catalogItemsByTitle.get(title) || [];
+    const hit = bucket[0];
+    return hit ? getCanonicalItemKey(hit) : "";
   }
 
   function dedupeRowsByItemKey(rows) {
@@ -1937,6 +1948,7 @@
     currentView = resolvedView;
     syncNavigationState();
     catalogState = { hero, rows };
+    rebuildCatalogIndexes();
     currentHeroItemKey = "";
     renderRowsForCurrentView();
     refreshHeroForActiveProfile();
@@ -1955,6 +1967,7 @@
     } catch (e) {
       if (token !== viewLoadToken) return;
       catalogState = { hero: {}, rows: fallbackRows };
+      rebuildCatalogIndexes();
       currentHeroItemKey = "";
       renderRowsForCurrentView();
       refreshHeroForActiveProfile();

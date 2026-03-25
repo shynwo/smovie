@@ -1685,6 +1685,11 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
         else ""
     )
 
+    hero_visual = _clean_image(
+        hero_raw.get("hero_background"),
+        _clean_image(hero_raw.get("image"), DEFAULT_HERO_IMAGE),
+    )
+
     hero = {
         "title": _clean_text(hero_raw.get("title"), "SMovie", 110),
         "subtitle": _clean_text(hero_raw.get("subtitle"), "Bibliotheque locale SMovie.", 420),
@@ -1716,14 +1721,8 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
         "media_info_summary": hero_media_info_summary,
         "image_position": _clean_text(hero_raw.get("image_position"), "50% 50%", 24),
         "image_fit": _clean_text(hero_raw.get("image_fit"), "cover", 16),
-        "image": _clean_image(
-            hero_raw.get("hero_background"),
-            _clean_image(hero_raw.get("image"), DEFAULT_HERO_IMAGE),
-        ),
-        "hero_background": _clean_image(
-            hero_raw.get("hero_background"),
-            _clean_image(hero_raw.get("image"), DEFAULT_HERO_IMAGE),
-        ),
+        "image": hero_visual,
+        "hero_background": hero_visual,
         "source_path": _clean_text(hero_raw.get("source_path"), "", 280),
         "library_path": _clean_text(hero_raw.get("library_path"), "", 280),
     }
@@ -1760,9 +1759,12 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
                     item_genre = _clean_text(item_raw.get("genre"), "Catalogue", 44)
                     item_duration = _clean_text(item_raw.get("duration"), "", 20)
                     item_runtime = _clean_text(item_raw.get("runtime"), "", 20)
+                    raw_item_image = item_raw.get("image")
+                    item_image_for_card = _clean_image(raw_item_image, DEFAULT_IMAGE)
+                    item_image_for_hero = _clean_image(raw_item_image, DEFAULT_HERO_IMAGE)
                     item_card_image = _clean_image(
                         item_raw.get("card_image") or item_raw.get("cardImage"),
-                        _clean_image(item_raw.get("image"), DEFAULT_IMAGE),
+                        item_image_for_card,
                     )
                     item_card_image_position = _clean_bg_position(
                         item_raw.get("card_image_position") or item_raw.get("cardImagePosition"),
@@ -1774,7 +1776,7 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
                     )
                     item_hero_background = _clean_image(
                         item_raw.get("hero_background") or item_raw.get("heroBackground"),
-                        _clean_image(item_raw.get("backdrop"), _clean_image(item_raw.get("image"), DEFAULT_HERO_IMAGE)),
+                        _clean_image(item_raw.get("backdrop"), item_image_for_hero),
                     )
                     item_image = item_card_image
                     item_poster = _clean_image(item_raw.get("poster"), item_card_image)

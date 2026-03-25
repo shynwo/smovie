@@ -21,7 +21,7 @@ class CatalogStore:
 
     - Keeps an in-memory cache keyed by catalog file mtime
     - Can sync catalog from mock media only when mock is newer
-    - Builds lightweight indexes (all_items + items_by_slug_key) for faster lookups
+    - Builds lightweight indexes (all_items, items_by_slug_key, items_by_item_key)
     """
 
     def __init__(
@@ -47,7 +47,7 @@ class CatalogStore:
         self._mtime: Optional[float] = None
         self._mock_mtime: Optional[float] = None
         self._cached: CatalogDict = {"hero": {}, "rows": []}
-        self._indexes: dict[str, Any] = {"all_items": [], "items_by_slug_key": {}}
+        self._indexes: dict[str, Any] = {"all_items": [], "items_by_slug_key": {}, "items_by_item_key": {}}
 
     def get_indexes(self) -> dict[str, Any]:
         with self._lock:
@@ -56,9 +56,10 @@ class CatalogStore:
     def _build_indexes(self, catalog: CatalogDict) -> dict[str, Any]:
         rows = catalog.get("rows", [])
         if not isinstance(rows, list):
-            return {"all_items": [], "items_by_slug_key": {}}
+            return {"all_items": [], "items_by_slug_key": {}, "items_by_item_key": {}}
 
         items_by_slug_key: dict[str, list[dict[str, Any]]] = {}
+        items_by_item_key: dict[str, dict[str, Any]] = {}
         all_items: list[dict[str, Any]] = []
         seen_item_keys: set[str] = set()
 
@@ -77,13 +78,14 @@ class CatalogStore:
                     continue
                 seen_item_keys.add(item_key)
                 all_items.append(item)
+                items_by_item_key[item_key] = item
 
                 slug = self._build_item_slug(item)
                 slug_key = self._normalize_slug_key(slug)
                 if slug_key:
                     items_by_slug_key.setdefault(slug_key, []).append(item)
 
-        return {"all_items": all_items, "items_by_slug_key": items_by_slug_key}
+        return {"all_items": all_items, "items_by_slug_key": items_by_slug_key, "items_by_item_key": items_by_item_key}
 
     def _maybe_sync_from_mock_media(self) -> None:
         # Optimisation: ne pas reconstruire le catalogue à chaque requête.
@@ -134,7 +136,7 @@ class CatalogStore:
             with self._lock:
                 self._cached = {"hero": {}, "rows": []}
                 self._mtime = None
-                self._indexes = {"all_items": [], "items_by_slug_key": {}}
+                self._indexes = {"all_items": [], "items_by_slug_key": {}, "items_by_item_key": {}}
             return {"hero": {}, "rows": []}
 
         try:
@@ -143,7 +145,7 @@ class CatalogStore:
             with self._lock:
                 self._cached = {"hero": {}, "rows": []}
                 self._mtime = None
-                self._indexes = {"all_items": [], "items_by_slug_key": {}}
+                self._indexes = {"all_items": [], "items_by_slug_key": {}, "items_by_item_key": {}}
             return {"hero": {}, "rows": []}
 
         with self._lock:
