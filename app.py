@@ -883,17 +883,6 @@ def _detect_video_codec(text: str) -> str:
     return ""
 
 
-def _detect_video_container(text: str) -> str:
-    probe = text.lower()
-    if ".mkv" in probe:
-        return "MKV"
-    if ".mp4" in probe:
-        return "MP4"
-    if ".m3u8" in probe:
-        return "HLS"
-    return ""
-
-
 def _normalize_video_source(value: Any) -> str:
     text = _clean_text(value, "", 40)
     if not text:
@@ -934,17 +923,41 @@ def _normalize_video_codec(value: Any) -> str:
     return detected or text
 
 
-def _build_media_info_parts(source: str, quality: str, hdr: str, audio: str, codec: str) -> tuple[str, str, str]:
-    source_is_web = source.upper().startswith("WEB")
-    ordered_primary = [source, quality, hdr] if source_is_web else [quality, source, hdr]
-    primary = " ".join(_dedupe_text_parts(ordered_primary)).strip()
-    secondary = audio or codec
+def _build_streaming_media_badges(quality: str, hdr: str, audio: str) -> tuple[str, str, str]:
+    """
+    Ligne hero type plateforme : résolution + HDR, puis audio (Atmos, 5.1…).
+    Pas de conteneur (MKV/MP4), pas de codec seul, pas de texte de repli.
+    """
+    primary = " ".join(_dedupe_text_parts([quality.strip(), hdr.strip()])).strip()
+    secondary = (audio or "").strip()
     tertiary = ""
-    if audio and codec and codec.casefold() not in audio.casefold():
-        tertiary = codec
-    if secondary and tertiary and secondary.casefold() == tertiary.casefold():
-        tertiary = ""
+    if not primary and not secondary:
+        return "", "", ""
     return primary, secondary, tertiary
+
+
+_MEDIA_BADGE_JUNK_TOKENS = frozenset(
+    {
+        "mkv",
+        "mp4",
+        "m4v",
+        "avi",
+        "mov",
+        "hls",
+        "ts",
+        "webm",
+        "nas local",
+    }
+)
+
+
+def _scrub_media_badge_token(value: str) -> str:
+    t = _clean_text(value, "", 80).strip()
+    if not t:
+        return ""
+    if t.casefold() in _MEDIA_BADGE_JUNK_TOKENS:
+        return ""
+    return t
 
 
 def _extract_media_technical_info(item: dict[str, Any]) -> dict[str, str]:
@@ -968,16 +981,10 @@ def _extract_media_technical_info(item: dict[str, Any]) -> dict[str, str]:
     hdr = _normalize_video_hdr(raw_hdr) or _detect_video_hdr(probe)
     audio = _normalize_video_audio(raw_audio) or _detect_video_audio(probe)
     codec = _normalize_video_codec(raw_codec) or _detect_video_codec(probe)
-    if not source:
-        source = _detect_video_container(probe)
 
-    primary, secondary, tertiary = _build_media_info_parts(source, quality, hdr, audio, codec)
+    primary, secondary, tertiary = _build_streaming_media_badges(quality, hdr, audio)
     parts = _dedupe_text_parts([primary, secondary, tertiary])
-    summary = " • ".join(parts)
-    if not summary:
-        summary = raw_summary or "NAS local"
-    if not primary:
-        primary = summary
+    summary = " • ".join(parts) if parts else ""
 
     return {
         "video_source": source,
@@ -1653,6 +1660,30 @@ def sanitize_catalog(raw: Any) -> dict[str, Any]:
         hero_media_info_summary = " • ".join(
             _dedupe_text_parts([hero_media_info_primary, hero_media_info_secondary, hero_media_info_tertiary])
         )
+
+    hero_media_info_primary = _scrub_media_badge_token(hero_media_info_primary)
+    hero_media_info_secondary = _scrub_media_badge_token(hero_media_info_secondary)
+    hero_media_info_tertiary = _scrub_media_badge_token(hero_media_info_tertiary)
+    summary_clean = [
+        t
+        for part in re.split(r"[•|]", hero_media_info_summary)
+        if (t := _scrub_media_badge_token(part))
+    ]
+    summary_clean = _dedupe_text_parts(summary_clean)
+    if not (hero_media_info_primary or hero_media_info_secondary or hero_media_info_tertiary):
+        if summary_clean:
+            hero_media_info_primary = summary_clean[0] if len(summary_clean) > 0 else ""
+            hero_media_info_secondary = summary_clean[1] if len(summary_clean) > 1 else ""
+            hero_media_info_tertiary = summary_clean[2] if len(summary_clean) > 2 else ""
+    hero_media_info_summary = (
+        " • ".join(
+            _dedupe_text_parts(
+                [hero_media_info_primary, hero_media_info_secondary, hero_media_info_tertiary]
+            )
+        )
+        if (hero_media_info_primary or hero_media_info_secondary or hero_media_info_tertiary)
+        else ""
+    )
 
     hero = {
         "title": _clean_text(hero_raw.get("title"), "SMovie", 110),
