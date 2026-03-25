@@ -20,40 +20,50 @@
 
 * {
   box-sizing: border-box;
-  scrollbar-width: none;
 }
 
-*::-webkit-scrollbar {
-  display: none;
+/* Défilement page : un seul conteneur (`html`) pour éviter conflits molette / double scroll. */
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-padding-top: 96px;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: hsla(0, 0%, 100%, 0.28) transparent;
 }
 
-html,
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: hsla(0, 0%, 100%, 0.22);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100%;
-}
-
-body {
+  overflow-x: hidden;
+  overflow-y: visible;
   background: var(--background);
   color: var(--foreground);
   font-family: "Geist", system-ui, sans-serif;
-  overflow-x: hidden;
-  overflow-y: auto;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   touch-action: pan-y;
-  overscroll-behavior-y: contain;
-}
-
-html {
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scroll-padding-top: 96px;
-  overscroll-behavior: none;
 }
 
 body[data-theme="glass"],
@@ -1219,6 +1229,11 @@ body.profile-switcher-open .mobile-dropdown {
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x pan-y;
+  scrollbar-width: none;
+}
+
+.row-track::-webkit-scrollbar {
+  display: none;
 }
 
 .movie-card {
