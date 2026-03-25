@@ -1,0 +1,12 @@
+---
+description: Après des changements de code, versionner et pousser sur GitHub.
+alwaysApply: true
+---
+
+# GitHub — sauvegarde à chaque modification
+
+- Quand tu **termines une modification** (feature, correctif, refactor) dans ce dépôt, exécute un **commit Git** avec un message clair en français ou en anglais (impératif court, une ligne + détail optionnel).
+- Pousse ensuite vers **`origin`** sur la branche courante (souvent `main`) : `git push`.
+- Utilise le chemin Git Windows si `git` n’est pas dans le PATH : `"C:\Program Files\Git\bin\git.exe"`.
+- **Ne jamais** committer `.env`, `*.sqlite3`, `data/.smovie_secret_key`, `.venv/`, `node_modules/` (déjà dans `.gitignore`).
+- Si l’utilisateur demande explicitement de **ne pas** pousser ou de ne pas committer, respecte cette consigne.
