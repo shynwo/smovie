@@ -170,7 +170,7 @@ body.theme-glass {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  max-width: calc(100% - 500px);
+  max-width: min(calc(100vw - 380px), 720px);
   overflow-x: hidden;
   overflow-y: hidden;
   white-space: nowrap;
@@ -212,7 +212,7 @@ body.theme-glass {
 
 .actions-pill {
   position: relative;
-  z-index: 186;
+  z-index: 196;
   margin-left: auto;
   border-radius: 999px;
   padding: 8px;
@@ -1718,7 +1718,7 @@ body.profile-switcher-open .mobile-dropdown {
   }
 
   .menu-pill {
-    max-width: calc(100% - 300px);
+    max-width: min(calc(100vw - 320px), 600px);
     padding: 10px 14px;
     justify-content: flex-start;
     overflow-x: auto;
