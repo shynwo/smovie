@@ -205,11 +205,15 @@
     });
 
     if (wanted === "details" && castRailRefreshers.length) {
-      window.requestAnimationFrame(() => {
+      const run = () => {
         castRailRefreshers.forEach((fn) => {
           if (typeof fn === "function") fn();
         });
+      };
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(run);
       });
+      window.setTimeout(run, 120);
     }
   }
 
@@ -537,7 +541,7 @@
 
       const updateNavState = () => {
         const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
-        const isOverflowing = maxScroll > 6;
+        const isOverflowing = maxScroll > 2;
         wrap.classList.toggle("is-overflowing", isOverflowing);
 
         if (prevBtn instanceof HTMLButtonElement) {
@@ -584,6 +588,7 @@
 
       scheduleUpdate();
       window.setTimeout(scheduleUpdate, 100);
+      window.setTimeout(scheduleUpdate, 320);
     });
   }
 
@@ -593,11 +598,21 @@
     wireTopSearch();
     wireAvatarMenu();
     wireDetailFavorite();
-    wireDetailTabs();
     wireCastRails();
+    wireDetailTabs();
     wireSeasonSelector();
     wireActionButtons();
     syncDetailWatchButton();
+
+    const refreshCastRailsLayout = () => {
+      castRailRefreshers.forEach((fn) => {
+        if (typeof fn === "function") fn();
+      });
+    };
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(refreshCastRailsLayout);
+    });
+    window.setTimeout(refreshCastRailsLayout, 200);
   }
 
   init();

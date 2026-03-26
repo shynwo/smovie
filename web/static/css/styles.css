@@ -1224,10 +1224,10 @@ body.profile-switcher-open .mobile-dropdown {
   cursor: default;
 }
 
-/* Souris précise : flèches seulement près du bord gauche/droit (voir .is-near-* + JS). */
+/* Souris précise : flèches rangées catalogue seulement près du bord (voir .is-near-* + JS). Pas .row-strip = pas masqué (ex. casting fiche). */
 @media (hover: hover) and (pointer: fine) {
   @media (min-width: 921px) {
-    .row-scroll-btn:not(:disabled) {
+    .row-strip .row-scroll-btn:not(:disabled) {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -1240,13 +1240,6 @@ body.profile-switcher-open .mobile-dropdown {
     }
 
     .row-strip.is-near-right .row-scroll-btn.right:not(:disabled) {
-      opacity: 0.94;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    /* Casting fiche : pas de suivi souris bord d’écran — flèches visibles comme sur tablette. */
-    .detail-cast-strip .row-scroll-btn:not(:disabled):not([hidden]) {
       opacity: 0.94;
       visibility: visible;
       pointer-events: auto;
