@@ -227,7 +227,10 @@
             <p>Têtes d'affiche</p>
           </div>
           {% if media.get('cast') %}
-          <div class="detail-cast-grid" role="list" aria-label="Casting principal">
+          <div class="detail-cast-strip" data-cast-rail-wrap>
+            <button type="button" class="row-scroll-btn left detail-cast-scroll-btn" data-cast-nav="prev" hidden aria-label="Défiler le casting vers la gauche">&#8249;</button>
+            <button type="button" class="row-scroll-btn right detail-cast-scroll-btn" data-cast-nav="next" hidden aria-label="Défiler le casting vers la droite">&#8250;</button>
+            <div class="detail-cast-grid" data-cast-rail role="list" aria-label="Casting principal">
             {% for actor in media.get('cast', []) %}
             <article class="detail-cast-card" role="listitem" tabindex="0" aria-label="{{ actor.get('name', 'Acteur') }}{% if actor.get('role') %}, {{ actor.get('role') }}{% endif %}">
               {% if actor.get('image') %}
@@ -239,6 +242,7 @@
               <small class="detail-cast-role">{{ actor.get('role', 'Rôle non renseigné') }}</small>
             </article>
             {% endfor %}
+            </div>
           </div>
           {% else %}
           <p class="detail-empty-note">Distribution non renseignée.</p>

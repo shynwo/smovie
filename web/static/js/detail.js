@@ -24,6 +24,7 @@
   const avatarMenuLogoutBtn = document.getElementById("avatar-menu-logout");
 
   const castRailWraps = Array.from(document.querySelectorAll("[data-cast-rail-wrap]"));
+  const castRailRefreshers = [];
 
   const profileId = String((document.body && document.body.getAttribute("data-active-profile-id")) || "").trim();
   const initialView = String((document.body && document.body.getAttribute("data-current-view")) || "home").trim();
@@ -202,6 +203,14 @@
       const panelName = String(panel.getAttribute("data-tab-panel") || "").trim().toLowerCase();
       panel.hidden = panelName !== wanted;
     });
+
+    if (wanted === "details" && castRailRefreshers.length) {
+      window.requestAnimationFrame(() => {
+        castRailRefreshers.forEach((fn) => {
+          if (typeof fn === "function") fn();
+        });
+      });
+    }
   }
 
   function wireDetailTabs() {
@@ -514,7 +523,17 @@
       if (!(rail instanceof HTMLElement)) return;
 
       let rafToken = 0;
-      const scrollStep = () => Math.max(rail.clientWidth * 0.72, 240);
+
+      const scrollStep = () => {
+        const firstCard = rail.querySelector(".detail-cast-card");
+        const computed = window.getComputedStyle(rail);
+        const gap = parseFloat(computed.gap || computed.columnGap || "12") || 12;
+        const w = firstCard instanceof HTMLElement ? firstCard.getBoundingClientRect().width : 0;
+        if (w > 0) {
+          return Math.max(168, Math.round(w * 2 + gap * 1.25));
+        }
+        return Math.max(rail.clientWidth * 0.65, 240);
+      };
 
       const updateNavState = () => {
         const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
@@ -539,6 +558,8 @@
           updateNavState();
         });
       };
+
+      castRailRefreshers.push(scheduleUpdate);
 
       const scrollRailBy = (delta) => {
         rail.scrollBy({ left: delta, behavior: "smooth" });
