@@ -1153,7 +1153,8 @@ body.profile-switcher-open .mobile-dropdown {
 
 .row-scroll-btn {
   position: absolute;
-  top: 50%;
+  /* Centre vertical sur le poster (16:9), pas sur toute la ligne : évite le « saut » quand le panneau hover s’ouvre. */
+  top: var(--row-arrow-top, calc(10px + (280px * 9 / 32)));
   transform: translateY(-50%) translateZ(0);
   width: 46px;
   height: 46px;
@@ -1166,10 +1167,10 @@ body.profile-switcher-open .mobile-dropdown {
   pointer-events: auto;
   cursor: pointer;
   opacity: 0.92;
-  transition: opacity 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.row-scroll-btn:hover {
+.row-scroll-btn:hover:not(:disabled) {
   color: var(--foreground);
   border-color: rgba(var(--primary-rgb), 0.62);
   background: linear-gradient(160deg, rgba(var(--primary-rgb), 0.28), hsla(226, 28%, 12%, 0.92));
@@ -1177,9 +1178,40 @@ body.profile-switcher-open .mobile-dropdown {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
 }
 
-.row-section:hover .row-scroll-btn,
-.row-section:focus-within .row-scroll-btn {
-  opacity: 1;
+.row-scroll-btn:disabled {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Souris précise : flèches seulement près du bord gauche/droit (voir .is-near-* + JS). */
+@media (hover: hover) and (pointer: fine) {
+  @media (min-width: 921px) {
+    .row-scroll-btn:not(:disabled) {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .row-strip.is-near-left .row-scroll-btn.left:not(:disabled) {
+      opacity: 0.94;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .row-strip.is-near-right .row-scroll-btn.right:not(:disabled) {
+      opacity: 0.94;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .row-scroll-btn:focus-visible:not(:disabled) {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
 }
 
 .row-scroll-btn.left {
@@ -1203,7 +1235,7 @@ body.profile-switcher-open .mobile-dropdown {
       0 0 18px rgba(var(--primary-rgb), 0.24);
   }
 
-  .row-scroll-btn:hover {
+  .row-scroll-btn:hover:not(:disabled) {
     border-color: rgba(var(--primary-rgb), 0.72);
     box-shadow:
       0 0 0 1px rgba(var(--primary-rgb), 0.34),

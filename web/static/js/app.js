@@ -92,6 +92,11 @@
   let catalogItemsByTitle = new Map();
   let currentHeroItemKey = "";
   let tvKeyboardNavWired = false;
+  let rowStripPointerWired = false;
+  let rowStripResizeWired = false;
+  let rowStripRaf = 0;
+  let rowStripPointerStrip = null;
+  let rowStripPointerX = 0;
   const FETCH_TIMEOUT_MS = 7000;
   const RESUME_MIN_SECONDS = 8;
   const RESUME_END_BUFFER_SECONDS = 20;
@@ -1234,6 +1239,8 @@
     const sourceRows = getRowsForCurrentView();
     rowsContainer.innerHTML = sourceRows.map((row, idx) => rowSection(row, idx)).join("\n");
     wireRowButtons();
+    attachRowTrackScrollListeners();
+    refreshAllRowStripScrollStates();
     wireTvKeyboardNav();
     applySearchFilter(currentSearchQuery);
     refreshEmptyState(sourceRows);
@@ -1597,6 +1604,142 @@
     }
   }
 
+  function clearStripNearClasses(strip) {
+    if (!(strip instanceof HTMLElement)) return;
+    strip.classList.remove("is-near-left", "is-near-right");
+  }
+
+  function syncRowArrowVertical(strip) {
+    if (!(strip instanceof HTMLElement)) return;
+    const track = strip.querySelector(".row-track");
+    const frame = track ? track.querySelector(".movie-frame") : null;
+    if (!(track instanceof HTMLElement) || !(frame instanceof HTMLElement)) return;
+    const padTop = parseFloat(window.getComputedStyle(track).paddingTop) || 0;
+    const h = frame.getBoundingClientRect().height;
+    if (h > 0) {
+      strip.style.setProperty("--row-arrow-top", `${Math.round(padTop + h / 2)}px`);
+    }
+  }
+
+  function updateRowTrackScrollButtons(track) {
+    if (!(track instanceof HTMLElement)) return;
+    const strip = track.closest(".row-strip");
+    if (!(strip instanceof HTMLElement)) return;
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    const overflowing = maxScroll > 6;
+    const leftBtn = strip.querySelector(".row-scroll-btn.left");
+    const rightBtn = strip.querySelector(".row-scroll-btn.right");
+    if (leftBtn instanceof HTMLButtonElement) {
+      leftBtn.disabled = !overflowing || track.scrollLeft <= 4;
+    }
+    if (rightBtn instanceof HTMLButtonElement) {
+      rightBtn.disabled = !overflowing || track.scrollLeft >= maxScroll - 4;
+    }
+    syncRowArrowVertical(strip);
+  }
+
+  function applyStripNearFromClientX(strip, clientX) {
+    if (!(strip instanceof HTMLElement)) return;
+    const track = strip.querySelector(".row-track");
+    if (!(track instanceof HTMLElement)) return;
+    const rect = strip.getBoundingClientRect();
+    const w = rect.width;
+    if (w <= 0) return;
+    const x = clientX - rect.left;
+    const threshold = Math.min(200, Math.max(96, w * 0.14));
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    const overflowing = maxScroll > 6;
+    const canLeft = overflowing && track.scrollLeft > 4;
+    const canRight = overflowing && track.scrollLeft < maxScroll - 4;
+    strip.classList.toggle("is-near-left", Boolean(canLeft && x < threshold));
+    strip.classList.toggle("is-near-right", Boolean(canRight && x > w - threshold));
+  }
+
+  function attachRowTrackScrollListeners() {
+    if (!rowsContainer) return;
+    rowsContainer.querySelectorAll(".row-track").forEach((track) => {
+      if (!(track instanceof HTMLElement)) return;
+      track.addEventListener(
+        "scroll",
+        () => {
+          updateRowTrackScrollButtons(track);
+          const strip = track.closest(".row-strip");
+          if (strip instanceof HTMLElement && strip === rowStripPointerStrip) {
+            applyStripNearFromClientX(strip, rowStripPointerX);
+          }
+        },
+        { passive: true }
+      );
+    });
+  }
+
+  function refreshAllRowStripScrollStates() {
+    if (!rowsContainer) return;
+    rowsContainer.querySelectorAll(".row-track").forEach((track) => {
+      if (track instanceof HTMLElement) updateRowTrackScrollButtons(track);
+    });
+  }
+
+  function wireRowStripPointerUi() {
+    if (!rowsContainer || rowStripPointerWired) return;
+    rowStripPointerWired = true;
+
+    rowsContainer.addEventListener(
+      "mousemove",
+      (event) => {
+        const raw = event.target;
+        if (!(raw instanceof Element)) {
+          if (rowStripPointerStrip) {
+            clearStripNearClasses(rowStripPointerStrip);
+            rowStripPointerStrip = null;
+          }
+          return;
+        }
+        const strip = raw.closest(".row-strip");
+        if (!(strip instanceof HTMLElement) || !rowsContainer.contains(strip)) {
+          if (rowStripPointerStrip) {
+            clearStripNearClasses(rowStripPointerStrip);
+            rowStripPointerStrip = null;
+          }
+          return;
+        }
+        if (rowStripPointerStrip && rowStripPointerStrip !== strip) {
+          clearStripNearClasses(rowStripPointerStrip);
+        }
+        rowStripPointerStrip = strip;
+        rowStripPointerX = event.clientX;
+        if (rowStripRaf) return;
+        rowStripRaf = requestAnimationFrame(() => {
+          rowStripRaf = 0;
+          if (rowStripPointerStrip) {
+            applyStripNearFromClientX(rowStripPointerStrip, rowStripPointerX);
+          }
+        });
+      },
+      { passive: true }
+    );
+
+    rowsContainer.addEventListener("mouseleave", (event) => {
+      const rt = event.relatedTarget;
+      if (rt instanceof Node && rowsContainer.contains(rt)) return;
+      rowsContainer.querySelectorAll(".row-strip").forEach((el) => {
+        if (el instanceof HTMLElement) clearStripNearClasses(el);
+      });
+      rowStripPointerStrip = null;
+    });
+  }
+
+  function wireRowStripResize() {
+    if (rowStripResizeWired) return;
+    rowStripResizeWired = true;
+    let resizeTimer = 0;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => refreshAllRowStripScrollStates(), 140);
+    });
+    window.addEventListener("load", () => refreshAllRowStripScrollStates());
+  }
+
   function wireRowButtons() {
     document.querySelectorAll(".row-scroll-btn").forEach((btn) => {
       btn.addEventListener("click", function () {
@@ -1880,6 +2023,8 @@
       const shouldShowEmpty = Boolean(query) && !anyVisible;
       searchEmpty.classList.toggle("show", shouldShowEmpty);
     }
+
+    refreshAllRowStripScrollStates();
   }
 
   function openTopSearch() {
@@ -2069,6 +2214,8 @@
   wireHeroActions();
   wireCardInteractions();
   wireTopSearch();
+  wireRowStripPointerUi();
+  wireRowStripResize();
   bootstrapApp();
 })();
 
