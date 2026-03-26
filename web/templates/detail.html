@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css', v='20260326glasspolish1') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css', v='20260326detailglass1') }}" />
 </head>
 <body
   data-current-view="{{ current_view or 'home' }}"
@@ -155,7 +155,7 @@
               {% endif %}
             </div>
           </section>
-          <aside class="detail-sidebar glass-panel glass-edge">
+          <aside class="detail-sidebar glass-edge">
             <h3>Informations {{ media_kind|lower }}</h3>
             <ul class="detail-facts-mini">
               {% for fact in media.get('facts', [])[:6] %}
@@ -197,7 +197,7 @@
       {% endif %}
 
       {% if not has_seasons and has_related %}
-      <section class="detail-section prime-collection glass-panel glass-edge" data-tab-panel="related">
+      <section class="detail-section prime-collection glass-edge" data-tab-panel="related">
         <div class="detail-section-head">
           <h2>Découvre la collection {{ media.get('collection_title', 'Saga') }}</h2>
           <p>Contenu associé</p>
@@ -216,7 +216,7 @@
       </section>
       {% endif %}
 
-      <section class="detail-section detail-section-details glass-panel glass-edge" data-tab-panel="details" hidden>
+      <section class="detail-section detail-section-details glass-edge" data-tab-panel="details" hidden>
         <div class="detail-section-head">
           <h2>Détails</h2>
           <p>Cast, timeline et informations</p>
@@ -244,7 +244,7 @@
           <p class="detail-empty-note">Distribution non renseignée.</p>
           {% endif %}
         </section>
-        <div class="detail-details-grid">
+        <div class="detail-details-split">
           <article class="detail-info-card">
             <h3>Fiche technique</h3>
             {% if media.get('facts') %}
@@ -260,32 +260,32 @@
             <p class="detail-empty-note">Informations non renseignées.</p>
             {% endif %}
           </article>
-        </div>
 
-        <article class="detail-info-card detail-timeline-card">
-          <h3>Timeline saga</h3>
-          {% if media.get('timeline') %}
-          <ol class="detail-timeline-list">
-            {% for step in media.get('timeline', []) %}
-            <li>
-              <div class="detail-timeline-head">
-                <strong>{{ step.get('title', 'Etape') }}</strong>
-                {% if step.get('year') %}<span>{{ step.get('year') }}</span>{% endif %}
-              </div>
-              {% if step.get('description') %}
-              <p>{{ step.get('description') }}</p>
-              {% endif %}
-            </li>
-            {% endfor %}
-          </ol>
-          {% else %}
-          <p class="detail-empty-note">Timeline non renseignée.</p>
-          {% endif %}
-        </article>
+          <article class="detail-info-card detail-timeline-card">
+            <h3>Timeline saga</h3>
+            {% if media.get('timeline') %}
+            <ol class="detail-timeline-list">
+              {% for step in media.get('timeline', []) %}
+              <li>
+                <div class="detail-timeline-head">
+                  <strong>{{ step.get('title', 'Etape') }}</strong>
+                  {% if step.get('year') %}<span>{{ step.get('year') }}</span>{% endif %}
+                </div>
+                {% if step.get('description') %}
+                <p>{{ step.get('description') }}</p>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ol>
+            {% else %}
+            <p class="detail-empty-note">Timeline non renseignée.</p>
+            {% endif %}
+          </article>
+        </div>
       </section>
 
       {% if media.get('seasons') %}
-      <section class="detail-section glass-panel glass-edge" data-tab-panel="episodes">
+      <section class="detail-section glass-edge" data-tab-panel="episodes">
         <div class="detail-section-head">
           <h2>Saisons et épisodes</h2>
           <p>{{ media.get('episode_total', 0) }} épisode(s)</p>
