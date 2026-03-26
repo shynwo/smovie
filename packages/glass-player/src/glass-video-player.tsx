@@ -438,6 +438,9 @@ export const GlassVideoPlayer = forwardRef<GlassVideoPlayerHandle, GlassVideoPla
       setCurrentSrc(selectedQuality.src)
     } else if (qualities.length === 0) {
       setCurrentSrc(src)
+      setIsLoading(true)
+      setError(null)
+      setDuration(0)
     }
   }, [qualities, defaultQuality, src, currentQuality])
 
@@ -668,7 +671,7 @@ export const GlassVideoPlayer = forwardRef<GlassVideoPlayerHandle, GlassVideoPla
       video.removeEventListener("error", handleError)
       video.removeEventListener("stalled", handleStalled)
     }
-  }, [startTime, autoPlay, onTimeUpdate, onEnded, onError])
+  }, [startTime, autoPlay, onTimeUpdate, onEnded, onError, currentSrc])
 
   // Fullscreen change listener
   useEffect(() => {
@@ -882,7 +885,9 @@ export const GlassVideoPlayer = forwardRef<GlassVideoPlayerHandle, GlassVideoPla
       ref={containerRef}
       className={cn(
         "relative w-full bg-black rounded-2xl overflow-hidden group shadow-2xl select-none outline-none",
-        fillContainer ? "min-h-0 h-full flex flex-col" : "aspect-video",
+        fillContainer
+          ? "flex h-full min-h-[min(52vh,720px)] w-full max-w-full flex-col"
+          : "aspect-video",
         className,
       )}
       onMouseMove={handleMouseMove}
@@ -907,7 +912,7 @@ export const GlassVideoPlayer = forwardRef<GlassVideoPlayerHandle, GlassVideoPla
       <div
         className={cn(
           "relative w-full overflow-hidden",
-          fillContainer ? "min-h-0 flex-1 flex flex-col" : "h-full",
+          fillContainer ? "flex min-h-[240px] flex-1 flex-col" : "h-full",
         )}
       >
         {/* Source gérée par useAdaptiveVideoSource (progressif / HLS / DASH) */}
@@ -916,7 +921,7 @@ export const GlassVideoPlayer = forwardRef<GlassVideoPlayerHandle, GlassVideoPla
           poster={poster}
           className={cn(
             "glass-player-video w-full object-contain",
-            fillContainer ? "min-h-0 flex-1" : "h-full",
+            fillContainer ? "min-h-[220px] flex-1" : "h-full",
           )}
           onClick={togglePlay}
           onDoubleClick={toggleFullscreen}

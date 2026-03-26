@@ -18,6 +18,18 @@ export function resolvePlaybackUrl(
   const base = flaskOrigin.replace(/\/$/, "")
   const label = episode ? String(episode.title || "Épisode") : String(item.title || "SMovie")
 
+  const tmpRel = (process.env.SMOVIE_TMP_TEST_FILE || "").trim()
+  if (tmpRel) {
+    const normalized = tmpRel.replace(/^[/\\]+/, "")
+    if (normalized && !normalized.split(/[/\\]/).includes("..")) {
+      const encoded = normalized
+        .split(/[/\\]/)
+        .map((seg) => encodeURIComponent(seg))
+        .join("/")
+      return { src: `${base}/tmp-media/${encoded}`, label }
+    }
+  }
+
   const target = episode ?? item
   const libraryPath = trimPath(target.library_path)
   const sourcePath = trimPath(target.source_path)

@@ -29,10 +29,9 @@ export function WatchClient(props: {
         <p className="p-6 text-center text-red-300">{err}</p>
       ) : null}
 
-      <div className="flex flex-1 flex-col p-3 md:p-6">
+      <div className="flex min-h-0 flex-1 flex-col p-3 md:p-6">
         <GlassVideoPlayer
           className="w-full max-w-6xl self-center overflow-hidden rounded-xl ring-1 ring-white/10"
-          fillContainer
           src={props.src}
           poster={props.poster || undefined}
           title={props.title}

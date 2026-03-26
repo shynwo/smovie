@@ -11,10 +11,14 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from smovie.structured_log import auth_log, structured
 
 
+_TMP_MEDIA_VIDEO_EXT = frozenset({".mp4", ".webm", ".mkv", ".mov", ".m4v", ".avi"})
+
+
 def register_routes(
     app,
     *,
     MEDIA_DIR: Path,
+    TMP_MEDIA_DIR: Path,
     PUBLIC_LIBRARY_DIR: Path,
     catalog_store: Any,
     catalog_limiter: Any,
@@ -121,6 +125,40 @@ def register_routes(
             mimetype = "video/mp2t"
 
         response = send_from_directory(MEDIA_DIR, filename, conditional=True, mimetype=mimetype)
+        response.headers.setdefault("Accept-Ranges", "bytes")
+        return response
+
+    @app.get("/tmp-media/<path:filename>")
+    def tmp_media_file(filename: str):
+        """Sert une vidéo de test depuis le dossier tmp/ (dev local)."""
+        if not TMP_MEDIA_DIR.is_dir():
+            abort(404)
+        if not filename or not str(filename).strip():
+            abort(400)
+        parts = Path(filename).parts
+        if ".." in parts:
+            abort(400)
+        try:
+            root = TMP_MEDIA_DIR.resolve()
+            candidate = (TMP_MEDIA_DIR / filename).resolve()
+            candidate.relative_to(root)
+        except ValueError:
+            abort(403)
+        if not candidate.is_file():
+            abort(404)
+        ext = candidate.suffix.lower()
+        if ext not in _TMP_MEDIA_VIDEO_EXT:
+            abort(400)
+        if ext == ".mp4":
+            mimetype = "video/mp4"
+        elif ext == ".webm":
+            mimetype = "video/webm"
+        elif ext == ".avi":
+            mimetype = "video/x-msvideo"
+        else:
+            mimetype = None
+        rel = candidate.relative_to(root).as_posix()
+        response = send_from_directory(str(root), rel, conditional=True, mimetype=mimetype)
         response.headers.setdefault("Accept-Ranges", "bytes")
         return response
 

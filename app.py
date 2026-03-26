@@ -35,6 +35,7 @@ except ImportError:
 CATALOG_PATH = BASE_DIR / "data" / "catalog.json"
 MOCK_MEDIA_PATH = BASE_DIR / "data" / "mockMedia.json"
 MEDIA_DIR = BASE_DIR / "media"
+TMP_MEDIA_DIR = BASE_DIR / "tmp"
 PUBLIC_LIBRARY_DIR = BASE_DIR / "public" / "library"
 DB_PATH = BASE_DIR / "data" / "smovie.sqlite3"
 DEFAULT_IMAGE = "/static/template-assets/movie-1.jpg"
@@ -2306,6 +2307,7 @@ def create_app() -> Flask:
     register_routes(
         app,
         MEDIA_DIR=MEDIA_DIR,
+        TMP_MEDIA_DIR=TMP_MEDIA_DIR,
         PUBLIC_LIBRARY_DIR=PUBLIC_LIBRARY_DIR,
         catalog_store=catalog_store,
         catalog_limiter=catalog_limiter,
