@@ -2421,6 +2421,9 @@ body.profile-switcher-open .mobile-dropdown {
   padding: 0 clamp(20px, 3.8vw, 56px) 68px;
   display: grid;
   gap: 16px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .detail-debug-banner {
@@ -2443,6 +2446,8 @@ body.profile-switcher-open .mobile-dropdown {
 }
 
 .detail-section {
+  min-width: 0;
+  max-width: 100%;
   border-radius: 22px;
   border: 1px solid hsla(0, 0%, 100%, 0.12);
   background:
@@ -2452,6 +2457,7 @@ body.profile-switcher-open .mobile-dropdown {
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   box-shadow: var(--glass-ambient), var(--glass-inset-shine);
   padding: 22px 20px 20px;
+  box-sizing: border-box;
 }
 
 .detail-section-details {
@@ -2599,6 +2605,8 @@ body.profile-switcher-open .mobile-dropdown {
   margin: 0 0 18px;
   display: grid;
   gap: 12px;
+  min-width: 0;
+  max-width: 100%;
   border-radius: 18px;
   border: 1px solid hsla(0, 0%, 100%, 0.1);
   background:
@@ -2608,6 +2616,7 @@ body.profile-switcher-open .mobile-dropdown {
   -webkit-backdrop-filter: blur(16px) saturate(var(--glass-saturate));
   box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.09), 0 12px 32px rgba(0, 0, 0, 0.2);
   padding: 16px 14px 14px;
+  box-sizing: border-box;
 }
 
 .detail-cast-head {
@@ -2639,9 +2648,13 @@ body.profile-switcher-open .mobile-dropdown {
 .detail-cast-strip {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   isolation: isolate;
   --row-arrow-top: 48%;
   padding: 0 50px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .detail-cast-strip .row-scroll-btn.left {
@@ -2670,6 +2683,9 @@ body.profile-switcher-open .mobile-dropdown {
   display: flex;
   flex-wrap: nowrap;
   gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 2px 0 10px;
@@ -2679,6 +2695,7 @@ body.profile-switcher-open .mobile-dropdown {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
+  box-sizing: border-box;
 }
 
 .detail-cast-grid::-webkit-scrollbar {
@@ -3757,6 +3774,9 @@ body.profile-switcher-open .mobile-dropdown {
 .detail-main {
   padding: 0 var(--layout-gutter) 72px;
   gap: 18px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @supports (content-visibility: auto) {
@@ -3767,6 +3787,8 @@ body.profile-switcher-open .mobile-dropdown {
 }
 
 .detail-section {
+  min-width: 0;
+  max-width: 100%;
   border-radius: var(--surface-radius-lg);
   border: 1px solid var(--glass-stroke);
   background:
@@ -3776,6 +3798,7 @@ body.profile-switcher-open .mobile-dropdown {
   box-shadow: var(--glass-ambient), var(--glass-inset-shine);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-sizing: border-box;
 }
 
 .detail-section-details {
