@@ -2200,8 +2200,9 @@ body.profile-switcher-open .mobile-dropdown {
 
 .detail-hero {
   position: relative;
-  min-height: clamp(560px, 76vh, 860px);
+  min-height: 0;
   padding-top: 108px;
+  padding-bottom: 0;
   overflow: hidden;
 }
 
@@ -3062,7 +3063,7 @@ body.profile-switcher-open .mobile-dropdown {
 
 @media (max-width: 920px) {
   .detail-hero {
-    min-height: clamp(520px, 88svh, 760px);
+    min-height: 0;
     padding-top: 82px;
   }
 
@@ -3310,7 +3311,7 @@ body.profile-switcher-open .mobile-dropdown {
 
 @media (max-width: 640px) {
   .detail-hero {
-    min-height: clamp(500px, 92svh, 700px);
+    min-height: 0;
     padding-top: 78px;
   }
 
@@ -3386,7 +3387,7 @@ body.profile-switcher-open .mobile-dropdown {
   }
 
   .detail-hero {
-    min-height: clamp(700px, 84vh, 980px);
+    min-height: 0;
   }
 
   .detail-hero-content {
