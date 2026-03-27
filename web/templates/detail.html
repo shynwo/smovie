@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css', v='20260326topbar1') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css', v='20260327audit1') }}" />
 </head>
 <body
   data-current-view="{{ current_view or 'home' }}"
@@ -57,7 +57,7 @@
       <nav class="menu-pill glass-panel glass-edge">
         <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}">Accueil</a>
         <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}">Films</a>
-        <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}">Séries</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}">SÃ©ries</a>
         <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}">Documentaires</a>
         <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}">Ma Liste</a>
       </nav>
@@ -71,7 +71,7 @@
             inputmode="search"
             autocomplete="off"
             spellcheck="false"
-            placeholder="Rechercher un film, une série..."
+            placeholder="Rechercher un film, une sÃ©rie..."
             aria-label="Rechercher un titre"
           />
         </div>
@@ -92,7 +92,7 @@
     <nav class="mobile-dropdown glass-panel glass-edge" id="mobile-dropdown" aria-label="Navigation mobile">
       <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}">Accueil</a>
       <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}">Films</a>
-      <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}">Séries</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}">SÃ©ries</a>
       <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}">Documentaires</a>
       <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}">Ma Liste</a>
     </nav>
@@ -148,14 +148,14 @@
                 class="btn-glass detail-list-btn{% if media.get('is_favorite') %} active{% endif %}"
                 id="detail-favorite-btn"
                 data-item-key="{{ media.get('item_key', '') }}"
-                aria-label="{% if media.get('is_favorite') %}Retirer de ma liste{% else %}Ajouter à ma liste{% endif %}"
+                aria-label="{% if media.get('is_favorite') %}Retirer de ma liste{% else %}Ajouter Ã  ma liste{% endif %}"
               >
-                {% if media.get('is_favorite') %}Retirer de ma liste{% else %}Ajouter à ma liste{% endif %}
+                {% if media.get('is_favorite') %}Retirer de ma liste{% else %}Ajouter Ã  ma liste{% endif %}
               </button>
               {% endif %}
             </div>
           </section>
-          <aside class="detail-sidebar glass-edge">
+          <aside class="detail-sidebar">
             <h3>Informations {{ media_kind|lower }}</h3>
             <ul class="detail-facts-mini">
               {% for fact in media.get('facts', [])[:6] %}
@@ -185,7 +185,7 @@
     <main class="detail-main">
       {% if debug_mode %}
       <section class="detail-debug-banner glass-panel glass-edge" aria-label="Debug media">
-        <strong>Debug média</strong>
+        <strong>Debug mÃ©dia</strong>
         <span>ID: {{ detail.get('debug_media', {}).get('id', '') }}</span>
         <span>Slug: {{ detail.get('debug_media', {}).get('slug', '') }}</span>
         <span>Type: {{ detail.get('debug_media', {}).get('type', '') }}</span>
@@ -197,10 +197,10 @@
       {% endif %}
 
       {% if not has_seasons and has_related %}
-      <section class="detail-section prime-collection glass-edge" data-tab-panel="related">
+      <section class="detail-section prime-collection" data-tab-panel="related">
         <div class="detail-section-head">
-          <h2>Découvre la collection {{ media.get('collection_title', 'Saga') }}</h2>
-          <p>Contenu associé</p>
+          <h2>DÃ©couvre la collection {{ media.get('collection_title', 'Saga') }}</h2>
+          <p>Contenu associÃ©</p>
         </div>
         <div class="detail-related-grid">
           {% for rel in media.get('collection_items', []) %}
@@ -216,20 +216,20 @@
       </section>
       {% endif %}
 
-      <section class="detail-section detail-section-details glass-edge" data-tab-panel="details" hidden>
+      <section class="detail-section detail-section-details" data-tab-panel="details" hidden>
         <div class="detail-section-head">
-          <h2>Détails</h2>
+          <h2>DÃ©tails</h2>
           <p>Cast, timeline et informations</p>
         </div>
         <section class="detail-cast-spotlight" aria-label="Casting principal">
           <div class="detail-cast-head">
             <h3>Casting</h3>
-            <p>Têtes d'affiche</p>
+            <p>TÃªtes d'affiche</p>
           </div>
           {% if media.get('cast') %}
           <div class="detail-cast-strip" data-cast-rail-wrap>
-            <button type="button" class="row-scroll-btn left detail-cast-scroll-btn" data-cast-nav="prev" hidden aria-label="Défiler le casting vers la gauche">&#8249;</button>
-            <button type="button" class="row-scroll-btn right detail-cast-scroll-btn" data-cast-nav="next" hidden aria-label="Défiler le casting vers la droite">&#8250;</button>
+            <button type="button" class="row-scroll-btn left detail-cast-scroll-btn" data-cast-nav="prev" hidden aria-label="DÃ©filer le casting vers la gauche">&#8249;</button>
+            <button type="button" class="row-scroll-btn right detail-cast-scroll-btn" data-cast-nav="next" hidden aria-label="DÃ©filer le casting vers la droite">&#8250;</button>
             <div class="detail-cast-grid" data-cast-rail role="list" aria-label="Casting principal">
             {% for actor in media.get('cast', []) %}
             <article class="detail-cast-card" role="listitem" tabindex="0" aria-label="{{ actor.get('name', 'Acteur') }}{% if actor.get('role') %}, {{ actor.get('role') }}{% endif %}">
@@ -239,13 +239,13 @@
               <span class="detail-cast-photo detail-cast-photo-fallback">{{ actor.get('name', '?')[:2] }}</span>
               {% endif %}
               <span class="detail-cast-name">{{ actor.get('name', 'Acteur') }}</span>
-              <small class="detail-cast-role">{{ actor.get('role', 'Rôle non renseigné') }}</small>
+              <small class="detail-cast-role">{{ actor.get('role', 'RÃ´le non renseignÃ©') }}</small>
             </article>
             {% endfor %}
             </div>
           </div>
           {% else %}
-          <p class="detail-empty-note">Distribution non renseignée.</p>
+          <p class="detail-empty-note">Distribution non renseignÃ©e.</p>
           {% endif %}
         </section>
         <div class="detail-details-split">
@@ -261,7 +261,7 @@
               {% endfor %}
             </ul>
             {% else %}
-            <p class="detail-empty-note">Informations non renseignées.</p>
+            <p class="detail-empty-note">Informations non renseignÃ©es.</p>
             {% endif %}
           </article>
 
@@ -282,17 +282,17 @@
               {% endfor %}
             </ol>
             {% else %}
-            <p class="detail-empty-note">Timeline non renseignée.</p>
+            <p class="detail-empty-note">Timeline non renseignÃ©e.</p>
             {% endif %}
           </article>
         </div>
       </section>
 
       {% if media.get('seasons') %}
-      <section class="detail-section glass-edge" data-tab-panel="episodes">
+      <section class="detail-section" data-tab-panel="episodes">
         <div class="detail-section-head">
-          <h2>Saisons et épisodes</h2>
-          <p>{{ media.get('episode_total', 0) }} épisode(s)</p>
+          <h2>Saisons et Ã©pisodes</h2>
+          <p>{{ media.get('episode_total', 0) }} Ã©pisode(s)</p>
         </div>
         <div class="season-selector" role="tablist" aria-label="Choisir une saison">
           {% for season in media.get('seasons', []) %}
@@ -306,7 +306,7 @@
             <span class="season-select-thumb" aria-hidden="true"></span>
             <span class="season-select-meta">
               <span>{{ season.get('title', 'Saison') }}</span>
-              <small>{{ (season.get('episodes', []) | length) }} épisode(s)</small>
+              <small>{{ (season.get('episodes', []) | length) }} Ã©pisode(s)</small>
             </span>
           </button>
           {% endfor %}
@@ -320,8 +320,8 @@
               <article class="episode-card">
                 <div class="episode-thumb" style="background-image:url('{{ episode.get('image', media_image) }}')"></div>
                 <div class="episode-body">
-                  <h3>S{{ '%02d' % (episode.get('season_number', 1)) }}E{{ '%02d' % (episode.get('episode_number', loop.index)) }} &bull; {{ episode.get('title', 'Épisode') }}</h3>
-                  <p>{{ episode.get('description', 'Épisode disponible.') }}</p>
+                  <h3>S{{ '%02d' % (episode.get('season_number', 1)) }}E{{ '%02d' % (episode.get('episode_number', loop.index)) }} &bull; {{ episode.get('title', 'Ã‰pisode') }}</h3>
+                  <p>{{ episode.get('description', 'Ã‰pisode disponible.') }}</p>
                   <div class="episode-meta">
                     <span class="badge">{{ episode.get('rating', media_rating) }}</span>
                     <span class="runtime">{{ episode.get('duration', '45min') }}</span>
@@ -382,8 +382,10 @@
   </div>
 
   <script id="detail-data" type="application/json">{{ media | tojson }}</script>
-  <script src="{{ url_for('static', filename='js/detail.js', v='20260326castarrows1') }}"></script>
+  <script src="{{ url_for('static', filename='js/detail.js', v='20260327audit1') }}"></script>
 </body>
 </html>
+
+
 
 

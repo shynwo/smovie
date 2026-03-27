@@ -869,17 +869,6 @@ def _flatten_items(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return out
 
 
-def _find_item_by_title(rows: list[dict[str, Any]], title: str) -> Optional[dict[str, Any]]:
-    wanted = _normalize_search_text(title)
-    if not wanted:
-        return None
-    for item in _flatten_items(rows):
-        current = _normalize_search_text(_item_display_title(item, "", 120))
-        if current and current == wanted:
-            return item
-    return None
-
-
 def _coalesce_text(item: dict[str, Any], keys: list[str], max_len: int = 180) -> str:
     for key in keys:
         value = _clean_text(item.get(key), "", max_len)
@@ -2034,6 +2023,9 @@ class SlidingWindowRateLimiter:
             bucket = self._hits[key]
             while bucket and bucket[0] < threshold:
                 bucket.popleft()
+            if not bucket:
+                del self._hits[key]
+                bucket = self._hits[key]
 
             if len(bucket) >= self.limit:
                 retry = max(1, int(self.window_seconds - (now - bucket[0])))
@@ -2055,12 +2047,12 @@ def create_app() -> Flask:
     app.config.update(
         SECRET_KEY=_resolve_smovie_secret_key(),
         SESSION_COOKIE_NAME=os.getenv("SMOVIE_SESSION_COOKIE_NAME", "smovie_session"),
-        MAX_CONTENT_LENGTH=int(os.getenv("SMOVIE_MAX_CONTENT_LENGTH", "1048576")),
+        MAX_CONTENT_LENGTH=_clean_int(os.getenv("SMOVIE_MAX_CONTENT_LENGTH", "1048576"), 1048576, 1024, 52428800),
         JSON_SORT_KEYS=False,
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE="Lax",
         SESSION_COOKIE_SECURE=_session_cookie_secure_default(),
-        PERMANENT_SESSION_LIFETIME=timedelta(days=int(os.getenv("SMOVIE_SESSION_DAYS", "14"))),
+        PERMANENT_SESSION_LIFETIME=timedelta(days=_clean_int(os.getenv("SMOVIE_SESSION_DAYS", "14"), 14, 1, 365)),
         SESSION_REFRESH_EACH_REQUEST=True,
         TEMPLATES_AUTO_RELOAD=_env_bool("SMOVIE_TEMPLATE_RELOAD", False),
         PREFERRED_URL_SCHEME=_preferred_url_scheme(),
@@ -2094,6 +2086,23 @@ def create_app() -> Flask:
         clean_image=_clean_image,
     )
     auth_db.init_db()
+
+    @app.teardown_appcontext
+    def _close_authdb_conn(exc: BaseException | None) -> None:
+        auth_db.close_connection()
+
+    @app.errorhandler(404)
+    def _handle_404(e: Exception):
+        if request.path.startswith("/api/"):
+            return jsonify({"error": "not_found"}), 404
+        return "<h1>Page introuvable</h1><p><a href='/'>Retour à l'accueil</a></p>", 404
+
+    @app.errorhandler(500)
+    def _handle_500(e: Exception):
+        logging.getLogger("smovie.error").exception("Erreur serveur: %s", e)
+        if request.path.startswith("/api/"):
+            return jsonify({"error": "internal_server_error"}), 500
+        return "<h1>Erreur serveur</h1><p>Veuillez réessayer plus tard.</p>", 500
 
     db_connect = auth_db.db_connect
     now_ts = auth_db.now_ts

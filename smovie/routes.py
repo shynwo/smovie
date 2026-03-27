@@ -246,6 +246,9 @@ def register_routes(
 
     @app.post("/api/auth/register")
     def api_auth_register():
+        allowed, _retry = catalog_limiter.allow(f"auth:{client_ip()}")
+        if not allowed:
+            return jsonify({"error": "rate_limited", "message": "Trop de tentatives, réessaie plus tard."}), 429
         payload = request.get_json(silent=True) or {}
         username = clean_username(payload.get("username"))
         password = clean_text(payload.get("password"), max_len=128)
@@ -286,6 +289,9 @@ def register_routes(
 
     @app.post("/api/auth/login")
     def api_auth_login():
+        allowed, _retry = catalog_limiter.allow(f"auth:{client_ip()}")
+        if not allowed:
+            return jsonify({"error": "rate_limited", "message": "Trop de tentatives, réessaie plus tard."}), 429
         payload = request.get_json(silent=True) or {}
         username = clean_username(payload.get("username"))
         password = clean_text(payload.get("password"), max_len=128)

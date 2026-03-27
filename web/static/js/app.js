@@ -219,9 +219,7 @@
     }
   }
 
-  function normalizeThemeName(input) {
-    const value = String(input || "").trim().toLowerCase();
-    if (value === GLASS_THEME_NAME) return GLASS_THEME_NAME;
+  function normalizeThemeName() {
     return GLASS_THEME_NAME;
   }
 
@@ -564,9 +562,7 @@
     }
   }
 
-  function saveProfilesState() {
-    // Profil actif gere par session serveur.
-  }
+  function saveProfilesState() { /* no-op: session serveur */ }
 
   function applyServerProfiles(serverProfiles, preferredActiveProfileId) {
     const normalized = normalizeProfiles(serverProfiles);
@@ -631,7 +627,7 @@
     const accent = normalizeHexColor(activeProfile && activeProfile.color, "#f97316");
     applyProfileAccent(accent);
     const profileInitials = initialsFromName(activeProfile.name);
-    profileAvatarButton.textContent = initialsFromName(activeProfile.name);
+    profileAvatarButton.textContent = profileInitials;
     profileAvatarButton.title = `Profil actif: ${activeProfile.name}`;
     profileAvatarButton.style.setProperty("--avatar-bg", `linear-gradient(145deg, ${hexToRgba(accent, 0.58)}, ${hexToRgba(accent, 0.24)})`);
     profileAvatarButton.style.setProperty("--avatar-ring", hexToRgba(accent, 0.55));
@@ -878,7 +874,7 @@
     const frameClass = it.cardFit === "contain" ? "movie-frame fit-contain" : "movie-frame fit-cover";
     const detailUrl = String(it.detailUrl || "").trim();
     const itemKey = String(it.itemKey || buildItemKey(it));
-    const isFavorite = getActiveFavoritesSet().has(itemKey);
+    const isFavorite = _renderFavSet.has(itemKey);
     const favoriteIcon = isFavorite ? "✓" : "+";
     const favoriteTitle = isFavorite ? "Retirer de ma liste" : "Ajouter à ma liste";
     const searchBlob = esc(
@@ -971,10 +967,6 @@
     catalogByItemKey = byKey;
     catalogBySlug = bySlug;
     catalogItemsByTitle = byTitle;
-  }
-
-  function getCatalogItems() {
-    return catalogItemsFlat;
   }
 
   function getCanonicalItemKey(item) {
@@ -1234,8 +1226,11 @@
     }
   }
 
+  let _renderFavSet = new Set();
+
   function renderRowsForCurrentView() {
     if (!rowsContainer) return;
+    _renderFavSet = getActiveFavoritesSet();
     const sourceRows = getRowsForCurrentView();
     rowsContainer.innerHTML = sourceRows.map((row, idx) => rowSection(row, idx)).join("\n");
     wireRowButtons();
@@ -1292,8 +1287,8 @@
       if (!(btn instanceof HTMLButtonElement)) return;
       btn.classList.toggle("active", isFavorite);
       btn.setAttribute("aria-pressed", isFavorite ? "true" : "false");
-    btn.setAttribute("aria-label", isFavorite ? "Retirer de ma liste" : "Ajouter à ma liste");
-    btn.setAttribute("title", isFavorite ? "Retirer de ma liste" : "Ajouter à ma liste");
+      btn.setAttribute("aria-label", isFavorite ? "Retirer de ma liste" : "Ajouter à ma liste");
+      btn.setAttribute("title", isFavorite ? "Retirer de ma liste" : "Ajouter à ma liste");
       btn.textContent = isFavorite ? "✓" : "+";
     });
   }
@@ -1529,9 +1524,9 @@
     const hero = catalogState && catalogState.hero ? catalogState.hero : {};
     const itemKey = String(hero.item_key || "").trim();
     if (itemKey) return itemKey;
-    const heroTitle = String(hero.title || "").trim().toLowerCase();
-    if (!heroTitle) return "";
-    return findItemKeyByTitle(heroTitle);
+    const heroTitleStr = String(hero.title || "").trim().toLowerCase();
+    if (!heroTitleStr) return "";
+    return findItemKeyByTitle(heroTitleStr);
   }
 
   function syncHeroSecondaryState() {
@@ -1741,7 +1736,8 @@
   }
 
   function wireRowButtons() {
-    document.querySelectorAll(".row-scroll-btn").forEach((btn) => {
+    const scope = rowsContainer || document;
+    scope.querySelectorAll(".row-scroll-btn").forEach((btn) => {
       btn.addEventListener("click", function () {
         const targetId = this.getAttribute("data-target");
         const dir = this.getAttribute("data-dir");
@@ -2002,15 +1998,16 @@
   function applySearchFilter(rawQuery) {
     const query = normalizeSearchText(rawQuery);
     currentSearchQuery = query;
+    const scope = rowsContainer || document;
 
-    const cards = Array.from(document.querySelectorAll(".movie-card"));
+    const cards = Array.from(scope.querySelectorAll(".movie-card"));
     cards.forEach((card) => {
       const blob = normalizeSearchText(card.getAttribute("data-search") || "");
       const visible = !query || blob.includes(query);
       card.classList.toggle("search-hidden", !visible);
     });
 
-    const rows = Array.from(document.querySelectorAll(".row-section"));
+    const rows = Array.from(scope.querySelectorAll(".row-section"));
     let anyVisible = false;
     rows.forEach((row) => {
       const visibleCards = row.querySelector(".movie-card:not(.search-hidden)");
@@ -2063,8 +2060,10 @@
       closeTopSearch({ clear: true });
     });
 
+    let _searchDebounce = 0;
     topSearchInput.addEventListener("input", () => {
-      applySearchFilter(topSearchInput.value);
+      clearTimeout(_searchDebounce);
+      _searchDebounce = setTimeout(() => applySearchFilter(topSearchInput.value), 90);
     });
 
     topSearchInput.addEventListener("keydown", (event) => {

@@ -578,7 +578,6 @@
       }
 
       rail.addEventListener("scroll", scheduleUpdate, { passive: true });
-      window.addEventListener("resize", scheduleUpdate);
 
       if (typeof ResizeObserver !== "undefined") {
         const observer = new ResizeObserver(scheduleUpdate);
@@ -590,6 +589,12 @@
       window.setTimeout(scheduleUpdate, 100);
       window.setTimeout(scheduleUpdate, 320);
     });
+
+    if (castRailRefreshers.length) {
+      window.addEventListener("resize", () => {
+        castRailRefreshers.forEach((fn) => { if (typeof fn === "function") fn(); });
+      });
+    }
   }
 
   async function init() {
@@ -602,7 +607,6 @@
     wireDetailTabs();
     wireSeasonSelector();
     wireActionButtons();
-    syncDetailWatchButton();
 
     const refreshCastRailsLayout = () => {
       castRailRefreshers.forEach((fn) => {

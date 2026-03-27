@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 from typing import Any, Callable, Optional
 
-from flask import jsonify, session
+from flask import g, jsonify, session
 
 
 class AuthDb:
@@ -25,11 +25,35 @@ class AuthDb:
         self._clean_hex = clean_hex
         self._clean_image = clean_image
 
+    def _has_app_context(self) -> bool:
+        try:
+            _ = g._get_current_object()  # type: ignore[attr-defined]
+            return True
+        except RuntimeError:
+            return False
+
     def db_connect(self) -> sqlite3.Connection:
+        if self._has_app_context():
+            conn = getattr(g, "_authdb_conn", None)
+            if conn is not None:
+                return conn
+            conn = sqlite3.connect(self.db_path, timeout=10)
+            conn.row_factory = sqlite3.Row
+            conn.execute("PRAGMA foreign_keys=ON")
+            g._authdb_conn = conn
+            return conn
         conn = sqlite3.connect(self.db_path, timeout=10)
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA foreign_keys=ON")
         return conn
+
+    def close_connection(self) -> None:
+        if not self._has_app_context():
+            return
+        conn = getattr(g, "_authdb_conn", None)
+        if conn is not None:
+            conn.close()
+            g._authdb_conn = None
 
     def init_db(self) -> None:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
