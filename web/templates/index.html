@@ -54,7 +54,7 @@
   {% set hero_duration = '' if hero_empty else hero.get('duration', '') %}
   {% set hero_year = '' if hero_empty else hero.get('year', '') %}
   {% set hero_cta_primary = '' if hero_empty else hero.get('cta_primary', 'Regarder') %}
-  {% set hero_cta_secondary = '' if hero_empty else hero.get('cta_secondary', 'Ajouter Ã  ma liste') %}
+  {% set hero_cta_secondary = '' if hero_empty else hero.get('cta_secondary', 'Ajouter à ma liste') %}
   {% set hero_logo = '' if hero_empty else hero.get('logo', '') %}
   {% set hero_slug = '' if hero_empty else hero.get('slug', '') %}
   {% set hero_content_meta = '' if hero_empty else hero.get('content_meta_summary', hero.get('genre', '')) %}
@@ -77,7 +77,7 @@
       <nav class="menu-pill glass-panel glass-edge">
         <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}" data-nav-view="home">Accueil</a>
         <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}" data-nav-view="films">Films</a>
-        <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}" data-nav-view="series">SÃ©ries</a>
+        <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}" data-nav-view="series">Séries</a>
         <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}" data-nav-view="documentaires">Documentaires</a>
         <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}" data-nav-view="my-list">Ma Liste</a>
       </nav>
@@ -92,7 +92,7 @@
             inputmode="search"
             autocomplete="off"
             spellcheck="false"
-            placeholder="Rechercher un film, une sÃ©rie..."
+            placeholder="Rechercher un film, une série..."
             aria-label="Rechercher un titre"
           />
         </div>
@@ -113,7 +113,7 @@
     <nav class="mobile-dropdown glass-panel glass-edge" id="mobile-dropdown" aria-label="Navigation mobile">
       <a class="{{ 'active' if (current_view or 'home') == 'home' else '' }}" href="{{ url_for('home_page') }}" data-nav-view="home">Accueil</a>
       <a class="{{ 'active' if (current_view or 'home') == 'films' else '' }}" href="{{ url_for('films_page') }}" data-nav-view="films">Films</a>
-      <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}" data-nav-view="series">SÃ©ries</a>
+      <a class="{{ 'active' if (current_view or 'home') == 'series' else '' }}" href="{{ url_for('series_page') }}" data-nav-view="series">Séries</a>
       <a class="{{ 'active' if (current_view or 'home') == 'documentaires' else '' }}" href="{{ url_for('documentaires_page') }}" data-nav-view="documentaires">Documentaires</a>
       <a class="{{ 'active' if (current_view or 'home') == 'my-list' else '' }}" href="{{ url_for('my_list_page') }}" data-nav-view="my-list">Ma Liste</a>
     </nav>
@@ -162,7 +162,7 @@
     </main>
 
     <footer class="footer">
-      <p>&copy; 2026 Stream. Tous droits rÃ©servÃ©s.</p>
+      <p>&copy; 2026 Stream. Tous droits réservés.</p>
     </footer>
   </div>
 
