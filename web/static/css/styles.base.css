@@ -2880,6 +2880,10 @@ body.profile-switcher-open .mobile-dropdown {
   content: none;
 }
 
+.detail-page .detail-section-details > .detail-section-head {
+  display: none;
+}
+
 .detail-page [data-tab-panel] > .detail-section-head h2 {
   margin: 0;
   font-size: clamp(1.02rem, 0.94rem + 0.35vw, 1.32rem);
