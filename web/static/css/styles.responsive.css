@@ -1163,8 +1163,8 @@
     display: flex;
     width: 100%;
     overflow-x: auto;
-    min-height: 46px;
-    padding: 0 6px 6px;
+    min-height: 45px;
+    padding: 0 6px 5px;
     gap: 4px;
     border-radius: 0 0 12px 12px;
     border-bottom: 0;
@@ -1177,10 +1177,17 @@
 
   .detail-page .detail-tab-btn {
     flex: 0 0 auto;
-    margin-top: -10px;
-    min-height: 40px;
+    margin-top: -9px;
+    min-height: 39px;
     padding: 0 13px;
     border-radius: 10px 10px 0 0;
+  }
+
+  .detail-page .detail-tab-btn::after {
+    left: 11px;
+    right: 11px;
+    bottom: -6px;
+    height: 2px;
   }
 
   .detail-page .detail-main > .detail-section {
@@ -1222,17 +1229,23 @@
 
 @media (max-width: 640px) {
   .detail-page .detail-prime-tabs {
-    min-height: 42px;
+    min-height: 40px;
     padding: 0 5px 5px;
     border-radius: 0 0 10px 10px;
   }
 
   .detail-page .detail-tab-btn {
-    margin-top: -9px;
-    min-height: 38px;
+    margin-top: -8px;
+    min-height: 36px;
     padding: 0 11px;
     font-size: 0.86rem;
     border-radius: 9px 9px 0 0;
+  }
+
+  .detail-page .detail-tab-btn::after {
+    left: 9px;
+    right: 9px;
+    bottom: -5px;
   }
 
   .detail-page [data-tab-panel] > .detail-section-head {
