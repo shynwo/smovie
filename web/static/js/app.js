@@ -25,6 +25,10 @@
   const topSearch = document.getElementById("top-search");
   const topSearchToggle = document.getElementById("top-search-toggle");
   const topSearchInput = document.getElementById("top-search-input");
+  let searchOverlay = document.getElementById("search-overlay");
+  let searchOverlayInput = document.getElementById("search-overlay-input");
+  let searchOverlayKeyboard = document.getElementById("search-tv-keyboard");
+  let searchOverlayCloseTriggers = Array.from(document.querySelectorAll("[data-search-overlay-close]"));
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
   const mobileDropdown = document.getElementById("mobile-dropdown");
   const profileAvatarButton = document.getElementById("profile-avatar-btn");
@@ -97,6 +101,7 @@
   let rowStripRaf = 0;
   let rowStripPointerStrip = null;
   let rowStripPointerX = 0;
+  let searchOverlayKeyboardBuilt = false;
   const FETCH_TIMEOUT_MS = 7000;
   const RESUME_MIN_SECONDS = 8;
   const RESUME_END_BUFFER_SECONDS = 20;
@@ -127,6 +132,13 @@
     }
   ];
 
+  const SEARCH_TV_KEYS = [
+    ["A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P"],
+    ["Q", "S", "D", "F", "G", "H", "J", "K", "L", "M"],
+    ["W", "X", "C", "V", "B", "N", "0", "1", "2", "3"],
+    ["4", "5", "6", "7", "8", "9", "-", "'"]
+  ];
+
   function esc(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;")
@@ -134,6 +146,59 @@
       .replace(/>/g, "&gt;")
       .replace(/\"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function refreshSearchOverlayRefs() {
+    searchOverlay = document.getElementById("search-overlay");
+    searchOverlayInput = document.getElementById("search-overlay-input");
+    searchOverlayKeyboard = document.getElementById("search-tv-keyboard");
+    searchOverlayCloseTriggers = Array.from(document.querySelectorAll("[data-search-overlay-close]"));
+  }
+
+  function ensureSearchOverlayDom() {
+    if (document.getElementById("search-overlay")) {
+      refreshSearchOverlayRefs();
+      return;
+    }
+
+    const host = document.createElement("div");
+    host.innerHTML = `
+      <div class="search-overlay" id="search-overlay" aria-hidden="true">
+        <div class="search-overlay-backdrop" data-search-overlay-close></div>
+        <section class="search-overlay-panel glass-panel glass-edge" role="dialog" aria-modal="true" aria-labelledby="search-overlay-title">
+          <header class="search-overlay-head">
+            <p class="text-category">SMOVIE SEARCH</p>
+            <button type="button" class="search-overlay-close" data-search-overlay-close aria-label="Fermer la recherche">Fermer</button>
+          </header>
+          <h2 id="search-overlay-title" class="text-display">Trouver un titre</h2>
+          <div class="search-overlay-input-shell">
+            <span class="search-overlay-icon" aria-hidden="true">&#8981;</span>
+            <input
+              id="search-overlay-input"
+              class="search-overlay-input"
+              type="search"
+              inputmode="search"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Film, serie, documentaire..."
+              aria-label="Recherche globale"
+            />
+            <button type="button" class="search-overlay-clear" data-search-action="clear">Effacer</button>
+          </div>
+          <div class="search-tv-keyboard" id="search-tv-keyboard" role="group" aria-label="Clavier virtuel TV"></div>
+          <div class="search-overlay-footer">
+            <button type="button" class="search-tv-action" data-search-action="space">Espace</button>
+            <button type="button" class="search-tv-action" data-search-action="backspace">Supprimer</button>
+            <button type="button" class="search-tv-action search-tv-action-primary" data-search-action="submit">Rechercher</button>
+          </div>
+        </section>
+      </div>
+    `;
+    const node = host.firstElementChild;
+    if (node) {
+      document.body.appendChild(node);
+    }
+    refreshSearchOverlayRefs();
   }
 
   function safeUrl(input) {
@@ -1990,7 +2055,7 @@
       return;
     }
     if (topSearchInput) topSearchInput.value = query;
-    if (topSearch) topSearch.classList.add("open");
+    if (searchOverlayInput instanceof HTMLInputElement) searchOverlayInput.value = query;
     applySearchFilter(query);
     searchFromUrlHydrated = true;
   }
@@ -2024,62 +2089,169 @@
     refreshAllRowStripScrollStates();
   }
 
-  function openTopSearch() {
-    if (!topSearch) return;
-    topSearch.classList.add("open");
-    if (topSearchInput) {
-      setTimeout(() => {
-        topSearchInput.focus();
-        topSearchInput.select();
-      }, 130);
+  function syncSearchInputs(rawValue) {
+    const value = String(rawValue || "");
+    if (topSearchInput instanceof HTMLInputElement && topSearchInput.value !== value) {
+      topSearchInput.value = value;
+    }
+    if (searchOverlayInput instanceof HTMLInputElement && searchOverlayInput.value !== value) {
+      searchOverlayInput.value = value;
     }
   }
 
-  function closeTopSearch(options) {
-    if (!topSearch) return;
-    const shouldClear = Boolean(options && options.clear);
-    topSearch.classList.remove("open");
-    if (topSearchInput && shouldClear) {
-      topSearchInput.value = "";
-      applySearchFilter("");
+  function readSearchValue() {
+    if (searchOverlayInput instanceof HTMLInputElement) return searchOverlayInput.value;
+    if (topSearchInput instanceof HTMLInputElement) return topSearchInput.value;
+    return currentSearchQuery || "";
+  }
+
+  function setSearchValue(rawValue) {
+    const value = String(rawValue || "");
+    syncSearchInputs(value);
+    applySearchFilter(value);
+  }
+
+  function buildSearchOverlayKeyboard() {
+    if (searchOverlayKeyboardBuilt) return;
+    if (!(searchOverlayKeyboard instanceof HTMLElement)) return;
+
+    const fragment = document.createDocumentFragment();
+    SEARCH_TV_KEYS.forEach((row) => {
+      row.forEach((key) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "search-tv-key";
+        button.setAttribute("data-search-key", key);
+        button.setAttribute("aria-label", `Ajouter ${key}`);
+        button.textContent = key;
+        fragment.appendChild(button);
+      });
+    });
+    searchOverlayKeyboard.appendChild(fragment);
+    searchOverlayKeyboardBuilt = true;
+  }
+
+  function openSearchOverlay() {
+    if (!(searchOverlay instanceof HTMLElement)) {
+      if (topSearchInput instanceof HTMLInputElement) topSearchInput.focus();
+      return;
     }
+    buildSearchOverlayKeyboard();
+    syncSearchInputs(readSearchValue());
+    searchOverlay.classList.add("open");
+    searchOverlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("search-overlay-open");
+    window.setTimeout(() => {
+      if (!(searchOverlayInput instanceof HTMLInputElement)) return;
+      searchOverlayInput.focus();
+      searchOverlayInput.select();
+    }, 90);
+  }
+
+  function closeSearchOverlay(options) {
+    if (!(searchOverlay instanceof HTMLElement)) return;
+    const shouldClear = Boolean(options && options.clear);
+    const shouldRestoreFocus = !options || options.restoreFocus !== false;
+    if (shouldClear) {
+      setSearchValue("");
+    }
+    searchOverlay.classList.remove("open");
+    searchOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("search-overlay-open");
+    if (shouldRestoreFocus && topSearchToggle instanceof HTMLButtonElement) {
+      topSearchToggle.focus();
+    }
+  }
+
+  function pushSearchCharacter(char) {
+    if (!char) return;
+    setSearchValue(`${readSearchValue()}${char}`);
+    if (searchOverlayInput instanceof HTMLInputElement) searchOverlayInput.focus();
+  }
+
+  function popSearchCharacter() {
+    const value = readSearchValue();
+    if (!value) return;
+    setSearchValue(value.slice(0, -1));
+    if (searchOverlayInput instanceof HTMLInputElement) searchOverlayInput.focus();
+  }
+
+  function submitSearchOverlay() {
+    closeSearchOverlay({ clear: false });
   }
 
   function wireTopSearch() {
-    if (!topSearch || !topSearchToggle || !topSearchInput) return;
+    if (!(topSearchToggle instanceof HTMLButtonElement)) return;
+    ensureSearchOverlayDom();
 
-    topSearchToggle.addEventListener("click", () => {
-      if (!topSearch.classList.contains("open")) {
-        openTopSearch();
-        return;
-      }
-      if (topSearchInput.value.trim()) {
-        topSearchInput.focus();
-        return;
-      }
-      closeTopSearch({ clear: true });
+    topSearchToggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      openSearchOverlay();
     });
 
-    let _searchDebounce = 0;
-    topSearchInput.addEventListener("input", () => {
-      clearTimeout(_searchDebounce);
-      _searchDebounce = setTimeout(() => applySearchFilter(topSearchInput.value), 90);
+    if (topSearchInput instanceof HTMLInputElement) {
+      topSearchInput.addEventListener("input", () => applySearchFilter(topSearchInput.value));
+    }
+
+    if (searchOverlayInput instanceof HTMLInputElement) {
+      let searchDebounce = 0;
+      searchOverlayInput.addEventListener("input", () => {
+        clearTimeout(searchDebounce);
+        searchDebounce = window.setTimeout(() => setSearchValue(searchOverlayInput.value), 70);
+      });
+
+      searchOverlayInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          submitSearchOverlay();
+          return;
+        }
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeSearchOverlay({ clear: false });
+        }
+      });
+    }
+
+    searchOverlayCloseTriggers.forEach((trigger) => {
+      if (!(trigger instanceof HTMLElement)) return;
+      trigger.addEventListener("click", () => closeSearchOverlay({ clear: false }));
     });
 
-    topSearchInput.addEventListener("keydown", (event) => {
+    if (searchOverlay instanceof HTMLElement) {
+      searchOverlay.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        const action = target.getAttribute("data-search-action");
+        if (action === "clear") {
+          setSearchValue("");
+          return;
+        }
+        if (action === "space") {
+          pushSearchCharacter(" ");
+          return;
+        }
+        if (action === "backspace") {
+          popSearchCharacter();
+          return;
+        }
+        if (action === "submit") {
+          submitSearchOverlay();
+          return;
+        }
+        const key = target.getAttribute("data-search-key");
+        if (key) {
+          pushSearchCharacter(key);
+        }
+      });
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (!(searchOverlay instanceof HTMLElement) || !searchOverlay.classList.contains("open")) return;
       if (event.key === "Escape") {
         event.preventDefault();
-        closeTopSearch({ clear: true });
-        topSearchToggle.focus();
+        closeSearchOverlay({ clear: false });
       }
-    });
-
-    document.addEventListener("click", (event) => {
-      const target = event.target;
-      if (!(target instanceof Node)) return;
-      if (topSearch.contains(target)) return;
-      if (!topSearch.classList.contains("open")) return;
-      closeTopSearch({ clear: false });
     });
   }
 
@@ -2217,4 +2389,3 @@
   wireRowStripResize();
   bootstrapApp();
 })();
-

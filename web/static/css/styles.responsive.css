@@ -208,6 +208,50 @@
     height: 38px;
   }
 
+  .search-overlay-panel {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+    margin: 10px auto;
+    border-radius: 22px;
+    padding: 16px 12px 14px;
+    gap: 12px;
+  }
+
+  .search-overlay-panel h2 {
+    font-size: clamp(1.3rem, 4.8vw, 1.8rem);
+  }
+
+  .search-overlay-input-shell {
+    min-height: 50px;
+    padding: 0 10px 0 12px;
+    gap: 8px;
+  }
+
+  .search-overlay-input {
+    font-size: 1rem;
+  }
+
+  .search-overlay-clear {
+    padding: 7px 10px;
+    font-size: 0.78rem;
+  }
+
+  .search-tv-key {
+    min-height: 42px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+
+  .search-overlay-footer {
+    gap: 8px;
+  }
+
+  .search-tv-action {
+    min-height: 44px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+
   .avatar-btn {
     width: 42px;
     height: 42px;
@@ -430,6 +474,37 @@
     flex-basis: 62px;
     width: 62px;
     height: 62px;
+  }
+
+  .search-overlay-panel {
+    width: min(1120px, calc(100vw - 72px));
+    max-height: calc(100dvh - 72px);
+    margin: 36px auto;
+    border-radius: 34px;
+    padding: 30px 34px;
+  }
+
+  .search-overlay-panel h2 {
+    font-size: clamp(2rem, 1.4rem + 1.5vw, 3rem);
+  }
+
+  .search-overlay-input-shell {
+    min-height: 86px;
+    padding: 0 16px 0 22px;
+  }
+
+  .search-overlay-input {
+    font-size: 1.58rem;
+  }
+
+  .search-tv-key {
+    min-height: 68px;
+    font-size: 1.2rem;
+  }
+
+  .search-tv-action {
+    min-height: 58px;
+    font-size: 1rem;
   }
 
   .avatar-btn {
@@ -1240,6 +1315,53 @@
 
   .detail-page .detail-tab-btn::after {
     content: none;
+  }
+
+  .search-overlay-panel {
+    border-radius: 18px;
+    padding: 14px 10px 12px;
+  }
+
+  .search-overlay-head .text-category {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  .search-overlay-close {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+  }
+
+  .search-overlay-input-shell {
+    min-height: 46px;
+  }
+
+  .search-overlay-icon {
+    font-size: 1.05rem;
+  }
+
+  .search-overlay-input {
+    font-size: 0.95rem;
+  }
+
+  .search-overlay-clear {
+    padding: 6px 9px;
+    font-size: 0.72rem;
+  }
+
+  .search-tv-key {
+    min-height: 40px;
+    border-radius: 11px;
+    font-size: 0.84rem;
+  }
+
+  .search-overlay-footer {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .search-tv-action {
+    min-height: 42px;
   }
 
   .detail-page [data-tab-panel] > .detail-section-head {
