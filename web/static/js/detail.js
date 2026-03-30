@@ -18,6 +18,7 @@
   let searchOverlay = document.getElementById("search-overlay");
   let searchOverlayInput = document.getElementById("search-overlay-input");
   let searchOverlayKeyboard = document.getElementById("search-tv-keyboard");
+  let searchOverlayResults = document.getElementById("search-overlay-results");
   let searchOverlayCloseTriggers = Array.from(document.querySelectorAll("[data-search-overlay-close]"));
 
   const profileAvatarButton = document.getElementById("profile-avatar-btn");
@@ -47,6 +48,8 @@
 
   let progressMap = {};
   let searchOverlayKeyboardBuilt = false;
+  let searchOverlayResultPool = [];
+  let searchOverlayPoolPromise = null;
 
   const SEARCH_TV_KEYS = [
     ["A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P"],
@@ -66,6 +69,193 @@
     return /(smart-tv|smarttv|hbbtv|appletv|googletv|android tv|aft[bmst]|bravia|web0s|webos|tizen|netcast|viera|roku|xbox|playstation)/i.test(
       ua
     );
+  }
+
+  function esc(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function safeUrl(input) {
+    if (typeof input !== "string" || !input.trim()) return "";
+    return encodeURI(input.trim()).replace(/'/g, "%27").replace(/\)/g, "%29");
+  }
+
+  function normalizeSearchText(value) {
+    const input = String(value || "").toLowerCase();
+    if (typeof input.normalize === "function") {
+      return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+    }
+    return input.trim();
+  }
+
+  function normalizeKey(value) {
+    return String(value || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[\s_]+/g, "-")
+      .replace(/[^\w-]+/g, "");
+  }
+
+  function kindLabelForSearch(kind) {
+    const value = String(kind || "").trim().toLowerCase();
+    if (value === "series") return "Serie";
+    if (value === "documentary" || value === "documentaire" || value === "documentaires") return "Documentaire";
+    return "Film";
+  }
+
+  function buildSearchDetailUrl(item) {
+    const source = item && typeof item === "object" ? item : {};
+    const kind = String(source.kind || "movie").trim().toLowerCase();
+    const raw = String(source.detail_url || source.detailUrl || "").trim();
+    if (raw) return raw;
+    const slugSeed = String(source.slug || `${String(source.title || "").trim()}-${String(source.year || "").trim()}`).trim();
+    const slug = normalizeKey(slugSeed);
+    if (!slug) return "";
+    if (kind === "series") return `/serie/${encodeURIComponent(slug)}`;
+    return `/film/${encodeURIComponent(slug)}`;
+  }
+
+  function scoreSearchResult(item, query) {
+    const titleNorm = item && item.titleNorm ? item.titleNorm : "";
+    const searchBlob = item && item.searchBlob ? item.searchBlob : "";
+    if (!query || !searchBlob.includes(query)) return -1;
+    let score = 12;
+    if (titleNorm.startsWith(query)) score += 130;
+    else if (titleNorm.includes(query)) score += 92;
+    const indexInBlob = searchBlob.indexOf(query);
+    if (indexInBlob >= 0) score += Math.max(0, 28 - indexInBlob);
+    if (item.kind === "movie") score += 4;
+    if (item.kind === "series") score += 3;
+    return score;
+  }
+
+  function collectSearchOverlayMatches(rawQuery, limit) {
+    const query = normalizeSearchText(rawQuery);
+    if (!query) return [];
+    const capped = Number.isFinite(limit) ? Math.max(1, limit) : 9;
+    const scored = [];
+    searchOverlayResultPool.forEach((item) => {
+      const score = scoreSearchResult(item, query);
+      if (score < 0) return;
+      scored.push({ item, score });
+    });
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.item.title.localeCompare(b.item.title, "fr", { sensitivity: "base" });
+    });
+    return scored.slice(0, capped).map((entry) => entry.item);
+  }
+
+  function resultCardMarkup(item) {
+    const title = esc(String(item.title || "Sans titre"));
+    const subtitleParts = [item.kindLabel];
+    if (item.year) subtitleParts.push(item.year);
+    return [
+      `<button type="button" class="search-result-card" data-search-result-url="${esc(item.detailUrl || "")}" aria-label="Ouvrir ${title}">`,
+      `  <span class="search-result-thumb" style="--search-result-image:url('${safeUrl(item.image || "")}');--search-result-pos:${esc(item.imagePos || "50% 50%")}"></span>`,
+      '  <span class="search-result-meta">',
+      `    <span class="search-result-title">${title}</span>`,
+      `    <span class="search-result-sub">${esc(subtitleParts.join(" • "))}</span>`,
+      "  </span>",
+      "</button>"
+    ].join("\n");
+  }
+
+  function buildSearchOverlayResultPool(payloads) {
+    const seen = new Set();
+    const pool = [];
+    (Array.isArray(payloads) ? payloads : []).forEach((payload) => {
+      const rows = Array.isArray(payload && payload.rows) ? payload.rows : [];
+      rows.forEach((row) => {
+        const items = Array.isArray(row && row.items) ? row.items : [];
+        items.forEach((entry) => {
+          if (!entry || typeof entry !== "object") return;
+          const title = String(entry.title || "").trim();
+          if (!title) return;
+          const kind = String(entry.kind || "movie").trim().toLowerCase();
+          const year = String(entry.year || "").trim();
+          const genre = String(entry.genre || "").trim();
+          const detailUrl = buildSearchDetailUrl(entry);
+          if (!detailUrl || seen.has(detailUrl)) return;
+          seen.add(detailUrl);
+          pool.push({
+            title,
+            titleNorm: normalizeSearchText(title),
+            kind,
+            kindLabel: kindLabelForSearch(kind),
+            year,
+            image: entry.card_image || entry.cardImage || entry.image || "/static/template-assets/movie-1.jpg",
+            imagePos: String(entry.card_image_position || entry.cardImagePosition || "50% 50%").trim() || "50% 50%",
+            detailUrl,
+            searchBlob: normalizeSearchText([title, kindLabelForSearch(kind), kind, year, genre].join(" "))
+          });
+        });
+      });
+    });
+    searchOverlayResultPool = pool;
+  }
+
+  function ensureSearchOverlayPoolLoaded() {
+    if (searchOverlayResultPool.length) return Promise.resolve(searchOverlayResultPool);
+    if (searchOverlayPoolPromise) return searchOverlayPoolPromise;
+    const views = ["home", "films", "series", "documentaires"];
+    const nonce = Date.now().toString(36);
+    searchOverlayPoolPromise = Promise.all(
+      views.map((view) =>
+        apiJson(`/api/view-data?view=${encodeURIComponent(view)}&_=${encodeURIComponent(`${nonce}-${view}`)}`).catch(
+          () => ({ rows: [] })
+        )
+      )
+    )
+      .then((payloads) => {
+        buildSearchOverlayResultPool(payloads);
+        return searchOverlayResultPool;
+      })
+      .catch(() => {
+        searchOverlayResultPool = [];
+        return searchOverlayResultPool;
+      })
+      .finally(() => {
+        searchOverlayPoolPromise = null;
+      });
+    return searchOverlayPoolPromise;
+  }
+
+  function renderSearchOverlayResults(rawQuery) {
+    if (!(searchOverlayResults instanceof HTMLElement)) return;
+    const query = normalizeSearchText(rawQuery);
+    if (!query) {
+      searchOverlayResults.classList.remove("show");
+      searchOverlayResults.innerHTML = "";
+      return;
+    }
+
+    if (!searchOverlayResultPool.length) {
+      searchOverlayResults.classList.add("show");
+      searchOverlayResults.innerHTML = '<p class="search-results-empty">Chargement du catalogue...</p>';
+      void ensureSearchOverlayPoolLoaded().then(() => {
+        if (normalizeSearchText(readSearchValue()) !== query) return;
+        renderSearchOverlayResults(query);
+      });
+      return;
+    }
+
+    const matches = collectSearchOverlayMatches(query, 9);
+    searchOverlayResults.classList.add("show");
+    if (!matches.length) {
+      searchOverlayResults.innerHTML = '<p class="search-results-empty">Aucun titre trouve.</p>';
+      return;
+    }
+    searchOverlayResults.innerHTML = `
+      <div class="search-results-grid">
+        ${matches.map((item) => resultCardMarkup(item)).join("\n")}
+      </div>
+    `;
   }
 
   function parseDetailData() {
@@ -388,6 +578,7 @@
     searchOverlay = document.getElementById("search-overlay");
     searchOverlayInput = document.getElementById("search-overlay-input");
     searchOverlayKeyboard = document.getElementById("search-tv-keyboard");
+    searchOverlayResults = document.getElementById("search-overlay-results");
     searchOverlayCloseTriggers = Array.from(document.querySelectorAll("[data-search-overlay-close]"));
   }
 
@@ -427,6 +618,7 @@
             />
             <button type="button" class="search-overlay-clear" data-search-action="clear">Effacer</button>
           </div>
+          <div class="search-overlay-results" id="search-overlay-results" aria-live="polite"></div>
           <div class="search-tv-keyboard" id="search-tv-keyboard" role="group" aria-label="Clavier virtuel TV"></div>
           <div class="search-overlay-footer">
             <button type="button" class="search-tv-action" data-search-action="space">Espace</button>
@@ -461,7 +653,9 @@
   }
 
   function setSearchValue(rawValue) {
-    syncSearchInputs(String(rawValue || ""));
+    const value = String(rawValue || "");
+    syncSearchInputs(value);
+    renderSearchOverlayResults(value);
   }
 
   function buildSearchOverlayKeyboard() {
@@ -492,6 +686,7 @@
     }
     buildSearchOverlayKeyboard();
     setSearchValue(readSearchValue());
+    void ensureSearchOverlayPoolLoaded();
     searchOverlay.classList.add("open");
     searchOverlay.setAttribute("aria-hidden", "false");
     document.body.classList.add("search-overlay-open");
@@ -590,6 +785,15 @@
       searchOverlay.addEventListener("click", (event) => {
         const target = event.target;
         if (!(target instanceof HTMLElement)) return;
+        const resultCard = target.closest("[data-search-result-url]");
+        if (resultCard instanceof HTMLElement) {
+          const targetUrl = String(resultCard.getAttribute("data-search-result-url") || "").trim();
+          if (targetUrl) {
+            closeSearchOverlay({ clear: false, restoreFocus: false });
+            window.location.href = targetUrl;
+          }
+          return;
+        }
         const action = target.getAttribute("data-search-action");
         if (action === "clear") {
           setSearchValue("");

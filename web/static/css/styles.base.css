@@ -392,6 +392,87 @@ body.search-overlay-open {
   box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.28), 0 0 0 1px hsla(0, 0%, 100%, 0.22);
 }
 
+.search-overlay-results {
+  display: none;
+}
+
+.search-overlay-results.show {
+  display: block;
+}
+
+.search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.search-result-card {
+  border: 1px solid hsla(0, 0%, 100%, 0.2);
+  border-radius: 15px;
+  background:
+    linear-gradient(160deg, hsla(0, 0%, 100%, 0.12), hsla(0, 0%, 100%, 0.03) 50%),
+    hsla(226, 28%, 12%, 0.7);
+  padding: 8px;
+  text-align: left;
+  color: hsl(0 0% 100%);
+  cursor: pointer;
+  transition:
+    transform var(--motion-fast) var(--card-motion-ease),
+    border-color var(--motion-mid) ease,
+    box-shadow var(--motion-mid) ease;
+}
+
+.search-result-card:hover {
+  transform: translateY(-1px);
+  border-color: hsla(0, 0%, 100%, 0.34);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.search-result-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 11px;
+  background:
+    linear-gradient(180deg, hsla(0, 0%, 100%, 0.12), hsla(0, 0%, 100%, 0) 55%),
+    var(--search-result-image) center / cover no-repeat;
+  background-position: var(--search-result-pos, 50% 50%);
+  border: 1px solid hsla(0, 0%, 100%, 0.14);
+}
+
+.search-result-meta {
+  display: grid;
+  gap: 2px;
+  margin-top: 8px;
+}
+
+.search-result-title {
+  display: block;
+  font-weight: 650;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-sub {
+  display: block;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: hsla(0, 0%, 100%, 0.62);
+}
+
+.search-results-empty {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px dashed hsla(0, 0%, 100%, 0.24);
+  color: hsla(0, 0%, 100%, 0.76);
+  font-size: 0.9rem;
+}
+
 .search-tv-keyboard {
   display: none;
   grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -462,6 +543,7 @@ body.search-overlay-open {
 
 .search-overlay-close:focus-visible,
 .search-overlay-clear:focus-visible,
+.search-result-card:focus-visible,
 .search-tv-key:focus-visible,
 .search-tv-action:focus-visible {
   outline: 2px solid var(--focus-ring);

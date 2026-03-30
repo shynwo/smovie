@@ -28,6 +28,7 @@
   let searchOverlay = document.getElementById("search-overlay");
   let searchOverlayInput = document.getElementById("search-overlay-input");
   let searchOverlayKeyboard = document.getElementById("search-tv-keyboard");
+  let searchOverlayResults = document.getElementById("search-overlay-results");
   let searchOverlayCloseTriggers = Array.from(document.querySelectorAll("[data-search-overlay-close]"));
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
   const mobileDropdown = document.getElementById("mobile-dropdown");
@@ -102,6 +103,7 @@
   let rowStripPointerStrip = null;
   let rowStripPointerX = 0;
   let searchOverlayKeyboardBuilt = false;
+  let searchOverlayResultPool = [];
   const FETCH_TIMEOUT_MS = 7000;
   const RESUME_MIN_SECONDS = 8;
   const RESUME_END_BUFFER_SECONDS = 20;
@@ -165,6 +167,7 @@
     searchOverlay = document.getElementById("search-overlay");
     searchOverlayInput = document.getElementById("search-overlay-input");
     searchOverlayKeyboard = document.getElementById("search-tv-keyboard");
+    searchOverlayResults = document.getElementById("search-overlay-results");
     searchOverlayCloseTriggers = Array.from(document.querySelectorAll("[data-search-overlay-close]"));
   }
 
@@ -204,6 +207,7 @@
             />
             <button type="button" class="search-overlay-clear" data-search-action="clear">Effacer</button>
           </div>
+          <div class="search-overlay-results" id="search-overlay-results" aria-live="polite"></div>
           <div class="search-tv-keyboard" id="search-tv-keyboard" role="group" aria-label="Clavier virtuel TV"></div>
           <div class="search-overlay-footer">
             <button type="button" class="search-tv-action" data-search-action="space">Espace</button>
@@ -1052,6 +1056,44 @@
     catalogByItemKey = byKey;
     catalogBySlug = bySlug;
     catalogItemsByTitle = byTitle;
+    rebuildSearchOverlayResultPool();
+  }
+
+  function kindLabelForSearch(kind) {
+    const value = String(kind || "").trim().toLowerCase();
+    if (value === "series") return "Serie";
+    if (value === "documentary" || value === "documentaires" || value === "documentaire") return "Documentaire";
+    return "Film";
+  }
+
+  function rebuildSearchOverlayResultPool() {
+    const seen = new Set();
+    const pool = [];
+    catalogItemsFlat.forEach((item, idx) => {
+      const normalized = normalizeItem(item, idx);
+      const itemKey = String(normalized.itemKey || "").trim();
+      if (!itemKey || seen.has(itemKey)) return;
+      seen.add(itemKey);
+      const title = String(normalized.title || "").trim();
+      const kind = String(normalized.kind || "movie").trim().toLowerCase();
+      const year = String(normalized.year || "").trim();
+      const genre = String(normalized.genre || "").trim();
+      const searchBlob = normalizeSearchText([title, kindLabelForSearch(kind), kind, year, genre].join(" "));
+      pool.push({
+        itemKey,
+        title,
+        titleNorm: normalizeSearchText(title),
+        kind,
+        kindLabel: kindLabelForSearch(kind),
+        year,
+        image: normalized.image,
+        imagePos: normalized.cardImagePosition || "50% 50%",
+        detailUrl: normalized.detailUrl || buildDetailUrl(normalized),
+        searchBlob
+      });
+    });
+    searchOverlayResultPool = pool;
+    renderSearchOverlayResults(currentSearchQuery);
   }
 
   function getCanonicalItemKey(item) {
@@ -2058,6 +2100,75 @@
     return input.trim();
   }
 
+  function scoreSearchResult(item, query) {
+    const titleNorm = item && item.titleNorm ? item.titleNorm : "";
+    const searchBlob = item && item.searchBlob ? item.searchBlob : "";
+    if (!query || !searchBlob.includes(query)) return -1;
+    let score = 12;
+    if (titleNorm.startsWith(query)) score += 130;
+    else if (titleNorm.includes(query)) score += 92;
+    const indexInBlob = searchBlob.indexOf(query);
+    if (indexInBlob >= 0) score += Math.max(0, 28 - indexInBlob);
+    if (item.kind === "movie") score += 4;
+    if (item.kind === "series") score += 3;
+    return score;
+  }
+
+  function collectSearchOverlayMatches(rawQuery, limit) {
+    const query = normalizeSearchText(rawQuery);
+    if (!query) return [];
+    const capped = Number.isFinite(limit) ? Math.max(1, limit) : 8;
+    const scored = [];
+    searchOverlayResultPool.forEach((item) => {
+      const score = scoreSearchResult(item, query);
+      if (score < 0) return;
+      scored.push({ item, score });
+    });
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.item.title.localeCompare(b.item.title, "fr", { sensitivity: "base" });
+    });
+    return scored.slice(0, capped).map((entry) => entry.item);
+  }
+
+  function resultCardMarkup(item) {
+    const title = esc(String(item.title || "Sans titre"));
+    const subtitleParts = [item.kindLabel];
+    if (item.year) subtitleParts.push(item.year);
+    return [
+      `<button type="button" class="search-result-card" data-search-result-url="${esc(item.detailUrl || "")}" aria-label="Ouvrir ${title}">`,
+      `  <span class="search-result-thumb" style="--search-result-image:url('${safeUrl(item.image || "")}');--search-result-pos:${esc(item.imagePos || "50% 50%")}"></span>`,
+      '  <span class="search-result-meta">',
+      `    <span class="search-result-title">${title}</span>`,
+      `    <span class="search-result-sub">${esc(subtitleParts.join(" • "))}</span>`,
+      "  </span>",
+      "</button>"
+    ].join("\n");
+  }
+
+  function renderSearchOverlayResults(rawQuery) {
+    if (!(searchOverlayResults instanceof HTMLElement)) return;
+    const query = normalizeSearchText(rawQuery);
+    if (!query) {
+      searchOverlayResults.classList.remove("show");
+      searchOverlayResults.innerHTML = "";
+      return;
+    }
+
+    const matches = collectSearchOverlayMatches(query, 9);
+    searchOverlayResults.classList.add("show");
+    if (!matches.length) {
+      searchOverlayResults.innerHTML = '<p class="search-results-empty">Aucun titre trouve.</p>';
+      return;
+    }
+
+    searchOverlayResults.innerHTML = `
+      <div class="search-results-grid">
+        ${matches.map((item) => resultCardMarkup(item)).join("\n")}
+      </div>
+    `;
+  }
+
   function readSearchQueryFromUrl() {
     try {
       const params = new URLSearchParams(window.location.search || "");
@@ -2106,6 +2217,7 @@
       searchEmpty.classList.toggle("show", shouldShowEmpty);
     }
 
+    renderSearchOverlayResults(query);
     refreshAllRowStripScrollStates();
   }
 
@@ -2159,6 +2271,7 @@
     }
     buildSearchOverlayKeyboard();
     syncSearchInputs(readSearchValue());
+    renderSearchOverlayResults(readSearchValue());
     searchOverlay.classList.add("open");
     searchOverlay.setAttribute("aria-hidden", "false");
     document.body.classList.add("search-overlay-open");
@@ -2243,6 +2356,15 @@
       searchOverlay.addEventListener("click", (event) => {
         const target = event.target;
         if (!(target instanceof HTMLElement)) return;
+        const resultCard = target.closest("[data-search-result-url]");
+        if (resultCard instanceof HTMLElement) {
+          const targetUrl = String(resultCard.getAttribute("data-search-result-url") || "").trim();
+          if (targetUrl) {
+            closeSearchOverlay({ clear: false, restoreFocus: false });
+            window.location.href = targetUrl;
+          }
+          return;
+        }
         const action = target.getAttribute("data-search-action");
         if (action === "clear") {
           setSearchValue("");
