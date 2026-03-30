@@ -269,6 +269,85 @@
     `;
   }
 
+  function getSearchResultCards() {
+    if (!(searchOverlayResults instanceof HTMLElement)) return [];
+    return Array.from(searchOverlayResults.querySelectorAll(".search-result-card")).filter(
+      (card) => card instanceof HTMLElement
+    );
+  }
+
+  function getSearchResultColumns(cards) {
+    const list = Array.isArray(cards) ? cards : [];
+    if (!list.length) return 1;
+    const first = list[0];
+    if (!(first instanceof HTMLElement)) return 1;
+    const firstTop = first.offsetTop;
+    let columns = 0;
+    list.forEach((card) => {
+      if (!(card instanceof HTMLElement)) return;
+      if (Math.abs(card.offsetTop - firstTop) > 1) return;
+      columns += 1;
+    });
+    return Math.max(1, columns || 1);
+  }
+
+  function focusSearchResultByIndex(rawIndex) {
+    const cards = getSearchResultCards();
+    if (!cards.length) return false;
+    const index = Math.max(0, Math.min(cards.length - 1, Number(rawIndex) || 0));
+    const target = cards[index];
+    if (!(target instanceof HTMLElement)) return false;
+    target.focus({ preventScroll: true });
+    target.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+    return true;
+  }
+
+  function handleSearchOverlayArrowNavigation(event) {
+    const key = event && event.key;
+    if (!key || !/^Arrow(?:Up|Down|Left|Right)$/.test(key)) return false;
+    const cards = getSearchResultCards();
+    if (!cards.length) return false;
+
+    const active = document.activeElement;
+    if (active === searchOverlayInput) {
+      if (key !== "ArrowDown") return false;
+      event.preventDefault();
+      return focusSearchResultByIndex(0);
+    }
+
+    const activeCard = active instanceof Element ? active.closest(".search-result-card") : null;
+    if (!(activeCard instanceof HTMLElement)) return false;
+
+    const index = cards.indexOf(activeCard);
+    if (index < 0) return false;
+
+    const columns = getSearchResultColumns(cards);
+    let next = index;
+    if (key === "ArrowRight") next = index + 1;
+    if (key === "ArrowLeft") next = index - 1;
+    if (key === "ArrowDown") next = index + columns;
+    if (key === "ArrowUp") next = index - columns;
+
+    if (key === "ArrowUp" && next < 0) {
+      if (searchOverlayInput instanceof HTMLInputElement) {
+        event.preventDefault();
+        searchOverlayInput.focus();
+        const pos = searchOverlayInput.value.length;
+        searchOverlayInput.setSelectionRange(pos, pos);
+        return true;
+      }
+      return false;
+    }
+
+    if (next < 0 || next >= cards.length) {
+      event.preventDefault();
+      return true;
+    }
+
+    event.preventDefault();
+    return focusSearchResultByIndex(next);
+  }
+
   function parseDetailData() {
     if (!detailDataNode) return {};
     try {
@@ -783,6 +862,11 @@
         if (event.key === "Escape") {
           event.preventDefault();
           closeSearchOverlay({ clear: false });
+          return;
+        }
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          focusSearchResultByIndex(0);
         }
       });
     }
@@ -831,6 +915,7 @@
 
     document.addEventListener("keydown", (event) => {
       if (!(searchOverlay instanceof HTMLElement) || !searchOverlay.classList.contains("open")) return;
+      if (handleSearchOverlayArrowNavigation(event)) return;
       if (event.key === "Escape") {
         event.preventDefault();
         closeSearchOverlay({ clear: false });

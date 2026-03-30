@@ -420,6 +420,7 @@ body.search-overlay-open {
   cursor: pointer;
   overflow: visible;
   z-index: 1;
+  scroll-margin-block: 18px;
 }
 
 .search-result-card::after {
@@ -451,6 +452,17 @@ body.search-overlay-open {
   transform: translateY(2px) scale(1.02);
 }
 
+.search-result-card:focus-visible {
+  outline: none;
+  transform: translateY(-4px);
+  z-index: 70;
+}
+
+.search-result-card:focus-visible::after {
+  opacity: 1;
+  transform: translateY(1px) scale(1.02);
+}
+
 .search-result-frame {
   --search-result-fit: cover;
   --search-result-pos: 50% 50%;
@@ -471,6 +483,15 @@ body.search-overlay-open {
 .search-result-card:hover .search-result-frame {
   border-radius: 14px 14px 0 0;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+}
+
+.search-result-card:focus-visible .search-result-frame {
+  border-radius: 14px 14px 0 0;
+  border-color: hsla(0, 0%, 100%, 0.6);
+  box-shadow:
+    0 20px 42px rgba(0, 0, 0, 0.46),
+    0 0 0 1px hsla(0, 0%, 100%, 0.52),
+    0 0 0 4px var(--focus-ring-soft);
 }
 
 .search-result-image {
@@ -495,6 +516,13 @@ body.search-overlay-open {
 .search-result-card:hover .search-result-image {
   transform: none;
   filter: none;
+}
+
+.search-overlay.is-tv .search-result-card:focus-visible .search-result-frame {
+  box-shadow:
+    0 22px 46px rgba(0, 0, 0, 0.5),
+    0 0 0 1px hsla(0, 0%, 100%, 0.62),
+    0 0 0 5px hsla(30, 95%, 62%, 0.28);
 }
 
 .search-result-logo {
@@ -636,7 +664,6 @@ body.search-overlay-open {
 
 .search-overlay-close:focus-visible,
 .search-overlay-clear:focus-visible,
-.search-result-card:focus-visible,
 .search-tv-key:focus-visible,
 .search-tv-action:focus-visible {
   outline: 2px solid var(--focus-ring);
