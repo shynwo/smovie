@@ -1154,7 +1154,7 @@
   .detail-page .detail-tab-btn:hover,
   .detail-page .detail-related-card:hover,
   .detail-page .episode-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 }
 
@@ -1163,16 +1163,24 @@
     display: flex;
     width: 100%;
     overflow-x: auto;
-    padding: 5px;
-    gap: 5px;
-    border-radius: 16px 16px 0 0;
+    min-height: 46px;
+    padding: 0 6px 6px;
+    gap: 4px;
+    border-radius: 0 0 12px 12px;
     border-bottom: 0;
+    scrollbar-width: none;
+  }
+
+  .detail-page .detail-prime-tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .detail-page .detail-tab-btn {
     flex: 0 0 auto;
+    margin-top: -10px;
     min-height: 40px;
-    padding: 0 14px;
+    padding: 0 13px;
+    border-radius: 10px 10px 0 0;
   }
 
   .detail-page .detail-main > .detail-section {
@@ -1214,13 +1222,17 @@
 
 @media (max-width: 640px) {
   .detail-page .detail-prime-tabs {
-    border-radius: 14px 14px 0 0;
+    min-height: 42px;
+    padding: 0 5px 5px;
+    border-radius: 0 0 10px 10px;
   }
 
   .detail-page .detail-tab-btn {
+    margin-top: -9px;
     min-height: 38px;
-    padding: 0 12px;
+    padding: 0 11px;
     font-size: 0.86rem;
+    border-radius: 9px 9px 0 0;
   }
 
   .detail-page [data-tab-panel] > .detail-section-head {

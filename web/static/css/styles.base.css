@@ -2786,35 +2786,47 @@ body.profile-switcher-open .mobile-dropdown {
 }
 
 .detail-page .detail-prime-tabs {
-  margin-top: var(--detail-cta-to-tabs);
+  margin-top: calc(var(--detail-cta-to-tabs) + 10px);
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: nowrap;
-  gap: 6px;
+  gap: 4px;
   width: 100%;
   max-width: 100%;
-  padding: 6px;
+  min-height: 50px;
+  padding: 0 10px 7px;
   border: 1px solid var(--detail-liquid-border);
-  border-radius: var(--detail-liquid-radius) var(--detail-liquid-radius) 0 0;
+  border-radius: 0 0 var(--detail-liquid-radius) var(--detail-liquid-radius);
   border-bottom: 0;
   background: var(--detail-liquid-surface);
   backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(var(--glass-saturate));
   box-shadow: var(--detail-liquid-shadow);
+  overflow: visible;
 }
 
 .detail-page .detail-tab-btn {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  min-height: 42px;
-  padding: 0 18px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  background: transparent;
+  margin-top: -12px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--detail-liquid-border);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  background:
+    linear-gradient(160deg, hsla(0, 0%, 100%, 0.16), hsla(0, 0%, 100%, 0.03) 52%),
+    hsla(226, 30%, 9%, 0.66);
   color: hsla(0, 0%, 100%, 0.72);
   font-size: clamp(0.9rem, 0.84rem + 0.22vw, 1.02rem);
   font-weight: 600;
   letter-spacing: 0.01em;
+  white-space: nowrap;
+  backdrop-filter: blur(calc(var(--glass-blur) + 1px)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 1px)) saturate(var(--glass-saturate));
   transition:
     transform var(--motion-fast) var(--card-motion-ease),
     border-color var(--motion-mid) ease,
@@ -2825,17 +2837,24 @@ body.profile-switcher-open .mobile-dropdown {
 
 .detail-page .detail-tab-btn:hover {
   color: hsla(0, 0%, 100%, 0.92);
-  border-color: hsla(0, 0%, 100%, 0.22);
-  background: hsla(0, 0%, 100%, 0.06);
+  border-color: hsla(0, 0%, 100%, 0.26);
+  background:
+    linear-gradient(160deg, hsla(0, 0%, 100%, 0.22), hsla(0, 0%, 100%, 0.05) 56%),
+    hsla(226, 30%, 10%, 0.72);
 }
 
 .detail-page .detail-tab-btn.active {
+  z-index: 2;
   color: hsl(0 0% 100%);
   border-color: rgba(var(--primary-rgb), 0.58);
+  border-bottom-color: transparent;
   background:
-    linear-gradient(150deg, hsla(0, 0%, 100%, 0.2), hsla(0, 0%, 100%, 0.06)),
-    hsla(0, 0%, 100%, 0.08);
-  box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.2), 0 8px 24px rgba(var(--primary-rgb), 0.24);
+    linear-gradient(150deg, hsla(0, 0%, 100%, 0.26), hsla(0, 0%, 100%, 0.08) 58%),
+    hsla(0, 0%, 100%, 0.1);
+  box-shadow:
+    inset 0 1px 0 hsla(0, 0%, 100%, 0.24),
+    0 8px 24px rgba(var(--primary-rgb), 0.2),
+    0 0 0 1px rgba(var(--primary-rgb), 0.2);
   text-shadow: 0 0 18px rgba(var(--primary-rgb), 0.22);
 }
 
