@@ -2787,16 +2787,17 @@ body.profile-switcher-open .mobile-dropdown {
 
 .detail-page .detail-prime-tabs {
   margin-top: var(--detail-cta-to-tabs);
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: nowrap;
   gap: 6px;
-  width: fit-content;
+  width: 100%;
   max-width: 100%;
   padding: 6px;
   border: 1px solid var(--detail-liquid-border);
-  border-radius: 999px;
+  border-radius: var(--detail-liquid-radius) var(--detail-liquid-radius) 0 0;
+  border-bottom: 0;
   background: var(--detail-liquid-surface);
   backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 2px)) saturate(var(--glass-saturate));
@@ -2854,6 +2855,29 @@ body.profile-switcher-open .mobile-dropdown {
   padding: 0;
   border-radius: 0;
   background: transparent;
+}
+
+.detail-page [data-tab-panel] > .detail-section-head {
+  margin-top: -1px;
+  margin-bottom: 2px;
+  min-height: 54px;
+  padding: 10px 16px;
+  border-top: 0;
+  border-radius: 0 0 var(--detail-liquid-radius) var(--detail-liquid-radius);
+}
+
+.detail-page [data-tab-panel] > .detail-section-head h2 {
+  margin: 0;
+  font-size: clamp(1.02rem, 0.94rem + 0.35vw, 1.32rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.detail-page [data-tab-panel] > .detail-section-head p {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .detail-page .detail-section-head {
