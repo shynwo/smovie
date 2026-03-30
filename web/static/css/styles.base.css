@@ -442,7 +442,7 @@ body.search-overlay-open {
 }
 
 .search-result-card:hover {
-  transform: translateY(-6px) scale(1.028);
+  transform: translateY(-6px);
   z-index: 60;
 }
 
