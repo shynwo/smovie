@@ -140,6 +140,7 @@
     ["W", "X", "C", "V", "B", "N", "0", "1", "2", "3"],
     ["4", "5", "6", "7", "8", "9", "-", "'"]
   ];
+  const SEARCH_OVERLAY_RESULT_LIMIT = 6;
   const searchOverlayTvMode = detectSearchOverlayTvMode();
 
   function esc(s) {
@@ -2120,7 +2121,7 @@
   function collectSearchOverlayMatches(rawQuery, limit) {
     const query = normalizeSearchText(rawQuery);
     if (!query) return [];
-    const capped = Number.isFinite(limit) ? Math.max(1, limit) : 8;
+    const capped = Number.isFinite(limit) ? Math.max(1, limit) : SEARCH_OVERLAY_RESULT_LIMIT;
     const scored = [];
     searchOverlayResultPool.forEach((item) => {
       const score = scoreSearchResult(item, query);
@@ -2160,7 +2161,7 @@
       return;
     }
 
-    const matches = collectSearchOverlayMatches(query, 9);
+    const matches = collectSearchOverlayMatches(query, SEARCH_OVERLAY_RESULT_LIMIT);
     searchOverlayResults.classList.add("show");
     if (!matches.length) {
       searchOverlayResults.innerHTML = '<p class="search-results-empty">Aucun titre trouve.</p>';
