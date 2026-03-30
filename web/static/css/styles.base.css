@@ -493,8 +493,8 @@ body.search-overlay-open {
 }
 
 .search-result-card:hover .search-result-image {
-  transform: scale(1.01);
-  filter: saturate(1.08) contrast(1.04);
+  transform: none;
+  filter: none;
 }
 
 .search-result-logo {
