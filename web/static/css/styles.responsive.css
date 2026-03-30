@@ -1143,7 +1143,6 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .detail-page .detail-tab-btn:hover,
   .detail-page .detail-related-card:hover,
   .detail-page .season-select-btn:hover,
   .detail-page .episode-card:hover,
@@ -1151,7 +1150,6 @@
     border-color: var(--detail-liquid-border-strong);
   }
 
-  .detail-page .detail-tab-btn:hover,
   .detail-page .detail-related-card:hover,
   .detail-page .episode-card:hover {
     transform: translateY(-1px);
@@ -1163,11 +1161,11 @@
     display: flex;
     width: 100%;
     overflow-x: auto;
-    min-height: 45px;
-    padding: 0 6px 5px;
-    gap: 4px;
-    border-radius: 0 0 12px 12px;
-    border-bottom: 0;
+    min-height: unset;
+    padding: 0 2px 10px;
+    gap: 14px;
+    border-radius: 0;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.16);
     scrollbar-width: none;
   }
 
@@ -1177,17 +1175,14 @@
 
   .detail-page .detail-tab-btn {
     flex: 0 0 auto;
-    margin-top: -9px;
-    min-height: 39px;
-    padding: 0 13px;
-    border-radius: 10px 10px 0 0;
+    margin-top: 0;
+    min-height: unset;
+    padding: 0 0 10px;
+    border-radius: 0;
   }
 
   .detail-page .detail-tab-btn::after {
-    left: 11px;
-    right: 11px;
-    bottom: -6px;
-    height: 2px;
+    content: none;
   }
 
   .detail-page .detail-main > .detail-section {
@@ -1195,14 +1190,14 @@
   }
 
   .detail-page [data-tab-panel] > .detail-section-head {
-    margin-top: -1px;
+    margin-top: 10px;
     margin-bottom: 2px;
     min-height: 46px;
     padding: 8px 12px;
     gap: 8px;
     align-items: center;
-    border-top: 0;
-    border-radius: 0 0 12px 12px;
+    border-top: 1px solid var(--detail-liquid-border);
+    border-radius: 12px;
   }
 
   .detail-page [data-tab-panel] > .detail-section-head h2 {
@@ -1229,29 +1224,28 @@
 
 @media (max-width: 640px) {
   .detail-page .detail-prime-tabs {
-    min-height: 40px;
-    padding: 0 5px 5px;
-    border-radius: 0 0 10px 10px;
+    min-height: unset;
+    padding: 0 1px 9px;
+    gap: 12px;
+    border-radius: 0;
   }
 
   .detail-page .detail-tab-btn {
-    margin-top: -8px;
-    min-height: 36px;
-    padding: 0 11px;
-    font-size: 0.86rem;
-    border-radius: 9px 9px 0 0;
+    margin-top: 0;
+    min-height: unset;
+    padding: 0 0 9px;
+    font-size: 0.84rem;
+    border-radius: 0;
   }
 
   .detail-page .detail-tab-btn::after {
-    left: 9px;
-    right: 9px;
-    bottom: -5px;
+    content: none;
   }
 
   .detail-page [data-tab-panel] > .detail-section-head {
     min-height: 42px;
     padding: 7px 10px;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
   }
 
   .detail-page [data-tab-panel] > .detail-section-head p {
@@ -1261,14 +1255,14 @@
 
 @media (min-width: 1600px) {
   .detail-page .detail-prime-tabs {
-    padding: 7px;
-    gap: 8px;
+    padding: 0 4px 14px;
+    gap: 22px;
   }
 
   .detail-page .detail-tab-btn {
-    min-height: 50px;
-    padding: 0 24px;
-    font-size: 1.08rem;
+    min-height: unset;
+    padding: 0 0 14px;
+    font-size: 1.06rem;
   }
 
   .detail-page .detail-main > .detail-section {
