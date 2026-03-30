@@ -153,28 +153,16 @@
 
   function resultCardMarkup(item) {
     const title = esc(String(item.title || "Sans titre"));
-    const subtitleParts = [item.kindLabel];
-    if (item.year) subtitleParts.push(item.year);
     const frameClass = item.cardFit === "contain" ? "search-result-frame fit-contain" : "search-result-frame fit-cover";
     const showLogo = Boolean(item.showLogo && item.logo);
     const logoBlock = showLogo
       ? `    <span class="search-result-logo" aria-hidden="true"><img loading="lazy" src="${safeUrl(item.logo)}" alt="" /></span>`
       : "";
-    const captionBlock = showLogo
-      ? ""
-      : [
-          '    <span class="search-result-caption">',
-          `      <span class="search-result-title">${title}</span>`,
-          `      <span class="search-result-sub">${esc(subtitleParts.join(" • "))}</span>`,
-          "    </span>"
-        ].join("\n");
     return [
       `<button type="button" class="search-result-card" data-search-result-url="${esc(item.detailUrl || "")}" aria-label="Ouvrir ${title}">`,
       `  <span class="${frameClass}" style="--search-result-pos:${esc(item.imagePos || "50% 50%")}">`,
       `    <img class="search-result-image" loading="lazy" src="${safeUrl(item.image || "")}" alt="" />`,
       logoBlock,
-      '    <span class="search-result-glow" aria-hidden="true"></span>',
-      captionBlock,
       "  </span>",
       "</button>"
     ].join("\n");
