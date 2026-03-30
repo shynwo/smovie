@@ -155,12 +155,26 @@
     const title = esc(String(item.title || "Sans titre"));
     const subtitleParts = [item.kindLabel];
     if (item.year) subtitleParts.push(item.year);
+    const frameClass = item.cardFit === "contain" ? "search-result-frame fit-contain" : "search-result-frame fit-cover";
+    const showLogo = Boolean(item.showLogo && item.logo);
+    const logoBlock = showLogo
+      ? `    <span class="search-result-logo" aria-hidden="true"><img loading="lazy" src="${safeUrl(item.logo)}" alt="" /></span>`
+      : "";
+    const captionBlock = showLogo
+      ? ""
+      : [
+          '    <span class="search-result-caption">',
+          `      <span class="search-result-title">${title}</span>`,
+          `      <span class="search-result-sub">${esc(subtitleParts.join(" • "))}</span>`,
+          "    </span>"
+        ].join("\n");
     return [
       `<button type="button" class="search-result-card" data-search-result-url="${esc(item.detailUrl || "")}" aria-label="Ouvrir ${title}">`,
-      `  <span class="search-result-thumb" style="--search-result-image:url('${safeUrl(item.image || "")}');--search-result-pos:${esc(item.imagePos || "50% 50%")}"></span>`,
-      '  <span class="search-result-meta">',
-      `    <span class="search-result-title">${title}</span>`,
-      `    <span class="search-result-sub">${esc(subtitleParts.join(" • "))}</span>`,
+      `  <span class="${frameClass}" style="--search-result-pos:${esc(item.imagePos || "50% 50%")}">`,
+      `    <img class="search-result-image" loading="lazy" src="${safeUrl(item.image || "")}" alt="" />`,
+      logoBlock,
+      '    <span class="search-result-glow" aria-hidden="true"></span>',
+      captionBlock,
       "  </span>",
       "</button>"
     ].join("\n");
@@ -169,6 +183,7 @@
   function buildSearchOverlayResultPool(payloads) {
     const seen = new Set();
     const pool = [];
+    const marketingThumbTypes = new Set(["thumb", "moviethumb", "tvthumb"]);
     (Array.isArray(payloads) ? payloads : []).forEach((payload) => {
       const rows = Array.isArray(payload && payload.rows) ? payload.rows : [];
       rows.forEach((row) => {
@@ -180,6 +195,10 @@
           const kind = String(entry.kind || "movie").trim().toLowerCase();
           const year = String(entry.year || "").trim();
           const genre = String(entry.genre || "").trim();
+          const cardImageType = String(entry.card_image_type || entry.cardImageType || "fallback").trim().toLowerCase();
+          const logo = String(entry.logo || "").trim();
+          const showLogo = Boolean(logo && (kind === "series" || kind === "documentary" || (kind === "movie" && !marketingThumbTypes.has(cardImageType))));
+          const cardFit = cardImageType === "poster" || cardImageType === "banner" ? "contain" : "cover";
           const detailUrl = buildSearchDetailUrl(entry);
           if (!detailUrl || seen.has(detailUrl)) return;
           seen.add(detailUrl);
@@ -191,6 +210,9 @@
             year,
             image: entry.card_image || entry.cardImage || entry.image || "/static/template-assets/movie-1.jpg",
             imagePos: String(entry.card_image_position || entry.cardImagePosition || "50% 50%").trim() || "50% 50%",
+            cardFit,
+            logo,
+            showLogo,
             detailUrl,
             searchBlob: normalizeSearchText([title, kindLabelForSearch(kind), kind, year, genre].join(" "))
           });

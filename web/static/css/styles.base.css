@@ -403,54 +403,146 @@ body.search-overlay-open {
 .search-results-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 13px;
 }
 
 .search-result-card {
-  border: 1px solid hsla(0, 0%, 100%, 0.2);
-  border-radius: 15px;
-  background:
-    linear-gradient(160deg, hsla(0, 0%, 100%, 0.12), hsla(0, 0%, 100%, 0.03) 50%),
-    hsla(226, 28%, 12%, 0.7);
-  padding: 8px;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  background: transparent;
+  border-radius: 14px;
   text-align: left;
-  color: hsl(0 0% 100%);
-  cursor: pointer;
   transition:
-    transform var(--motion-fast) var(--card-motion-ease),
-    border-color var(--motion-mid) ease,
-    box-shadow var(--motion-mid) ease;
+    transform var(--card-motion-duration) var(--card-motion-ease),
+    z-index 0s linear;
+  position: relative;
+  cursor: pointer;
+  overflow: visible;
+  z-index: 1;
+}
+
+.search-result-card::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  bottom: -14px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.46);
+  filter: blur(2.4px);
+  opacity: 0;
+  transform: translateY(6px) scale(0.84);
+  transition:
+    opacity var(--card-motion-duration) var(--card-motion-ease),
+    transform var(--card-motion-duration) var(--card-motion-ease);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .search-result-card:hover {
-  transform: translateY(-1px);
-  border-color: hsla(0, 0%, 100%, 0.34);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  transform: translateY(-6px) scale(1.028);
+  z-index: 60;
 }
 
-.search-result-thumb {
+.search-result-card:hover::after {
+  opacity: 1;
+  transform: translateY(2px) scale(1.02);
+}
+
+.search-result-frame {
+  --search-result-fit: cover;
+  --search-result-pos: 50% 50%;
   display: block;
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 11px;
-  background:
-    linear-gradient(180deg, hsla(0, 0%, 100%, 0.12), hsla(0, 0%, 100%, 0) 55%),
-    var(--search-result-image) center / cover no-repeat;
-  background-position: var(--search-result-pos, 50% 50%);
-  border: 1px solid hsla(0, 0%, 100%, 0.14);
+  border-radius: 14px;
+  overflow: hidden;
+  background-image: linear-gradient(160deg, hsla(225, 24%, 14%, 0.95), hsla(225, 28%, 10%, 0.96));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  border: 1px solid hsla(0, 0%, 100%, 0.12);
+  transition:
+    box-shadow var(--card-motion-duration) var(--card-motion-ease),
+    border-radius var(--card-motion-duration) var(--card-motion-ease);
 }
 
-.search-result-meta {
+.search-result-card:hover .search-result-frame {
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+}
+
+.search-result-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--search-result-fit);
+  object-position: var(--search-result-pos);
+  transition:
+    transform var(--card-motion-duration) var(--card-motion-ease),
+    filter var(--card-motion-duration) var(--card-motion-ease);
+}
+
+.search-result-frame.fit-contain {
+  --search-result-fit: contain;
+}
+
+.search-result-frame.fit-contain .search-result-image {
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.34));
+}
+
+.search-result-card:hover .search-result-image {
+  transform: scale(1.01);
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.search-result-logo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10% 8%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.search-result-logo img {
+  max-width: 90%;
+  max-height: 46%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 28px rgba(0, 0, 0, 0.88));
+}
+
+.search-result-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 56%, rgba(2, 4, 10, 0.78));
+  z-index: 2;
+  opacity: 0.88;
+}
+
+.search-result-caption {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 9px;
   display: grid;
-  gap: 2px;
-  margin-top: 8px;
+  gap: 3px;
+  z-index: 3;
 }
 
 .search-result-title {
   display: block;
-  font-weight: 650;
-  font-size: 0.95rem;
-  line-height: 1.2;
+  font-weight: 640;
+  font-size: 0.92rem;
+  line-height: 1.18;
+  color: hsl(0 0% 100%);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.72);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -458,10 +550,11 @@ body.search-overlay-open {
 
 .search-result-sub {
   display: block;
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: hsla(0, 0%, 100%, 0.62);
+  color: hsla(0, 0%, 100%, 0.72);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.64);
 }
 
 .search-results-empty {

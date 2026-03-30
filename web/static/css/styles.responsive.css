@@ -241,17 +241,16 @@
     gap: 10px;
   }
 
-  .search-result-card {
-    padding: 7px;
-    border-radius: 13px;
+  .search-result-frame {
+    border-radius: 12px;
   }
 
   .search-result-title {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
   }
 
   .search-result-sub {
-    font-size: 0.7rem;
+    font-size: 0.64rem;
   }
 
   .search-tv-key {
@@ -520,12 +519,16 @@
     gap: 14px;
   }
 
+  .search-result-frame {
+    border-radius: 15px;
+  }
+
   .search-result-title {
-    font-size: 1.02rem;
+    font-size: 0.98rem;
   }
 
   .search-result-sub {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
   }
 
   .search-tv-key {
@@ -1384,17 +1387,16 @@
     gap: 8px;
   }
 
-  .search-result-card {
-    border-radius: 11px;
-    padding: 6px;
+  .search-result-frame {
+    border-radius: 10px;
   }
 
   .search-result-title {
-    font-size: 0.82rem;
+    font-size: 0.76rem;
   }
 
   .search-result-sub {
-    font-size: 0.66rem;
+    font-size: 0.6rem;
   }
 
   .search-tv-key {
