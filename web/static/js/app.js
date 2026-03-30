@@ -138,6 +138,7 @@
     ["W", "X", "C", "V", "B", "N", "0", "1", "2", "3"],
     ["4", "5", "6", "7", "8", "9", "-", "'"]
   ];
+  const searchOverlayTvMode = detectSearchOverlayTvMode();
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -148,6 +149,18 @@
       .replace(/'/g, "&#39;");
   }
 
+  function detectSearchOverlayTvMode() {
+    const params = new URLSearchParams(window.location.search || "");
+    const forcedMode = String(params.get("tv") || params.get("device") || "").trim().toLowerCase();
+    if (forcedMode === "1" || forcedMode === "true" || forcedMode === "tv") return true;
+    if (forcedMode === "0" || forcedMode === "false" || forcedMode === "desktop" || forcedMode === "mobile") return false;
+
+    const ua = `${navigator.userAgent || ""} ${navigator.vendor || ""}`;
+    return /(smart-tv|smarttv|hbbtv|appletv|googletv|android tv|aft[bmst]|bravia|web0s|webos|tizen|netcast|viera|roku|xbox|playstation)/i.test(
+      ua
+    );
+  }
+
   function refreshSearchOverlayRefs() {
     searchOverlay = document.getElementById("search-overlay");
     searchOverlayInput = document.getElementById("search-overlay-input");
@@ -155,9 +168,16 @@
     searchOverlayCloseTriggers = Array.from(document.querySelectorAll("[data-search-overlay-close]"));
   }
 
+  function syncSearchOverlayMode() {
+    if (!(searchOverlay instanceof HTMLElement)) return;
+    searchOverlay.classList.toggle("is-tv", searchOverlayTvMode);
+    searchOverlay.dataset.searchDevice = searchOverlayTvMode ? "tv" : "standard";
+  }
+
   function ensureSearchOverlayDom() {
     if (document.getElementById("search-overlay")) {
       refreshSearchOverlayRefs();
+      syncSearchOverlayMode();
       return;
     }
 
@@ -167,7 +187,6 @@
         <div class="search-overlay-backdrop" data-search-overlay-close></div>
         <section class="search-overlay-panel glass-panel glass-edge" role="dialog" aria-modal="true" aria-labelledby="search-overlay-title">
           <header class="search-overlay-head">
-            <p class="text-category">SMOVIE SEARCH</p>
             <button type="button" class="search-overlay-close" data-search-overlay-close aria-label="Fermer la recherche">Fermer</button>
           </header>
           <h2 id="search-overlay-title" class="text-display">Trouver un titre</h2>
@@ -199,6 +218,7 @@
       document.body.appendChild(node);
     }
     refreshSearchOverlayRefs();
+    syncSearchOverlayMode();
   }
 
   function safeUrl(input) {
@@ -2112,6 +2132,7 @@
   }
 
   function buildSearchOverlayKeyboard() {
+    if (!searchOverlayTvMode) return;
     if (searchOverlayKeyboardBuilt) return;
     if (!(searchOverlayKeyboard instanceof HTMLElement)) return;
 

@@ -304,7 +304,7 @@ body.search-overlay-open {
 .search-overlay-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
 }
 
@@ -393,9 +393,13 @@ body.search-overlay-open {
 }
 
 .search-tv-keyboard {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(10, minmax(0, 1fr));
   gap: clamp(8px, 1vw, 12px);
+}
+
+.search-overlay.is-tv .search-tv-keyboard {
+  display: grid;
 }
 
 .search-tv-key {
@@ -427,9 +431,13 @@ body.search-overlay-open {
 }
 
 .search-overlay-footer {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+}
+
+.search-overlay.is-tv .search-overlay-footer {
+  display: grid;
 }
 
 .search-tv-action {
