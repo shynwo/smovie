@@ -348,7 +348,7 @@ body.search-overlay-open {
 }
 
 .search-overlay-icon {
-  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.65rem);
+  font-size: clamp(1.45rem, 1.18rem + 0.85vw, 2rem);
   color: hsla(0, 0%, 100%, 0.75);
 }
 
