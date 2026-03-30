@@ -368,6 +368,12 @@ body.search-overlay-open {
   color: hsla(0, 0%, 100%, 0.48);
 }
 
+.search-overlay-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
 .search-overlay-clear {
   border: 1px solid hsla(0, 0%, 100%, 0.2);
   border-radius: 999px;
