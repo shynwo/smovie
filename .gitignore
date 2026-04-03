@@ -36,3 +36,6 @@ Thumbs.db
 *.log
 .tmp/
 tmp/
+
+# Sauvegardes locales hors dépôt
+backups/

@@ -23,21 +23,24 @@ from smovie.routes import register_routes
 from smovie.structured_log import catalog_log, structured
 
 
-BASE_DIR = Path(__file__).resolve().parent
+# Répertoire du backend Flask (templates Jinja + package `smovie`).
+SERVER_DIR = Path(__file__).resolve().parent
+# Racine du dépôt (data/, public/, media/, .env).
+REPO_ROOT = SERVER_DIR.parent
 
 try:
     from dotenv import load_dotenv
 
-    load_dotenv(BASE_DIR / ".env")
+    load_dotenv(REPO_ROOT / ".env")
 except ImportError:
     pass
 
-CATALOG_PATH = BASE_DIR / "data" / "catalog.json"
-MOCK_MEDIA_PATH = BASE_DIR / "data" / "mockMedia.json"
-MEDIA_DIR = BASE_DIR / "media"
-TMP_MEDIA_DIR = BASE_DIR / "tmp"
-PUBLIC_LIBRARY_DIR = BASE_DIR / "public" / "library"
-DB_PATH = BASE_DIR / "data" / "smovie.sqlite3"
+CATALOG_PATH = REPO_ROOT / "data" / "catalog.json"
+MOCK_MEDIA_PATH = REPO_ROOT / "data" / "mockMedia.json"
+MEDIA_DIR = REPO_ROOT / "media"
+TMP_MEDIA_DIR = REPO_ROOT / "tmp"
+PUBLIC_LIBRARY_DIR = REPO_ROOT / "public" / "library"
+DB_PATH = REPO_ROOT / "data" / "smovie.sqlite3"
 DEFAULT_IMAGE = "/static/template-assets/movie-1.jpg"
 DEFAULT_HERO_IMAGE = "/static/template-assets/hero-bg.jpg"
 DEFAULT_EPISODE_TRAILER_MP4 = "/media/attack-on-titan-trailer.mp4"
@@ -84,7 +87,7 @@ def _resolve_smovie_secret_key() -> str:
     if env_secret and env_secret.lower() != "change-me-with-a-long-random-secret":
         return env_secret
 
-    secret_file = BASE_DIR / "data" / ".smovie_secret_key"
+    secret_file = REPO_ROOT / "data" / ".smovie_secret_key"
     try:
         existing = secret_file.read_text(encoding="utf-8").strip()
         if len(existing) >= 32:
@@ -198,6 +201,8 @@ def _clean_image(value: Any, fallback: str) -> str:
     if image.startswith("/static/"):
         return image
     if image.startswith("/library/"):
+        return image
+    if image.startswith("/media/"):
         return image
     if image.startswith("https://"):
         return image
@@ -2038,8 +2043,8 @@ class SlidingWindowRateLimiter:
 def create_app() -> Flask:
     app = Flask(
         __name__,
-        template_folder=str(BASE_DIR / "web" / "templates"),
-        static_folder=str(BASE_DIR / "web" / "static"),
+        template_folder=str(SERVER_DIR / "web" / "templates"),
+        static_folder=str(SERVER_DIR / "web" / "static"),
         static_url_path="/static",
     )
     app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1)
@@ -2054,9 +2059,11 @@ def create_app() -> Flask:
         SESSION_COOKIE_SECURE=_session_cookie_secure_default(),
         PERMANENT_SESSION_LIFETIME=timedelta(days=_clean_int(os.getenv("SMOVIE_SESSION_DAYS", "14"), 14, 1, 365)),
         SESSION_REFRESH_EACH_REQUEST=True,
-        TEMPLATES_AUTO_RELOAD=_env_bool("SMOVIE_TEMPLATE_RELOAD", False),
+        TEMPLATES_AUTO_RELOAD=_env_bool("SMOVIE_TEMPLATE_RELOAD", not _smovie_is_production()),
         PREFERRED_URL_SCHEME=_preferred_url_scheme(),
         LIBRARY_CACHE_MAX_AGE=_lib_cache,
+        SMOVIE_PLAYER_BASE=(os.getenv("SMOVIE_PLAYER_BASE") or "").strip().rstrip("/"),
+        SMOVIE_DISABLE_ASSET_CACHE=_env_bool("SMOVIE_DISABLE_ASSET_CACHE", True),
     )
 
     _log_level = getattr(logging, (os.getenv("SMOVIE_LOG_LEVEL") or "INFO").strip().upper(), logging.INFO)
@@ -2066,6 +2073,8 @@ def create_app() -> Flask:
     )
     for _lg_name in ("smovie", "smovie.catalog", "smovie.auth"):
         logging.getLogger(_lg_name).setLevel(_log_level)
+
+    app.jinja_env.auto_reload = bool(app.config.get("TEMPLATES_AUTO_RELOAD", True))
 
     catalog_store = CatalogStore(
         catalog_path=CATALOG_PATH,
@@ -2198,6 +2207,11 @@ def create_app() -> Flask:
         response.headers.setdefault("Permissions-Policy", "geolocation=(), microphone=(), camera=()")
         response.headers.setdefault("Cross-Origin-Opener-Policy", "same-origin")
         response.headers.setdefault("Cross-Origin-Resource-Policy", "same-origin")
+        _path = str(request.path or "")
+        if _path.startswith("/media/") or _path.startswith("/tmp-media") or _path.startswith("/library/"):
+            # Autorise le player Next (autre origin en dev) à lire les médias Flask.
+            response.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
+            response.headers.setdefault("Access-Control-Allow-Origin", "*")
 
         if request.is_secure:
             response.headers.setdefault(
@@ -2215,7 +2229,11 @@ def create_app() -> Flask:
             _max_age = int(app.config.get("LIBRARY_CACHE_MAX_AGE") or 86400)
             response.headers.setdefault("Cache-Control", f"public, max-age={_max_age}")
         elif request.path.startswith("/static/"):
-            response.headers.setdefault("Cache-Control", "public, max-age=604800, immutable")
+            disable_asset_cache = bool(app.config.get("SMOVIE_DISABLE_ASSET_CACHE", True))
+            if disable_asset_cache:
+                response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+            else:
+                response.headers.setdefault("Cache-Control", "public, max-age=604800, immutable")
         else:
             response.headers.setdefault("Cache-Control", "no-cache")
 
@@ -2239,6 +2257,12 @@ def create_app() -> Flask:
             response.headers["Content-Type"] = f"{mimetype}; charset=utf-8"
 
         return response
+
+    @app.context_processor
+    def inject_asset_version():
+        if bool(app.config.get("SMOVIE_DISABLE_ASSET_CACHE", True)):
+            return {"asset_version": str(int(time.time() * 1000))}
+        return {"asset_version": "stable"}
 
     def render_main_page(initial_view: str):
         current_view = normalize_view_name(initial_view)
@@ -2363,5 +2387,3 @@ if __name__ == "__main__":
         port=int(os.getenv("SMOVIE_PORT", "8091")),
         debug=_env_bool("SMOVIE_DEBUG", False),
     )
-
-

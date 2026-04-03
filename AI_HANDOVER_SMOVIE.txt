@@ -8,25 +8,27 @@ Date: 2026-03-25
 - Lecteur video: app Next `apps/smovie-web` (package `packages/glass-player`). Depuis Flask, definir `SMOVIE_PLAYER_BASE` (ex. http://127.0.0.1:3000) pour que « Regarder » ouvre `/watch/<kind>/<slug>`. Sans cette variable, les boutons restent sur la fiche uniquement.
 
 2) STACK TECHNIQUE
-- Backend: Flask (fichier principal: app.py)
-- Serveur prod Raspberry: Gunicorn + systemd
-- Front: templates Jinja + JS vanilla + CSS custom
-- Data: JSON local (catalog + mockMedia) + SQLite (session/progression/profils)
-- Scripts d'import/catalogue: TypeScript (npm scripts)
+- Backend: Flask dans server/ (fichier principal: server/app.py)
+- Serveur prod Raspberry: Gunicorn + systemd (WorkingDirectory = .../server)
+- Front principal: Next.js apps/smovie-web + packages (glass-player, ui, domain…)
+- Front legacy: templates Jinja + JS dans server/web/
+- Data: JSON a la racine du depot (data/) + SQLite (session/progression/profils)
+- Scripts d'import/catalogue: TypeScript (npm scripts, cwd = racine du monorepo)
 
 3) ARBORESCENCE IMPORTANTE
-- app.py
-- smovie/ (package Python)
-- web/templates/ (index.html, detail.html)
-- web/static/ (css, js, template-assets)
-- data/
+- apps/smovie-web/ (Next 16, App Router)
+- apps/smovie-native/ (placeholder)
+- packages/* (partage Smovie)
+- server/
+  - app.py (WSGI / dev)
+  - smovie/ (package Python)
+  - web/templates/, web/static/
+  - requirements.txt (deps Python)
+- data/ (racine depot)
   - catalog.json
   - mockMedia.json
   - smovie.sqlite3
-- tools/
-  - tmdb-import.ts
-  - build-catalog-from-mock.ts
-  - audit-mock-media.ts
+- tools/ (tmdb-import.ts, build-catalog-from-mock.ts, audit-mock-media.ts)
 - public/library/ (assets locaux images)
 - media/ (videos de test /media/)
 - vendor/slickstream-vision-main/ (prototype React, reference)
@@ -34,7 +36,8 @@ Date: 2026-03-25
 4) EXECUTION LOCALE
 - Python:
   - pip install -r requirements.txt
-  - python app.py
+  - python server/app.py
+  - ou: npm run server:dev
 - Node (imports catalogue):
   - npm install
   - npm run tmdb:import
@@ -43,9 +46,9 @@ Date: 2026-03-25
   - npm run tmdb:reset
 
 5) DEPLOIEMENT RASPBERRY
-- Service systemd: smovie.service
-- WorkingDirectory (prod): /home/shynwo/streamnest
-- Gunicorn ecoute sur: 0.0.0.0:8090
+- Service systemd: adapter selon machine (ex. smovie.service si redeploye)
+- WorkingDirectory (prod): chemin/vers/clone/server (obligatoire pour import smovie + app:app)
+- Gunicorn ecoute sur: 0.0.0.0:8090 (ou autre)
 - Commandes utiles:
   - sudo systemctl restart smovie.service
   - sudo systemctl status smovie.service --no-pager

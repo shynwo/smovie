@@ -14,7 +14,8 @@
     "tmdb:catalog": "tsx tools/build-catalog-from-mock.ts",
     "tmdb:reset": "tsx tools/tmdb-import.ts && tsx tools/build-catalog-from-mock.ts && tsx tools/audit-mock-media.ts",
     "player:dev": "npm run dev -w smovie-web",
-    "player:build": "npm run build -w smovie-web"
+    "player:build": "npm run build -w smovie-web",
+    "server:dev": "python server/app.py"
   },
   "dependencies": {
     "dotenv": "^16.6.1",

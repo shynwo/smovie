@@ -12,25 +12,29 @@ Projet parallele pour un serveur media personnel sur Raspberry Pi.
 ```bash
 cd netflix-maison
 python3 -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python app.py
+python server/app.py
+# ou: npm run server:dev
 ```
 
-Puis ouvrir:
-- http://localhost:8090
+Puis ouvrir (port par défaut **8091**, surcharge possible via `SMOVIE_PORT` dans `.env`) :
+- http://127.0.0.1:8091
 
-## Structure
-- `app.py`: point d'entrée Flask
-- `smovie/`: package Python (routes, catalogue, auth, payload)
-- `web/templates/`: pages Jinja (`index.html`, `detail.html`)
-- `web/static/`: CSS/JS et assets servis sous `/static/`
-- `data/catalog.json`: donnees front (`hero + rows`) generees automatiquement
-- `data/mockMedia.json`: dataset principal (films/series/documentaires)
-- `tools/`: scripts TypeScript (import TMDb, audit, generation catalogue)
-- `public/library/...`: posters/backdrops/saisons/episodes locaux
-- `media/`: fichiers video de test servis sous `/media/`
-- `vendor/slickstream-vision-main/`: prototype React (reference, hors app Flask)
+## Structure (monorepo)
+- `apps/smovie-web/`: application Next.js 16 (App Router), lecteur Glass
+- `apps/smovie-native/`: réservé futur client natif (placeholder)
+- `packages/*`: bibliothèques partagées (`glass-player`, `ui`, `domain`, `types`, etc.)
+- `server/`: **backend Flask**
+  - `app.py`: point d’entrée WSGI / dev
+  - `smovie/`: package Python (routes, catalogue, auth, payload)
+  - `web/templates/`, `web/static/`: UI Jinja + assets `/static/`
+  - `server/requirements.txt`: dépendances Python (référencées par `requirements.txt` à la racine)
+- `data/`: `catalog.json`, `mockMedia.json`, SQLite Smovie, clés générées (à la racine du dépôt)
+- `tools/`: scripts TypeScript (import TMDb, audit, génération catalogue) — exécuter depuis la racine (`npm run …`)
+- `public/library/...`: images catalogue locales
+- `media/`: vidéos de test servies sous `/media/`
+- `vendor/slickstream-vision-main/`: prototype React (référence)
 
 ## Import TMDb (TypeScript)
 Prerequis: Node.js 18+
@@ -73,7 +77,9 @@ Dans un second temps, remplace `data/catalog.json` par:
 - API de ton serveur media maison.
 
 ## Deploiement Raspberry (systemd)
-Exemple de service:
+Le répertoire de travail Gunicorn doit être le dossier **`server/`** (où se trouvent `app.py` et le package `smovie`).
+
+Exemple (adapter les chemins au clone du dépôt sur la machine) :
 ```ini
 [Unit]
 Description=streamnest
@@ -81,7 +87,7 @@ After=network.target
 
 [Service]
 User=shynwo
-WorkingDirectory=/home/shynwo/streamnest
+WorkingDirectory=/home/shynwo/streamnest/server
 ExecStart=/home/shynwo/streamnest/.venv/bin/gunicorn -w 2 -b 127.0.0.1:8090 app:app
 Restart=always
 Environment=SMOVIE_DEBUG=false
@@ -92,7 +98,8 @@ Environment=SMOVIE_SECRET_KEY=change-me-long-random-secret
 WantedBy=multi-user.target
 ```
 
-Ensuite: reverse proxy Nginx sur ton domaine local.
+Alternative : `ExecStart=.../gunicorn --chdir /chemin/vers/netflix-maison/server ... app:app`.  
+Ensuite : reverse proxy Nginx vers le port choisi.
 
 ## Securite et stabilite (V1)
 - Validation stricte du `catalog.json` cote backend (types, tailles, images autorisees).
