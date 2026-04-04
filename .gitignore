@@ -39,3 +39,7 @@ tmp/
 
 # Sauvegardes locales hors dépôt
 backups/
+
+# Copies éditeur / fichiers *.bak.*
+*.bak
+*.bak.*
